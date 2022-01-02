@@ -1,0 +1,24 @@
+[[package]]
+name = "pybullet"
+version = "3.2.0"
+description = "Official Python Interface for the Bullet Physics SDK specialized for Robotics Simulation and Reinforcement Learning"
+category = "main"
+optional = false
+python-versions = "*"
+
+[metadata]
+lock-version = "1.1"
+python-versions = ">=3.9"
+content-hash = "41d1eb26ff887a982ea444ee3f7c75dcdbb968347f43cac15f6dc91580ac1191"
+
+[metadata.files]
+pybullet = [
+    {file = "pybullet-3.2.0-cp27-cp27m-manylinux1_x86_64.whl", hash = "sha256:f45d0b0ef1e24eb911ec7de834f6e8dbd00472a27c20352c957fdd03d890045e"},
+    {file = "pybullet-3.2.0-cp27-cp27mu-manylinux1_x86_64.whl", hash = "sha256:1f2c6f6ca973ae07ff5114d7d89b71c18800b1c5cb9f66af86963494b0b6930e"},
+    {file = "pybullet-3.2.0-cp35-cp35m-manylinux1_x86_64.whl", hash = "sha256:62d8fd9d695230e36d15895325b3a41c2131445c32bc716c614752364f554aac"},
+    {file = "pybullet-3.2.0-cp36-cp36m-manylinux1_x86_64.whl", hash = "sha256:335b8dbdc8e81bda701d027189128d2feb0f560e65e7041f22116763a5b945e4"},
+    {file = "pybullet-3.2.0-cp37-cp37m-manylinux1_x86_64.whl", hash = "sha256:0f301d5f15077d3e843bf6fbb2f456efe48546a6998dca12834b56effd4a8e82"},
+    {file = "pybullet-3.2.0-cp38-cp38-manylinux1_x86_64.whl", hash = "sha256:2bb9e1177776e5825818837146c89e5ade1536e82465a868261d898486c93323"},
+    {file = "pybullet-3.2.0-cp39-cp39-manylinux1_x86_64.whl", hash = "sha256:2945e370e29328bcde6cb77b351920bb7942e8613dfbe65370d6ab0c2dfc82b3"},
+    {file = "pybullet-3.2.0.tar.gz", hash = "sha256:df02fb0ab74a6e7c4e1d7a3e2ffd7e4760a30cdeccb9fa6dd19f334122ec00f2"},
+]
