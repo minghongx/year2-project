@@ -33,6 +33,7 @@
  ┃ ┃ ┗ 📜titlepage.tex
  ┃ ┗ 📜report.tex
  ┣ 📂simulation
+ ┃ ┣ 📜poetry.lock
  ┃ ┗ 📜pyproject.toml
  ┣ 📜.editorconfig
  ┣ 📜.gitignore
@@ -47,3 +48,4 @@ Folder / File | Description
 📜top_matter.tex | Where metadata about a LaTeX document is placed.
 📂simulation | Where simulation code is placed.
 📜pyproject.toml | pyproject.toml contains build system requirements and [core metadata](https://packaging.python.org/en/latest/specifications/core-metadata/) of Python projects. *python-poetry* is a reference implementation for using pyproject.toml.
+📜poetry.lock | This file prevents from automatically getting the latest versions of dependencies. Running `poetry install` when a poetry.lock file is present resolves and installs all dependencies that are listed in pyproject.toml, but Poetry uses the exact versions listed in poetry.lock to ensure that the package versions are consistent for everyone working on a project. To update to the latest versions, use the `poetry update` command. This will fetch the latest matching versions (as per pyproject.toml) and update the lock file with the new versions. (This is equivalent to deleting the poetry.lock file and running `poetry install` again.)
