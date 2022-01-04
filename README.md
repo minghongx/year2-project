@@ -19,12 +19,14 @@
  ┃ ┗ 📂week5
  ┃ ┃ ┗ 📜blog.md
  ┣ 📂poster
+ ┃ ┣ 📂figures
  ┃ ┣ 📂preamble
  ┃ ┃ ┣ 📜packages.tex
  ┃ ┃ ┗ 📜top_matter.tex
  ┃ ┣ 📜LivUniCrest.pdf
  ┃ ┗ 📜poster.tex
  ┣ 📂report
+ ┃ ┣ 📂figures
  ┃ ┣ 📂preamble
  ┃ ┃ ┣ 📜packages.tex
  ┃ ┃ ┗ 📜top_matter.tex
