@@ -35,7 +35,7 @@
  ┃ ┃ ┗ 📜titlepage.tex
  ┃ ┗ 📜report.tex
  ┣ 📂simulation
- ┣ 📂refs
+ ┣ ┣ 📂refs
  ┃ ┣ 📜poetry.lock
  ┃ ┗ 📜pyproject.toml
  ┣ 📜.editorconfig
