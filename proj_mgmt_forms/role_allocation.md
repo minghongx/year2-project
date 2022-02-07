@@ -21,12 +21,6 @@
 - S – Supports task.
 - C – Requires communication about the task.
 
-<style>
-table, th, td {
-  text-align: center;
-  border: 1px solid black;
-}
-</style>
 <table>
     <tr>
         <th rowspan="2">Title</th>
@@ -94,5 +88,5 @@ table, th, td {
 | :-: |:- |:- |
 | Project Manager | Responsible for developing, in conjunction with the supervisor, the project scope. The Project Manager ensures that the project is delivered on time and to the required standards. | <ur><li>Managing and lead the project team.</li><li>Managing the coordination of the partners and the working groups.</li></ur>
 | Designer | Designing the system (the circuit, the code, etc.). | <ur><li>Creating the required block diagrams, circuit diagrams, flow charts, etc.</li></ur>
-| Implementer/Developer | Implementing the suggested design. | <ur><li>Connecting the systems/circuit.</li><li>Writing the code.</li></ur>
+| Implementer / Developer | Implementing the suggested design. | <ur><li>Connecting the systems/circuit.</li><li>Writing the code.</li></ur>
 | Technical Writer | Documenting the project progress and deliverables. | <ur><li>Recording and maintaining all meeting logs.</li><li>Updating the logbook.</li><li>Creating project blog.</li><li>Creating project poster.</li><li>Writing project report.</li></ur>
