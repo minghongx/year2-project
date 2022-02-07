@@ -9,22 +9,17 @@
 📦year2-proj
  ┣ 📂blogs
  ┃ ┣ 📂week1
- ┃ ┃ ┗ 📜blog.md
  ┃ ┣ 📂week2
- ┃ ┃ ┗ 📜blog.md
  ┃ ┣ 📂week3
- ┃ ┃ ┗ 📜blog.md
  ┃ ┣ 📂week4
- ┃ ┃ ┗ 📜blog.md
  ┃ ┗ 📂week5
- ┃ ┃ ┗ 📜blog.md
  ┣ 📂poster
- ┃ ┣ 📂figures
+ ┃ ┣ 📂images
  ┃ ┣ 📂preamble
  ┃ ┃ ┣ 📜packages.tex
  ┃ ┃ ┗ 📜top_matter.tex
- ┃ ┣ 📜LivUniCrest.pdf
  ┃ ┗ 📜poster.tex
+ ┣ 📂proj_mgmt_forms
  ┣ 📂report
  ┃ ┣ 📂figures
  ┃ ┣ 📂preamble
