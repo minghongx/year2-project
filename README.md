@@ -4,7 +4,7 @@
 </h1>
 
 <p align="center">
-  <a href="gantt_chart/gantt_chart.html"><img src="gantt_chart/gantt_chart.svg" /></a>
+  <img src="gantt_chart/gantt_chart.svg" alt="Gannt Chart" />
 </p>
 
 ## Structure of the Repository
