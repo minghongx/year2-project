@@ -30,11 +30,12 @@
  ┃ ┃ ┗ 📜titlepage.tex
  ┃ ┗ 📜report.tex
  ┣ 📂simulation
- ┣ ┣ 📂refs
- ┃ ┣ 📜poetry.lock
- ┃ ┗ 📜pyproject.toml
+ ┣ ┗ 📂refs
  ┣ 📜.editorconfig
  ┣ 📜.gitignore
+ ┣ 📜gantt_chart.ipynb
+ ┣ 📜poetry.lock
+ ┣ 📜pyproject.toml
  ┗ 📜README.md
 </pre>
 

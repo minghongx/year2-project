@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "year2-proj"
+version = "v2022.2.11"
+description = "University of Liverpool ELEC222-202122 Year 2 project; quadruped-robot-locomotion simulation in PyBullet."
+authors = [
+    "Minghong Xu",
+    "Zepeng Pang",
+    "Kai Yang",
+    "Zehao Ye",
+]
+
+[tool.poetry.dependencies]
+python = ">=3.9"
+pybullet = "3.2.0"
+ipykernel = "6.9.0"
+plotly = "^5.6.0"
+pandas = "^1.4.0"
+matplotlib = "^3.5.1"
+nbformat = "^5.1.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
