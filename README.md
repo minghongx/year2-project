@@ -3,6 +3,10 @@
   <sub><sup>Simulation of Quadruped-robot Locomotion</sup></sub>
 </h1>
 
+<p align="center">
+  <a href="gantt_chart/gantt_chart.html"><img src="gantt_chart/gantt_chart.svg" /></a>
+</p>
+
 ## Structure of the Repository
 
 <pre>
@@ -13,6 +17,7 @@
  ┃ ┣ 📂week3
  ┃ ┣ 📂week4
  ┃ ┗ 📂week5
+ ┣ 📂gantt_chart
  ┣ 📂poster
  ┃ ┣ 📂images
  ┃ ┣ 📂preamble
@@ -33,10 +38,9 @@
  ┣ ┗ 📂refs
  ┣ 📜.editorconfig
  ┣ 📜.gitignore
- ┣ 📜gantt_chart.ipynb
+ ┣ 📜README.md
  ┣ 📜poetry.lock
- ┣ 📜pyproject.toml
- ┗ 📜README.md
+ ┗ 📜pyproject.toml
 </pre>
 
 Folder / File | Description
