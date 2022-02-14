@@ -16,11 +16,21 @@
 4. Zepeng Pang
 
 ## Summary of Week’s Activities
-At the Supervisor meeting on Monday of the first week, the group determined that the task of the first week was to complete the construction of the robot simulation environment for each member. With Minghong's help, the rest of the team successfully completed the construction of the pybullet simulation environment and other preparations on Thursday. Additionally we preliminarily explored the application of pybullet in robot motion simulation.
+At the Supervisor meeting on Monday, the group determined that the task of the first week was to complete the construction of the robot simulation environment for each member. With Minghong's help, the rest of the team successfully completed the construction of the pybullet simulation environment and other preparations on Thursday. In detail, we started virtual environment by using python-poetry. We also installed LaTex, Markdown and Python extensions in VSCode to be prepared for future poster, report and code work. Additionally, we configured Git and learned its basic usage. Finally we preliminarily explored the application of pybullet in robot motion simulation.
 ## Problem, Issues and Concerns
-Group members need to be more familiar with how to use pybullet in the simulation of robot motion. Project schedule has started to lag behind expectations. 
+Group members need to be more familiar with how to use pybullet in the simulation of robot motion. The robot model required for the simulation could not be determined. Project schedule has started to lag behind expectations.
 ## Tasks for Next Week / Actions for next meeting
-Investigate how to simulate robot dog movement using pybullet.
+Minghong Xu: 
+        1) Investigate how to simulate robot dog movement using pybullet.
+        2) Write the weekly blog.
+Zepeng Pang:
+        1) Investigate how to simulate robot dog movement using pybullet.
+        2) Write the supervisor weekly meeting log.
+Zehao Ye:
+        1) Investigate how to simulate robot dog movement using pybullet.
+Kai Yang:
+        1) Investigate how to simulate robot dog movement using pybullet.
+        2) Write the weekly blog.
 ## Progress Assessment (supervisor use only)
 - [ ] Unsatisfactory
 - [ ] Satisfactory
@@ -44,11 +54,21 @@ Investigate how to simulate robot dog movement using pybullet.
 4. Zepeng Pang
 
 ## Summary of Week’s Activities
-
+At supervisor's suggestion, the group designed a gantt chart to make work arrangement clear to everyone. In the lab on Thursday, we determined the robot model to use for simulation. After importing the  model into pybullet, everyone successfully attempted to write code to simply move the model's joints. In addition, in order to write programs more conveniently, we installed the Jupyter plugin on VSCode. Finally, We studied the kinematic modeling of the legs of a quadruped robot and the attitude adjustment matrix, which is also based on kinematic. 
 ## Problem, Issues and Concerns
-
+It's a bit hard to understand the knowledge of kinematic modeling. Team members need to continue learning about simulating robots with pybullet.
 ## Tasks for Next Week / Actions for next meeting
-
+Minghong Xu: 
+        1) Try to complete a simple simulated movement. 
+        2) Write the weekly blog.
+Zepeng Pang:
+        1) Try to complete a simple simulated movement. 
+        2) Write the supervisor weekly meeting log.
+Zehao Ye:
+        1) Try to complete a simple simulated movement. 
+Kai Yang:
+        1) Try to complete a simple simulated movement. 
+        2) Write the weekly blog.
 ## Progress Assessment (supervisor use only)
 - [ ] Unsatisfactory
 - [ ] Satisfactory
