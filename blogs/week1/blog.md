@@ -5,7 +5,7 @@ During the group work in week 1, we downloaded the necessary software to be used
 ![pybullet](https://i0.hdslb.com/bfs/album/c8adc5887d5039327957d0b0acf4bec3589fae10.png)
 
 ## Study 
-1. Learned how to use Github, especially the efficient way of working with git.
+1. Learned how to use Github, especially the efficient way of online working with git.
 2. Learned the basic operation of the pybullet platform.
 
 ## *Pybullet*, the platform we use
