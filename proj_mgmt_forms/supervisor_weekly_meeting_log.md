@@ -81,7 +81,7 @@ Kai Yang:
 
 # Week 3
 
-**Date:**
+**Date:** 14 Feb
 
 **Supervisor:** Dr Murat Uney
 
@@ -92,11 +92,18 @@ Kai Yang:
 4. Zepeng Pang
 
 ## Summary of Week’s Activities
-
+At the supervisor meeting on Monday, The team decided to simulate three movements: pitch motion, yaw motion, and roll motion. In the knowledge of the kinematic modeling of the legs of the quadruped robot studied last week, we learned the knowledge of pitch angle, yaw angle and roll angle. The knowledge of these three angles corresponds to the three motion we want to simulate. The team decided that three people would each undertake a simulation of a motion, and the remaining one would be responsible for the paperwork which contains blog, supervisor weekly meeting log and preparation of the poster. 
 ## Problem, Issues and Concerns
-
+Group members need to keep learning commands and functions which would be used in pybullet. Spend more time in the last two weeks to speed up the project.
 ## Tasks for Next Week / Actions for next meeting
-
+Minghong Xu:
+        1) Complete the simulation of robot's roll motion.
+Zehao Ye:
+        1) Complete the simulation of robot's pitch motion.
+Kai Yang:
+        1) Complete the simulation of robot's yaw motion.
+Zepeng Pang:
+        1) Complete paperwork (blogs, meeting log, preparation of poster).
 ## Progress Assessment (supervisor use only)
 - [ ] Unsatisfactory
 - [ ] Satisfactory
