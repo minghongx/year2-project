@@ -11,7 +11,7 @@
 | Minghong Xu |
 | Zehao Ye    |
 | Kai Yang    |
-| Zepeng Pang |
+| Zepeng Pang | Technical Writer
 
 
 ## Responsibility Matrix
