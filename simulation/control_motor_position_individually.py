@@ -48,7 +48,7 @@ for motor_name, motor_info in motors.items():
                     paramName = motor_name,
                     rangeMin = motor_info[8],
                     rangeMax = motor_info[9],
-                    startValue = -1.6,)))
+                    startValue = -0.7*2,)))  # ensures that the toes are beneath the hips
 
 while True:
     bullet.setJointMotorControlArray(
