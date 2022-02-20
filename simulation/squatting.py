@@ -45,6 +45,10 @@ length_of_thigh = 200
 length_of_calf = 200
 # Obtained by measuring the STL file of the thigh and calf.
 
+# FIXME
+# The algorithm below assumes that the height is the distance from hip to toe.
+# The algorithm fails when the motor postion for hip abduction or adduction is not equal to 0.
+
 debug_distance_from_hip_to_toe = bullet.addUserDebugParameter(
     paramName = "distance from hip to toe",
     rangeMin = 1,
