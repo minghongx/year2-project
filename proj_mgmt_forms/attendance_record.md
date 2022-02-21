@@ -8,7 +8,7 @@
 
 | Member Name | Week 1 | Week 2 | Week 3 | Week 4 | Week 5 | Comments
 |     :-:     |  :--:  |  :--:  |  :--:  |  :--:  |  :--:  |:-
-| Minghong Xu |  Yes   |  Yes   |        |        |        |
-| Zehao Ye    |  Yes   |  Yes   |        |        |        |
-| Kai Yang    |  Yes   |  Yes   |        |        |        |
-| Zepeng Pang |  Yes   |  Yes   |        |        |        |
+| Minghong Xu |  Yes   |  Yes   |  Yes   |        |        |
+| Zehao Ye    |  Yes   |  Yes   |  Yes   |        |        |
+| Kai Yang    |  Yes   |  Yes   |  Yes   |        |        |
+| Zepeng Pang |  Yes   |  Yes   |  Yes   |        |        |
