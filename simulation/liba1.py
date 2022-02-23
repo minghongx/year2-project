@@ -1,54 +1,56 @@
-from dataclasses import dataclass
-from typing import Tuple
+import pybullet as bullet
+import pandas as pd
+import numpy as np
+from typing import Iterable
 
-@dataclass
-class A1MotorIndices:
-    # Front Right
-    fr_hip_abduction_or_adduction: int
-    fr_hip_flexion_or_extension: int
-    fr_knee: int
-    # Front Left
-    fl_hip_abduction_or_adduction: int
-    fl_hip_flexion_or_extension: int
-    fl_knee: int
-    # Hind Right
-    hr_hip_abduction_or_adduction: int
-    hr_hip_flexion_or_extension: int
-    hr_knee: int
-    # Hind Left
-    hl_hip_abduction_or_adduction: int
-    hl_hip_flexion_or_extension: int
-    hl_knee: int
+class A1:
 
-    def hip_abduction_or_adduction(self) -> Tuple[int, ...]:
-        return (self.fr_hip_abduction_or_adduction,
-                self.fl_hip_abduction_or_adduction,
-                self.hr_hip_abduction_or_adduction,
-                self.hl_hip_abduction_or_adduction,)
-
-    def hip_flexion_or_extension(self) -> Tuple[int, ...]:
-        return (self.fr_hip_flexion_or_extension,
-                self.fl_hip_flexion_or_extension,
-                self.hr_hip_flexion_or_extension,
-                self.hl_hip_flexion_or_extension,)
-
-    def knee(self) -> Tuple[int, ...]:
-        return (self.fr_knee,
-                self.fl_knee,
-                self.hr_knee,
-                self.hl_knee,)
-
-def a1_motor_indices():
-    return A1MotorIndices(
-        fr_hip_abduction_or_adduction = 1,
-        fr_hip_flexion_or_extension = 3,
-        fr_knee = 4,
-        fl_hip_abduction_or_adduction = 6,
-        fl_hip_flexion_or_extension = 8,
-        fl_knee = 9,
-        hr_hip_abduction_or_adduction = 11,
-        hr_hip_flexion_or_extension = 13,
-        hr_knee = 14,
-        hl_hip_abduction_or_adduction = 16,
-        hl_hip_flexion_or_extension = 18,
-        hl_knee = 19)
+    def __init__(
+    self,
+    physics_client_id: int,
+    base_position: Iterable[float] = [0, 0, 0.43],
+    base_orientation: Iterable[float] = [0, 0, 0, 1]):
+        self.in_physics_client = physics_client_id
+        # Load the model in the given PyBullet physics client.
+        import pybullet_data; bullet.setAdditionalSearchPath(pybullet_data.getDataPath())  # The A1 model is in the pybullet_data
+        self.id = bullet.loadURDF(
+            "a1/a1.urdf",
+            base_position, base_orientation,
+            physicsClientId = self.in_physics_client,
+            flags = bullet.URDF_USE_SELF_COLLISION,
+            useFixedBase = False)
+        # Motors
+        self.motor_indices = pd.DataFrame(dtype=np.int8,
+            columns =        ["fr", "fl", "hr", "hl"],
+            data = np.array([[  1 ,   6 ,  11 ,  16 ],
+                             [  3 ,   8 ,  13 ,  18 ],
+                             [  4 ,   9 ,  14 ,  19 ],]),
+            index = ["hip abduction/adduction", "hip flexion/extension", "knee"])
+        # A matrix contains motor information. The info is structured as
+        # Tuple(jointIndex, jointName, jointType, qIndex, uIndex, flags, jointDamping
+        # , jointFriction, jointLowerLimit, jointUpperLimit, jointMaxForce, jointMaxVelocity
+        # , linkName, jointAxis, parentFramePos, parentFrameOrn, parentIndex)
+        # See PyBullet document for getJointInfo().
+        self.motor_info = self.motor_indices.applymap(lambda index: bullet.getJointInfo(self.id, index))
+        # Obtained by measuring the STL file of the thigh and calf. Both are 0.2mm.
+        self.length_of_thigh = 200
+        self.length_of_calf  = 200
+        # Set initial postion of motors.
+        bullet.setJointMotorControlArray(
+            physicsClientId = self.in_physics_client,
+            bodyUniqueId = self.id,
+            jointIndices = self.motor_indices.loc["hip abduction/adduction", :],
+            controlMode = bullet.POSITION_CONTROL,
+            targetPositions = np.full(4, 0),)
+        bullet.setJointMotorControlArray(
+            physicsClientId = self.in_physics_client,
+            bodyUniqueId = self.id,
+            jointIndices = self.motor_indices.loc["hip flexion/extension", :],
+            controlMode = bullet.POSITION_CONTROL,
+            targetPositions = np.full(4, 0.7),)
+        bullet.setJointMotorControlArray(
+            physicsClientId = self.in_physics_client,
+            bodyUniqueId = self.id,
+            jointIndices = self.motor_indices.loc["knee", :],
+            controlMode = bullet.POSITION_CONTROL,
+            targetPositions = np.full(4, -0.7*2),)  # ensures that the toes are beneath the hips
