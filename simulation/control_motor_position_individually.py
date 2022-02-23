@@ -1,12 +1,12 @@
 import pybullet as bullet
-import pybullet_data
 from liba1 import A1
 
 # Initialisation
 physics_server_id = bullet.connect(bullet.GUI)
 bullet.setRealTimeSimulation(enableRealTimeSimulation=True, physicsClientId=physics_server_id)
 bullet.setGravity(0, 0, -9.8, physics_server_id)
-bullet.setAdditionalSearchPath(pybullet_data.getDataPath()); bullet.loadURDF("plane.urdf")
+import pybullet_data; bullet.setAdditionalSearchPath(pybullet_data.getDataPath());
+bullet.loadURDF("plane.urdf")
 a1 = A1(physics_server_id)
 bullet.resetDebugVisualizerCamera(
     physicsClientId = physics_server_id,
