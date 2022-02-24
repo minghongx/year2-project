@@ -1,6 +1,7 @@
 import pybullet as bullet
 import numpy as np
 from liba1 import A1
+from time import sleep
 
 # Initialisation
 physics_server_id = bullet.connect(bullet.GUI)
@@ -16,27 +17,51 @@ bullet.resetDebugVisualizerCamera(
     cameraYaw = 40,
     cameraPitch = -15)
 
+sleep(1)
 motor_positions = a1.motor_indices.applymap(lambda index: bullet.getJointState(a1.id, index, a1.in_physics_client)[0])
 
+# 前为 0, 顺时针为正
 pitch_angle = 0.3
-
 for leg, positions in motor_positions.items():
     t0, t1, t2 = positions
     l1 = a1.length_of_thigh
     l2 = a1.length_of_calf
     L = a1.L
     a = a1.a
+    match leg:
+        case "fr" | "fl":
+            δ = pitch_angle
+        case "hr" | "hl":
+            δ = -pitch_angle
 
-    h = l1 * np.cos(t1) + l2 * np.cos(t1 + t2)
     x = l1 * np.sin(t1) + l2 * np.sin(t1 + t2)
+    h = l1 * np.cos(t1) + l2 * np.cos(t1 + t2)
+    y = a * np.cos(t0) + h * np.sin(t0)
     z = -h * np.cos(t0) + a * np.sin(t0)
 
-    A = np.array([[ np.cos(pitch_angle), -np.sin(pitch_angle), L * np.cos(pitch_angle) - L ],
-                  [ np.sin(pitch_angle),  np.cos(pitch_angle), L * np.sin(pitch_angle)     ],
-                  [ 0,                    0,                   1                           ]])
+    A = np.array([[ np.cos(δ), -np.sin(δ), L * np.cos(δ) - L ],
+                  [ np.sin(δ),  np.cos(δ), L * np.sin(δ)     ],
+                  [ 0,          0,         1                 ]])
     x, z, _ = A.dot(np.array([x, z, 1]))
+    h = np.sqrt(z**2 + y**2 - a**2)
 
-    c2 = (-l1**2 - l2**2 + x**2 + z**2)/(2*l1*l2)
-    s2 = -np.sqrt(1 - c2**2)
+    c2 = (-l1**2 - l2**2 + x**2 + h**2) / (2 * l1 * l2)
+    s2 = -np.sqrt(1 - c2**2)  # sin 取负是因为 knee pos 是负
     positions[2] = np.arctan2(s2, c2)
-    positions[1] = np.arctan2(z, x) - np.arctan2(l2*s2, l1 + l2*c2)
+    positions[1] = np.arccos((l1**2 + x + h - l2**2) / (2 * l1 * np.sqrt(x**2 + h**2))) - np.arctan2(x, h)
+
+
+
+
+for positions, indices in zip(motor_positions.itertuples(index=False), a1.motor_indices.itertuples(index=False)):
+    print(indices)
+    print(positions)
+    bullet.setJointMotorControlArray(
+        physicsClientId = physics_server_id,
+        bodyUniqueId = a1.id,
+        jointIndices = indices,
+        controlMode = bullet.POSITION_CONTROL,
+        targetPositions = positions,)
+
+print(motor_positions)
+sleep(20)
