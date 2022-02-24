@@ -36,7 +36,7 @@ while True:
     bullet.setJointMotorControlArray(
             physicsClientId=physics_server_id,
             bodyUniqueId = a1.id,
-            jointIndices = a1.motor_indices.loc["hip flexion/extension", :],
+            jointIndices = a1.motor_indices.loc["hip fle/ext", :],
             controlMode = bullet.POSITION_CONTROL,
             targetPositions = np.full(4, alpha),)
     bullet.setJointMotorControlArray(

@@ -21,7 +21,7 @@ motor_debug = a1.motor_info.applymap(
                                         paramName = info[1].decode("UTF-8"),
                                         rangeMin = info[8],
                                         rangeMax = info[9],
-                                        startValue = 0.7 if index in a1.motor_indices.loc["hip flexion/extension", :].to_numpy()
+                                        startValue = 0.7 if index in a1.motor_indices.loc["hip fle/ext", :].to_numpy()
                                                else -0.7*2 if index in a1.motor_indices.loc["knee", :].to_numpy()
                                                else  0,))
 ).to_numpy().flatten()

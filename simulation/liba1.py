@@ -25,7 +25,7 @@ class A1:
             data = np.array([[  1 ,   6 ,  11 ,  16 ],
                              [  3 ,   8 ,  13 ,  18 ],
                              [  4 ,   9 ,  14 ,  19 ],]),
-            index = ["hip abduction/adduction", "hip flexion/extension", "knee"])
+            index = ["hip abd/add", "hip fle/ext", "knee"])
         # A matrix contains motor information. The info is structured as
         # Tuple(jointIndex, jointName, jointType, qIndex, uIndex, flags, jointDamping
         # , jointFriction, jointLowerLimit, jointUpperLimit, jointMaxForce, jointMaxVelocity
@@ -35,17 +35,23 @@ class A1:
         # Obtained by measuring the STL file of the thigh and calf. Both are 0.2mm.
         self.length_of_thigh = 200
         self.length_of_calf  = 200
+        # FIXME 髋关节距离主体的偏移
+        self.a = 80
+        # FIXME 半身长
+        self.L = 180
+        # FIXME 身宽
+        self.W = 200
         # Set initial postion of motors.
         bullet.setJointMotorControlArray(
             physicsClientId = self.in_physics_client,
             bodyUniqueId = self.id,
-            jointIndices = self.motor_indices.loc["hip abduction/adduction", :],
+            jointIndices = self.motor_indices.loc["hip abd/add", :],
             controlMode = bullet.POSITION_CONTROL,
             targetPositions = np.full(4, 0),)
         bullet.setJointMotorControlArray(
             physicsClientId = self.in_physics_client,
             bodyUniqueId = self.id,
-            jointIndices = self.motor_indices.loc["hip flexion/extension", :],
+            jointIndices = self.motor_indices.loc["hip fle/ext", :],
             controlMode = bullet.POSITION_CONTROL,
             targetPositions = np.full(4, 0.7),)
         bullet.setJointMotorControlArray(
