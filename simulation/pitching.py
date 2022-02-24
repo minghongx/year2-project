@@ -32,9 +32,9 @@ while True:
     for leg, positions in motor_positions.items():
         # 简写以增加可读性
         t0, t1, t2 = positions
-        l1 = a1.length_of_thigh
-        l2 = a1.length_of_calf
-        L = a1.L
+        l1 = a1.thigh_len
+        l2 = a1.calf_len
+        L = a1.body_len / 2
         a = a1.a
         δ = pitch_angle
 
