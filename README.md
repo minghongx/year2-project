@@ -3,9 +3,46 @@
   <sub><sup>Simulation of Quadruped-robot Locomotion</sup></sub>
 </h1>
 
-<p align="center">
-  <img src="gantt_chart/gantt_chart.svg" alt="Gannt Chart" />
-</p>
+```mermaid
+gantt
+    dateFormat  YYYY-MM-DD
+
+    Mataining this Gantt Chart [Minghong Xu] : active, 2022-02-11, 2022-03-18
+
+    section Weekly Blogs
+    Week 1 [Yang Kai, Zepeng Pang] : blog1, 2022-02-03, 7d
+    Week 2 [Yang Kai, Zepeng Pang] : blog2, after blog1, 7d
+    Week 3 [Zepeng Pang] : active, blog3, after blog2, 7d
+    Week 4 [Zepeng Pang] : active, blog4, after blog3, 5d
+    Blog Submission : crit, after blog4, 2022-03-02
+    Week 5 [Minghong Xu] : 2022-03-03, 7d
+
+    section Project Management Documents
+    Supervisor Weekly Meeting Log [Zepeng Pang] : crit, active, 2022-01-31, 2022-02-25
+    LogBook [TBD] : active, 2022-02-03, 2022-02-27
+    Attendance Record [Minghong Xu] : active, 2022-02-03, 2022-02-27
+    Role Allocation (responsibility matrix) [Minghong Xu] : milestone, 2022-02-14, 0d
+    Contribution to Project Deliverables [TBD] : active, 2022-02-25, 2022-03-02
+
+    section Presentation
+    Poster [TBD] : crit, active, 2022-02-25, 2022-03-02
+    Functional Bench Demonstration [TBD] : crit, active, 2022-02-25, 2022-03-02
+    Group Talk : 2022-03-03, 8h
+
+    section Simulation
+    Setup Simulation Env : crit, setup_sim_env, 2022-02-03, 7d
+    PyBullet Basic Settings & Standing :after setup_sim_env, 3d
+    Research : crit, research, after setup_sim_env, 6d
+    Control Each Motor Individually [Minghong Xu] : after research, 2022-02-20
+    Squatting [Minghong Xu] : 2022-02-18, 2022-02-22
+    Pitching [Zehao Ye, Minghong Xu] : crit, 2022-02-17, 2022-02-24
+    Rolling [Kai Yang] : active, 2022-02-17, 2022-02-27
+    Yawing [Zehao Ye] : active, 2022-02-17, 2022-02-26
+
+    section Technical Report
+    Pitching [Minghong Xu] : 2022-03-04, 2022-03-17
+    Check Academic Style : 2022-03-10, 2d
+```
 
 ## Structure of the Repository
 
