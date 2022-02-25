@@ -20,18 +20,18 @@ debug_distance_from_hip_to_toe = bullet.addUserDebugParameter(
     paramName = "distance from hip to toe",
     rangeMin = 1,
     # The calfs can be extended up to its motor position at -0.916, which is recorded in the URDF file.
-    rangeMax = np.sqrt(a1.length_of_thigh**2 + a1.length_of_calf**2 - np.cos(np.pi - 0.916) * 2 * a1.length_of_thigh * a1.length_of_calf),
+    rangeMax = np.sqrt(a1.thigh_len**2 + a1.calf_len**2 - np.cos(np.pi - 0.916) * 2 * a1.thigh_len * a1.calf_len),
     startValue = 300,)
 
 while True:
     distance_from_hip_to_toe = bullet.readUserDebugParameter(debug_distance_from_hip_to_toe)
 
     alpha = np.arccos(np.true_divide(
-                a1.length_of_thigh**2 + distance_from_hip_to_toe**2 - a1.length_of_calf**2,
-                2 * a1.length_of_calf * distance_from_hip_to_toe))
+                a1.thigh_len**2 + distance_from_hip_to_toe**2 - a1.calf_len**2,
+                2 * a1.calf_len * distance_from_hip_to_toe))
     beta = np.pi - np.arccos(np.true_divide(
-                        a1.length_of_thigh**2 + a1.length_of_calf**2 - distance_from_hip_to_toe**2,
-                        2 * a1.length_of_thigh * a1.length_of_calf))
+                        a1.thigh_len**2 + a1.calf_len**2 - distance_from_hip_to_toe**2,
+                        2 * a1.thigh_len * a1.calf_len))
 
     bullet.setJointMotorControlArray(
             physicsClientId=physics_server_id,

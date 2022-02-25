@@ -33,14 +33,14 @@ class A1:
         # See PyBullet document for getJointInfo().
         self.motor_info = self.motor_indices.applymap(lambda index: bullet.getJointInfo(self.id, index))
         # Obtained by measuring the STL file of the thigh and calf. Both are 0.2mm.
-        self.length_of_thigh = 200
-        self.length_of_calf  = 200
+        self.thigh_len = 200
+        self.calf_len  = 200
         # FIXME 髋关节距离主体的偏移
         self.a = 80
-        # FIXME 半身长
-        self.L = 180
+        # FIXME 身长
+        self.body_len = 360
         # FIXME 身宽
-        self.W = 200
+        self.body_width = 200
         # Set initial postion of motors.
         bullet.setJointMotorControlArray(
             physicsClientId = self.in_physics_client,
