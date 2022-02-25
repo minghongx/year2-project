@@ -19,8 +19,8 @@ bullet.resetDebugVisualizerCamera(
 
 debug_yaw_angle = bullet.addUserDebugParameter(
     paramName = "Yaw Angle",
-    rangeMin = -25,
-    rangeMax = 25,
+    rangeMin = -0.31,
+    rangeMax = 0.31,
     startValue = 0)
 
 #Use the reset buttom to reset the robot
@@ -40,7 +40,6 @@ while True:
     motor_positions = ref_motor_positions.copy()  # 以 ref pos 为参照计算俯仰角
     #The positive yaw angle means that when looking down at the robot, the robot rotates clockwise
     yaw_angle = bullet.readUserDebugParameter(debug_yaw_angle)
-    yaw_angle_rad = np.radians(yaw_angle)#convert into radian
 
     for leg, positions in motor_positions.items():
     #use simple letters to make it readable
@@ -50,7 +49,7 @@ while True:
         L = a1.body_len/2
         W = a1.body_width/2
         a = a1.a
-        δ = yaw_angle_rad
+        δ = yaw_angle
 
         x = l1 * np.sin(t1) + l2 * np.sin(t1 + t2)
         h = l1 * np.cos(t1) + l2 * np.cos(t1 + t2)
@@ -60,40 +59,34 @@ while True:
         #analysis the robot to get the transfor matrix
         match leg:
             case "fr":#the front right leg
-                Yaw = np.array([[  np.cos(δ), np.sin(δ), 0, -L+L*np.cos(δ)+W*np.sin(δ)],
+                yaw = np.array([[  np.cos(δ), np.sin(δ), 0, -L+L*np.cos(δ)+W*np.sin(δ)],
                                 [ -np.sin(δ), np.cos(δ), 0, -W+W*np.cos(δ)-L*np.sin(δ)],
                                 [  0,         0,         1,  0                        ],
                                 [  0,         0,         0,  1                        ]])
             case "fl":#the front left leg
-                Yaw = np.array([[  np.cos(δ), np.sin(δ), 0, -L+L*np.cos(δ)-W*np.sin(δ)],
+                yaw = np.array([[  np.cos(δ), np.sin(δ), 0, -L+L*np.cos(δ)-W*np.sin(δ)],
                                 [ -np.sin(δ), np.cos(δ), 0,  W-W*np.cos(δ)-L*np.sin(δ)],
                                 [  0,         0,         1,  0                        ],
                                 [  0,         0,         0,  1                        ]])
             case "hr":#the hind right leg
-                Yaw = np.array([[  np.cos(δ), np.sin(δ), 0,  L-L*np.cos(δ)+W*np.sin(δ)],
+                yaw = np.array([[  np.cos(δ), np.sin(δ), 0,  L-L*np.cos(δ)+W*np.sin(δ)],
                                 [ -np.sin(δ), np.cos(δ), 0, -W+W*np.cos(δ)+L*np.sin(δ)],
                                 [  0,         0,         1,  0                        ],
                                 [  0,         0,         0,  1                        ]])
             case "hl":#the hind left leg
-                Yaw = np.array([[  np.cos(δ), np.sin(δ), 0,  L-L*np.cos(δ)-W*np.sin(δ)],
+                yaw = np.array([[  np.cos(δ), np.sin(δ), 0,  L-L*np.cos(δ)-W*np.sin(δ)],
                                 [ -np.sin(δ), np.cos(δ), 0,  W-W*np.cos(δ)+L*np.sin(δ)],
                                 [  0,         0,         1,  0                        ],
                                 [  0,         0,         0,  1                        ]])
-        x, y, z, _ = Yaw.dot(np.array([x, y, z, 1]))
+        x, y, z, _ = yaw.dot(np.array([x, y, z, 1]))
         h = np.sqrt(z**2 + y**2 - a**2)
-
+        Z = np.sqrt(z**2)
         #make inverse calculatino about the joint
         c2 = (-l1**2 - l2**2 + x**2 + h**2) / (2 * l1 * l2)
-        s2 = -np.sqrt(1 - c2**2)  # sin is negative because the knee position is negative
-        positions[2] = np.arctan2(s2, c2)
-        positions[1] = np.arccos((l1**2 + x**2 + h**2 - l2**2) / (2 * l1 * np.sqrt(x**2 + h**2))) - np.arctan2(x, h)
-        match leg:
-            case "fr"|"hl":
-                positions[0] =  np.pi - np.arccos(z/(z**2 + y**2)) - np.arccos(a/(z**2 + y**2))
-            case "fl"|"hr":
-                positions[0] = -np.pi + np.arccos(z/(z**2 + y**2)) + np.arccos(a/(z**2 + y**2))
-
-
+        s2 = np.sqrt(1 - c2**2)
+        positions[2] = np.arccos(c2) - np.pi
+        positions[1] = (np.pi - np.arccos(c2)) * (0.5)
+        positions[0] = np.arctan2(h, a) - np.arctan2(Z,y)
 
     #set joint position
     for positions, indices in zip(motor_positions.itertuples(index=False), a1.motor_indices.itertuples(index=False)):
