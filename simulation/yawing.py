@@ -1,3 +1,4 @@
+from cgitb import reset
 import pybullet as bullet
 import numpy as np
 from liba1 import A1
@@ -6,7 +7,7 @@ from time import sleep
 # Initialisation
 physics_server_id = bullet.connect(bullet.GUI)
 bullet.setRealTimeSimulation(enableRealTimeSimulation=True, physicsClientId=physics_server_id)
-bullet.setGravity(0, 0, -30, physics_server_id)#The model is to light
+bullet.setGravity(0, 0, -30, physics_server_id)  # FIXME 模型质量太轻
 import pybullet_data; bullet.setAdditionalSearchPath(pybullet_data.getDataPath())
 bullet.loadURDF("plane.urdf")
 a1 = A1(physics_server_id)
@@ -36,7 +37,6 @@ previous_btn_value = bullet.readUserDebugParameter(reset)
 sleep(1)
 ref_motor_positions = a1.motor_indices.applymap(lambda index: bullet.getJointState(a1.id, index, a1.in_physics_client)[0])
 while True:
-    bullet.stepSimulation()
     motor_positions = ref_motor_positions.copy()  # 以 ref pos 为参照计算俯仰角
     #The positive yaw angle means that when looking down at the robot, the robot rotates clockwise
     yaw_angle = bullet.readUserDebugParameter(debug_yaw_angle)
@@ -95,7 +95,7 @@ while True:
             bodyUniqueId = a1.id,
             jointIndices = indices,
             controlMode = bullet.POSITION_CONTROL,
-            targetPositions = positions,)
+            targetPositions = positions)
 
     if bullet.readUserDebugParameter(reset) != previous_btn_value:
         #reset the base position
