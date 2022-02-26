@@ -14,12 +14,13 @@ gantt
     Week 2 [Yang Kai, Zepeng Pang] : blog2, after blog1, 7d
     Week 3 [Zepeng Pang] : active, blog3, after blog2, 7d
     Week 4 [Zepeng Pang] : active, blog4, after blog3, 5d
+    Setup GitHub Pages for publishing [Minghong Xu] : milestone, 2022-02-26, 0d
     Blog Submission : crit, after blog4, 2022-03-02
     Week 5 [Minghong Xu] : 2022-03-03, 7d
 
     section Project Management Documents
     Supervisor Weekly Meeting Log [Zepeng Pang] : crit, active, 2022-01-31, 2022-02-25
-    LogBook [TBD] : active, 2022-02-03, 2022-02-27
+    LogBook is Git log: milestone, 2022-02-03, 0d
     Attendance Record [Minghong Xu] : active, 2022-02-03, 2022-02-27
     Role Allocation (responsibility matrix) [Minghong Xu] : milestone, 2022-02-14, 0d
     Contribution to Project Deliverables [TBD] : active, 2022-02-25, 2022-03-02

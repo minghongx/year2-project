@@ -8,9 +8,9 @@
 
 | Member Name | Title(s)
 |     :-:     | :-:
-| Minghong Xu |
-| Zehao Ye    |
-| Kai Yang    |
+| Minghong Xu | Project Manager, Designer, and Implementer
+| Zehao Ye    | Designer and Implementer
+| Kai Yang    | Implementer
 | Zepeng Pang | Technical Writer
 
 
