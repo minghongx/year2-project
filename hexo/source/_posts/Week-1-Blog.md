@@ -1,19 +1,8 @@
-# Log of week 1
-06/02/2022
-************************
-During the group work in week 1, we downloaded the necessary software to be used and configured the code development environment of the project.
-## Metting of week 1
-![pybullet](https://i0.hdslb.com/bfs/album/c8adc5887d5039327957d0b0acf4bec3589fae10.png)
-
-1. Learned how to use Github, especially the efficient way of online working with git.
-## Study
-2. Learned the basic operation of the pybullet platform.
-
-## *Pybullet*, the platform we use
-1. **PyBullet** is an easy-to-use Python module for physics simulation for robotics, games, visual effects, and machine learning.
-2. With PyBullet we can load articulated bodies from URDF, SDF, MJCF, and other file formats.
-3. PyBullet provides forward dynamics simulation, inverse dynamics computation, forward and inverse kinematics, collision detection, and ray intersection queries.
-4. [pybullet](https://pybullet.org/wordpress/)
+---
+title: Week 1 Blog
+date: 2022-02-03 15:09:53
+tags:
+---
 
 # Week 1 blog
 **Date:** 31 Jan - 6 Feb
@@ -43,16 +32,15 @@ The main goal of the first week is to complete the construction of the simulatio
 
 First of all, in order to achieve better communication and file interaction among group members, we decided to use Github as our communication platform and created a repository called year2-proj.
 
-![Github repository](/blogs/week1/Github.png)
+![Github repository](Github.png)
 
 After that we chose Pybullet as our simulation platform. The reason for choosing Pybullet is that the installation of Pybullet is very simple compared to other simulation software. Secondly, Pybullet is free.
 
-![Pybullet](pybullet.png)
+![pybullet](pybullet.png)
 
 Additionally, we installed VSCode as the tool for the programming part. And installed a series of plug-ins in the software. For example, latex, used to make posters; Markdown, used to write blogs and meeting logs; jupyter, used to help us write programs
 
 ![VSCode](VS.png)
-
 
 ## Week 1 summary
 

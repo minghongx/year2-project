@@ -1,22 +1,8 @@
-# log of week 2
-***********************
-## the Discussion in week 2
-1. Start learning the code, understand how the quadruped robot dog walks, and debug the model movement
-2. Discussed the details about the gait and motion of the quadruped robot dog, tested the amplitude of each actuator of the quadruped robot, determined the quadruped robot model we used.
-
-## Study
-1. Learned read–eval–print loop (REPL), also termed an interactive toplevel or language shell, is a simple interactive computer programming environment that takes single user inputs, executes them, and returns the result to the user; a program written in a REPL environment is executed piecewise.
-![vscode](https://i0.hdslb.com/bfs/album/8f32bd063ab801187c59bf7b99b4fe558603906d.png)
-2. Learn based on MIT's work: mini cheetah code, reference their experience to write our algorithm
-![vscode](https://i0.hdslb.com/bfs/album/ead171ee452dfc4d3648a285d7cf4a305e33de24.png)
-[github](https://github.com/mit-biomimetics/Cheetah-Software)
-
-## summary
-1. More familiar with the characteristics of the *pybullet* physical simulation platform, so that our work can be better carried out
-2. Have a preliminary understanding of the walking mode of the quadruped robot
-
-13/02/2011
-
+---
+title: Week 2 Blog
+date: 2022-02-10 15:40:10
+tags:
+---
 # Week 2 blog
 **Date:** 7 Feb - 13 Feb
 
@@ -36,11 +22,12 @@ In a meeting with aa on Monday, aa set us a new task to make a gantt chart. The 
 
 There are three alternative models, called aliengo, laikago and a1. We studied the mobility of the joints of each model, the number of joints and other factors. These factors may affect our later simulations. We even considered copyright issues for the model. After comprehensive consideration, the third model in the figure, namely a1, was selected as the quadruped robot model to be used in our project. The model has a total of 12 movable joints. It can perform various actions very well. And its structure is relatively simple, it is very suitable for us beginners to get started. In addition, these three models are all models included in pybullet, which can be found in the data folder. This also saves us the step of querying the detailed data of the model.
 
-![attemptcode](attemptcode.png)
+
+![attempt code](attemptcode.png)
 
 The code in the figure is the basic operation code provided by pybullet. With these few lines of code, we set the gravity, floor, and simulation rate of the simulated environment. Through the last line of the code, we successfully imported the quadruped robot a1 into the simulation environment.
 
-![testcode](testcode.png)
+![test code](testcode.png)
 
 Through the code in the picture above, we control the robot's joint number 4 to lift forward. The result of the code execution is shown in the video below. It can be seen that the robot's right front leg is successfully raised forward.
 
@@ -48,7 +35,7 @@ Through the code in the picture above, we control the robot's joint number 4 to 
 
 After this, each member of the group actually tried it out. Everyone chooses different joints and different movement directions. The actual effect is similar to the video above, so we won't show it again.
 
-![gantt chart](gantt%20chart.png)
+![gantt chart](gantt-chart.png)
 
 Following aa's suggestion, we designed a gantt chart. From this chart, we can clearly see the assignment of tasks to each team member. The relationship between the various tasks is also clear at a glance. This undoubtedly makes it easier for us to control the progress of the project.
 
@@ -56,4 +43,5 @@ Following aa's suggestion, we designed a gantt chart. From this chart, we can cl
 
 ## Week 2 summary
 
-This week we completed the gantt chart task assigned by aa, which has a high positive significance for our work arrangement. Additionally, we selected a quadruped robot model for the simulation. Second, we configured the environment in the simulation software, such as gravity, floor, etc. In the end, the team members all succeeded in moving one of the robot's joints. This was a successful start for us, with a theoretical understanding of how to manipulate the joints to accomplish the simulated motion. Because an action is completed by the simultaneous motion of multiple joints, what we need to do next is to analyze how to call multiple joints at the same time to complete the simulation of the action.
+Learned read–eval–print loop (REPL), also termed an interactive toplevel or language shell, is a simple interactive computer programming environment that takes single user inputs,executes them, and returns the result to the user; a program written in a REPL environment is executed piecewise.
+We completed the gantt chart task assigned by aa, which has a high positive significance for our work arrangement. Additionally, we selected a quadruped robot model for the simulation. Second, we configured the environment in the simulation software, such as gravity, floor, etc. In the end, the team members all succeeded in moving one of the robot's joints. This was a successful start for us, with a theoretical understanding of how to manipulate the joints to accomplish the simulated motion. Because an action is completed by the simultaneous motion of multiple joints, what we need to do next is to analyze how to call multiple joints at the same time to complete the simulation of the action.
