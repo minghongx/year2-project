@@ -12,7 +12,7 @@ gantt
     section Weekly Blogs
     Week 1 [Yang Kai, Zepeng Pang] : blog1, 2022-02-03, 7d
     Week 2 [Yang Kai, Zepeng Pang] : blog2, after blog1, 7d
-    Week 3 [Zepeng Pang] : active, blog3, after blog2, 7d
+    Week 3 [Zepeng Pang] : blog3, after blog2, 7d
     Week 4 [Zepeng Pang] : active, blog4, after blog3, 5d
     Setup GitHub Pages for publishing [Minghong Xu] : milestone, 2022-02-26, 0d
     Blog Submission : crit, after blog4, 2022-03-02
@@ -26,7 +26,7 @@ gantt
     Contribution to Project Deliverables [TBD] : active, 2022-02-25, 2022-03-02
 
     section Presentation
-    Poster [TBD] : crit, active, 2022-02-25, 2022-03-02
+    Poster [Zehao Ye] : crit, active, 2022-02-25, 2022-03-02
     Functional Bench Demonstration [TBD] : crit, active, 2022-02-25, 2022-03-02
     Group Talk : 2022-03-03, 8h
 
@@ -37,8 +37,12 @@ gantt
     Control Each Motor Individually [Minghong Xu] : after research, 2022-02-20
     Squatting [Minghong Xu] : 2022-02-18, 2022-02-22
     Pitching [Zehao Ye, Minghong Xu] : crit, 2022-02-17, 2022-02-24
-    Rolling [Kai Yang] : active, 2022-02-17, 2022-02-27
-    Yawing [Zehao Ye] : active, 2022-02-17, 2022-02-26
+    Rolling [Kai Yang, Minghong Xu] : 2022-02-17, 2022-02-27
+    Yawing [Zehao Ye, Minghong Xu] : 2022-02-17, 2022-02-26
+
+    section Sustainability
+    Found a good reference book [Kai Yang] : milestone, 2022-02-25, 0d
+    Report [Kai Yang] : active, 2022-02-26, 2022-03-07
 
     section Technical Report
     Pitching [Minghong Xu] : 2022-03-04, 2022-03-17
