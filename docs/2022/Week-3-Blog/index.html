@@ -20,28 +20,37 @@
     var CONFIG = {"hostname":"minghongalexxu.github.io","root":"/year2-proj/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="LivUni ELEC222 Year 2 Project">
-<meta property="og:url" content="https://minghongalexxu.github.io/year2-proj/index.html">
+  <meta name="description" content="Week 3 blogDate: 14 Feb - 20 Feb At the supervisor meeting on Monday, we identified the actions to be done by the simulation. There are three motions in total, pitch motion, yaw motion and roll motion">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Week 3 Blog">
+<meta property="og:url" content="https://minghongalexxu.github.io/year2-proj/2022/Week-3-Blog/index.html">
 <meta property="og:site_name" content="LivUni ELEC222 Year 2 Project">
+<meta property="og:description" content="Week 3 blogDate: 14 Feb - 20 Feb At the supervisor meeting on Monday, we identified the actions to be done by the simulation. There are three motions in total, pitch motion, yaw motion and roll motion">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://minghongalexxu.github.io/year2-proj/2022/Week-3-Blog/Leg-modeling-diagram.jpg">
+<meta property="og:image" content="https://minghongalexxu.github.io/year2-proj/2022/Week-3-Blog/pitch-motion-model.jpg">
+<meta property="og:image" content="https://minghongalexxu.github.io/year2-proj/2022/Week-3-Blog/roll-motion-model.jpg">
+<meta property="og:image" content="https://minghongalexxu.github.io/year2-proj/2022/Week-3-Blog/yaw-motion-model.jpg">
+<meta property="article:published_time" content="2022-02-17T16:09:12.000Z">
+<meta property="article:modified_time" content="2022-02-27T00:34:24.679Z">
 <meta property="article:author" content="Zepeng Pang">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://minghongalexxu.github.io/year2-proj/2022/Week-3-Blog/Leg-modeling-diagram.jpg">
 
-<link rel="canonical" href="https://minghongalexxu.github.io/year2-proj/">
+<link rel="canonical" href="https://minghongalexxu.github.io/year2-proj/2022/Week-3-Blog/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>LivUni ELEC222 Year 2 Project</title>
+  <title>Week 3 Blog | LivUni ELEC222 Year 2 Project</title>
   
 
 
@@ -252,9 +261,10 @@ mjx-container[display="true"] + br {
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
@@ -270,10 +280,9 @@ mjx-container[display="true"] + br {
       <meta itemprop="name" content="LivUni ELEC222 Year 2 Project">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/year2-proj/2022/Week-3-Blog/" class="post-title-link" itemprop="url">Week 3 Blog</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          Week 3 Blog
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -303,7 +312,7 @@ mjx-container[display="true"] + br {
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="Week-3-blog"><a href="#Week-3-blog" class="headerlink" title="Week 3 blog"></a>Week 3 blog</h1><p><strong>Date:</strong> 14 Feb - 20 Feb</p>
+        <h1 id="Week-3-blog"><a href="#Week-3-blog" class="headerlink" title="Week 3 blog"></a>Week 3 blog</h1><p><strong>Date:</strong> 14 Feb - 20 Feb</p>
 <p>At the supervisor meeting on Monday, we identified the actions to be done by the simulation. There are three motions in total, pitch motion, yaw motion and roll motion. The reason for choosing these three actions is that we have learned the correct way to control the robot to complete the action by consulting the data. Instead of the combination of simple movements of multiple joints that we thought before to complete the action. In fact, the correct theory should be to control the motor by calculating the coordinates of each key point on the robot body before and after the movement. The three actions we chose apply the idea of the simulation in three directions of space, respectively. This method requires modeling the robot and applying transformation matrices to calculate the hip and foot positions.</p>
 <h2 id="Goals-for-week-3"><a href="#Goals-for-week-3" class="headerlink" title="Goals for week 3"></a>Goals for week 3</h2><ol>
 <li>Research investigates kinematic modeling of quadruped robots.</li>
@@ -339,181 +348,30 @@ mjx-container[display="true"] + br {
 <p>Then, the two angles at the joint can be solved by inverse kinematics.</p>
 <h2 id="Week-3-summary"><a href="#Week-3-summary" class="headerlink" title="Week 3 summary"></a>Week 3 summary</h2><p>This week we successfully modeled three actions. After modeling, the changes of each variable before and after the action were deduced. The feasibility of the project is verified at the theoretical level. Next, we will start writing the code to complete the simulation of the three actions in pybullet.</p>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://minghongalexxu.github.io/year2-proj/2022/Week-2-Blog/">
+        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/year2-proj/images/avatar.gif">
-      <meta itemprop="name" content="Zepeng Pang">
-      <meta itemprop="description" content="">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LivUni ELEC222 Year 2 Project">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/year2-proj/2022/Week-2-Blog/" class="post-title-link" itemprop="url">Week 2 Blog</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-02-10 15:40:10" itemprop="dateCreated datePublished" datetime="2022-02-10T15:40:10Z">2022-02-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-02-26 15:48:18" itemprop="dateModified" datetime="2022-02-26T15:48:18Z">2022-02-26</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Week-2-blog"><a href="#Week-2-blog" class="headerlink" title="Week 2 blog"></a>Week 2 blog</h1><p><strong>Date:</strong> 7 Feb - 13 Feb</p>
-<p>In a meeting with aa on Monday, aa set us a new task to make a gantt chart. The gantt chart makes the structure of our project clearer, and also allows members to collaborate with each other and allocate time more easily. Also our main task this week is to select the model we want to simulate and import the quadruped robot model file into pybullet. Learn how to use pybullet to simulate manipulating a robot. After the previous work is done, we plan everyone to try to write some simple code to make the robot move. For example, manipulating a joint of a robot and bending it.</p>
-<h2 id="Goals-for-week-2"><a href="#Goals-for-week-2" class="headerlink" title="Goals for week 2"></a>Goals for week 2</h2><ol>
-<li>Select the quadruped robot model to use.</li>
-<li>Import the model into pybullet.</li>
-<li>Initially configure the simulation environment. e.g. gravity, simulated scenes, etc.</li>
-<li>Write simple code to move a joint and test.</li>
-</ol>
-<h2 id="Implementation-of-the-task"><a href="#Implementation-of-the-task" class="headerlink" title="Implementation of the task"></a>Implementation of the task</h2><p><img src="/year2-proj/2022/Week-2-Blog/model.png" alt="model"></p>
-<p>There are three alternative models, called aliengo, laikago and a1. We studied the mobility of the joints of each model, the number of joints and other factors. These factors may affect our later simulations. We even considered copyright issues for the model. After comprehensive consideration, the third model in the figure, namely a1, was selected as the quadruped robot model to be used in our project. The model has a total of 12 movable joints. It can perform various actions very well. And its structure is relatively simple, it is very suitable for us beginners to get started. In addition, these three models are all models included in pybullet, which can be found in the data folder. This also saves us the step of querying the detailed data of the model.</p>
-<p><img src="/year2-proj/2022/Week-2-Blog/attemptcode.png" alt="attempt code"></p>
-<p>The code in the figure is the basic operation code provided by pybullet. With these few lines of code, we set the gravity, floor, and simulation rate of the simulated environment. Through the last line of the code, we successfully imported the quadruped robot a1 into the simulation environment.</p>
-<p><img src="/year2-proj/2022/Week-2-Blog/testcode.png" alt="test code"></p>
-<p>Through the code in the picture above, we control the robot’s joint number 4 to lift forward. The result of the code execution is shown in the video below. It can be seen that the robot’s right front leg is successfully raised forward.</p>
-<p><img src="/year2-proj/2022/Week-2-Blog/test-video.gif" alt="test video"></p>
-<p>After this, each member of the group actually tried it out. Everyone chooses different joints and different movement directions. The actual effect is similar to the video above, so we won’t show it again.</p>
-<p><img src="/year2-proj/2022/Week-2-Blog/gantt-chart.png" alt="gantt chart"></p>
-<p>Following aa’s suggestion, we designed a gantt chart. From this chart, we can clearly see the assignment of tasks to each team member. The relationship between the various tasks is also clear at a glance. This undoubtedly makes it easier for us to control the progress of the project.</p>
-<h2 id="Week-2-summary"><a href="#Week-2-summary" class="headerlink" title="Week 2 summary"></a>Week 2 summary</h2><p>Learned read–eval–print loop (REPL), also termed an interactive toplevel or language shell, is a simple interactive computer programming environment that takes single user inputs,executes them, and returns the result to the user; a program written in a REPL environment is executed piecewise.<br>We completed the gantt chart task assigned by aa, which has a high positive significance for our work arrangement. Additionally, we selected a quadruped robot model for the simulation. Second, we configured the environment in the simulation software, such as gravity, floor, etc. In the end, the team members all succeeded in moving one of the robot’s joints. This was a successful start for us, with a theoretical understanding of how to manipulate the joints to accomplish the simulated motion. Because an action is completed by the simultaneous motion of multiple joints, what we need to do next is to analyze how to call multiple joints at the same time to complete the simulation of the action.</p>
-
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/year2-proj/2022/Week-2-Blog/" rel="prev" title="Week 2 Blog">
+      <i class="fa fa-chevron-left"></i> Week 2 Blog
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://minghongalexxu.github.io/year2-proj/2022/Week-1-Blog/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/year2-proj/images/avatar.gif">
-      <meta itemprop="name" content="Zepeng Pang">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LivUni ELEC222 Year 2 Project">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/year2-proj/2022/Week-1-Blog/" class="post-title-link" itemprop="url">Week 1 Blog</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-02-03 15:09:53" itemprop="dateCreated datePublished" datetime="2022-02-03T15:09:53Z">2022-02-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-02-26 15:50:04" itemprop="dateModified" datetime="2022-02-26T15:50:04Z">2022-02-26</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Week-1-blog"><a href="#Week-1-blog" class="headerlink" title="Week 1 blog"></a>Week 1 blog</h1><p><strong>Date:</strong> 31 Jan - 6 Feb</p>
-<p>During the group discussion and work in week 1, we downloaded the software to be used and configured the development environment of the project.<br>The purpose of this project is to use software to simulate the movement of a quadruped robot, so a suitable development environment is very important. In addition, the team members learned how to use GitHub for development collaboration, especially the git function, which will be very helpful for future work.<br>This is the beginning of the project, no major code parts are involved. So the first week was not very difficult.</p>
-<h2 id="Brief-introduction-to-the-project"><a href="#Brief-introduction-to-the-project" class="headerlink" title="Brief introduction to the project"></a>Brief introduction to the project</h2><p>Use the knowledge of kinematic modeling to simulate the quadruped robot on the pybullet platform with python, so that it can complete simple actions.</p>
-<h2 id="Divide-tasks-for-our-project"><a href="#Divide-tasks-for-our-project" class="headerlink" title="Divide tasks for our project"></a>Divide tasks for our project</h2><p>Basically, the task of our project can be divided into two parts, programming and writing parts. The programming part consists of configure the simulation environment, build a simulation platform and coding for the simulation. The writing part consists of blogs, supervisor weekly meeting log, poster and report.</p>
-<h2 id="Dispatch-tasks"><a href="#Dispatch-tasks" class="headerlink" title="Dispatch tasks"></a>Dispatch tasks</h2><p>The initial plan is each person complete the simulation of one action. Thus, we can complete the simulation of four actions in total. The writing part will be done by the whole group. Minghong and Kai are responsible for blog writing, Zepeng is responsible for the writing of supervisor weekly meeting log, and Zehao is responsible for the preparation of the report in advance. After the programming part is complete, all of us write the rest of the report together.</p>
-<h2 id="Goals-for-week-1"><a href="#Goals-for-week-1" class="headerlink" title="Goals for week 1"></a>Goals for week 1</h2><p>The main goal of the first week is to complete the construction of the simulation environment. Since Minghong has some experience in this field, he is responsible for guiding us to achieve our goal. The secondary task is to prepare software, plug-ins, etc. required for poster and other work in advance. All in all, it’s about getting ready.</p>
-<h2 id="Implementation-of-the-task"><a href="#Implementation-of-the-task" class="headerlink" title="Implementation of the task"></a>Implementation of the task</h2><p>First of all, in order to achieve better communication and file interaction among group members, we decided to use Github as our communication platform and created a repository called year2-proj.</p>
-<p><img src="/year2-proj/2022/Week-1-Blog/Github.png" alt="Github repository"></p>
-<p>After that we chose Pybullet as our simulation platform. The reason for choosing Pybullet is that the installation of Pybullet is very simple compared to other simulation software. Secondly, Pybullet is free.</p>
-<p><img src="/year2-proj/2022/Week-1-Blog/pybullet.png" alt="pybullet"></p>
-<p>Additionally, we installed VSCode as the tool for the programming part. And installed a series of plug-ins in the software. For example, latex, used to make posters; Markdown, used to write blogs and meeting logs; jupyter, used to help us write programs</p>
-<p><img src="/year2-proj/2022/Week-1-Blog/VS.png" alt="VSCode"></p>
-<h2 id="Week-1-summary"><a href="#Week-1-summary" class="headerlink" title="Week 1 summary"></a>Week 1 summary</h2><p>This week we successfully completed the preset tasks, building the simulation environment and preparing for the future work.</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
   
 
 
@@ -566,6 +424,7 @@ mjx-container[display="true"] + br {
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Week-3-blog"><span class="nav-number">1.</span> <span class="nav-text">Week 3 blog</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Goals-for-week-3"><span class="nav-number">1.1.</span> <span class="nav-text">Goals for week 3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Motion-computation-theory"><span class="nav-number">1.2.</span> <span class="nav-text">Motion computation theory</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#The-modeling-calculation-of-pitch-motion"><span class="nav-number">1.2.1.</span> <span class="nav-text">The modeling calculation of pitch motion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-modeling-calculation-of-roll-motion"><span class="nav-number">1.2.2.</span> <span class="nav-text">The modeling calculation of roll motion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-modeling-calculation-of-yaw-motion"><span class="nav-number">1.2.3.</span> <span class="nav-text">The modeling calculation of yaw motion</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-3-summary"><span class="nav-number">1.3.</span> <span class="nav-text">Week 3 summary</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
