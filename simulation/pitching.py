@@ -40,10 +40,18 @@ while True:
         δ = pitch_angle
 
         # 从当前电机位置得出当前足端相对于髋关节的位置
-        x = l1 * np.sin(t1) + l2 * np.sin(t1 + t2)
+        x = -l1 * np.sin(t1) - l2 * np.sin(t1 + t2)
         h = l1 * np.cos(t1) + l2 * np.cos(t1 + t2)
-        y = a * np.cos(t0) + h * np.sin(t0)
-        z = -h * np.cos(t0) + a * np.sin(t0)
+        match leg:
+            case "fr" | "hr":
+                y = -a * np.cos(t0) - h * np.sin(t0)
+                z = a * np.sin(t0) - h * np.cos(t0)
+            case "fl" | "hl":
+                y = a * np.cos(t0) - h * np.sin(t0)
+                z = -a * np.sin(t0) - h * np.cos(t0)
+
+        # y = a * np.cos(t0) + h * np.sin(t0)
+        # z = -h * np.cos(t0) + a * np.sin(t0)
 
         # pitch 后足端相对于髋关节的位置
         match leg:
