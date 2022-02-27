@@ -6,7 +6,7 @@ mathjax: true
 # Week 3 blog
 **Date:** 14 Feb - 20 Feb
 
-At the supervisor meeting on Monday, we identified the actions to be done by the simulation. There are three motions in total, pitch motion, yaw motion and roll motion. We have learned the correct way to control the robot to complete the action by consulting the data. Before the research, we thought the simulation of an action is  the combination of simple movements of multiple joints. In fact, the correct theory should be to control the motor by calculating the coordinates of each key point on the robot body before and after the movement. The three actions we chose apply the idea of the simulation in three directions of space, respectively. This method requires modeling the robot and applying transformation matrices to calculate the hip and foot positions.
+At the supervisor meeting on Monday, we identified the actions to be done by the simulation. There are three motions in total, pitch motion, yaw motion, and roll motion. We have learned the correct way to control the robot to complete the action by consulting the data. Before the research, we thought the simulation of an action is  the combination of simple movements of multiple joints. In fact, the correct theory should be to control the motor by calculating the coordinates of each key point on the robot body before and after the movement. The three actions we chose apply the idea of the simulation in three directions of space, respectively. This method requires modeling the robot and applying transformation matrices to calculate the hip and foot positions.
 
 
 ## Goals for week 3

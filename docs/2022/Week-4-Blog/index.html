@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/year2-proj/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/year2-proj/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/year2-proj/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/year2-proj/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/year2-proj/css/main.css">
+
+
+<link rel="stylesheet" href="/year2-proj/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"minghongalexxu.github.io","root":"/year2-proj/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Week 4 blogDate: 21 Feb - 27 Feb After last week’s research, we now have the theoretical knowledge to complete the simulation of three actions. By setting the pitch angle, yaw angle, and roll angle, t">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Week-4-Blog">
+<meta property="og:url" content="https://minghongalexxu.github.io/year2-proj/2022/Week-4-Blog/index.html">
+<meta property="og:site_name" content="LivUni ELEC222 Year 2 Project">
+<meta property="og:description" content="Week 4 blogDate: 21 Feb - 27 Feb After last week’s research, we now have the theoretical knowledge to complete the simulation of three actions. By setting the pitch angle, yaw angle, and roll angle, t">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://minghongalexxu.github.io/year2-proj/2022/Week-4-Blog/liba.png">
+<meta property="og:image" content="https://minghongalexxu.github.io/year2-proj/2022/Week-4-Blog/liba-set-initial-pos-of-motors.png">
+<meta property="og:image" content="https://minghongalexxu.github.io/year2-proj/2022/Week-4-Blog/pitching.png">
+<meta property="og:image" content="https://minghongalexxu.github.io/year2-proj/2022/Week-4-Blog/pitching.gif">
+<meta property="og:image" content="https://minghongalexxu.github.io/year2-proj/2022/Week-4-Blog/rolling.png">
+<meta property="og:image" content="https://minghongalexxu.github.io/year2-proj/2022/Week-4-Blog/rolling.gif">
+<meta property="og:image" content="https://minghongalexxu.github.io/year2-proj/2022/Week-4-Blog/yawing.png">
+<meta property="og:image" content="https://minghongalexxu.github.io/year2-proj/2022/Week-4-Blog/yawing-initial-view.gif">
+<meta property="og:image" content="https://minghongalexxu.github.io/year2-proj/2022/Week-4-Blog/yawing-front-view.gif">
+<meta property="og:image" content="https://minghongalexxu.github.io/year2-proj/2022/Week-4-Blog/yawing-top-view.gif">
+<meta property="og:image" content="https://minghongalexxu.github.io/year2-proj/2022/Week-4-Blog/squatting.png">
+<meta property="og:image" content="https://minghongalexxu.github.io/year2-proj/2022/Week-4-Blog/squatting.gif">
+<meta property="og:image" content="https://minghongalexxu.github.io/year2-proj/2022/Week-4-Blog/poster-design.png">
+<meta property="article:published_time" content="2022-02-27T15:29:44.000Z">
+<meta property="article:modified_time" content="2022-02-27T23:13:51.862Z">
+<meta property="article:author" content="Zepeng Pang">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://minghongalexxu.github.io/year2-proj/2022/Week-4-Blog/liba.png">
+
+<link rel="canonical" href="https://minghongalexxu.github.io/year2-proj/2022/Week-4-Blog/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Week-4-Blog | LivUni ELEC222 Year 2 Project</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/year2-proj/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">LivUni ELEC222 Year 2 Project</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Simulation of Quadruped-robot Locomotion</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/year2-proj/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/year2-proj/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://minghongalexxu.github.io/year2-proj/2022/Week-4-Blog/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/year2-proj/images/avatar.gif">
+      <meta itemprop="name" content="Zepeng Pang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LivUni ELEC222 Year 2 Project">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Week-4-Blog
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-02-27 15:29:44 / Modified: 23:13:51" itemprop="dateCreated datePublished" datetime="2022-02-27T15:29:44Z">2022-02-27</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Week-4-blog"><a href="#Week-4-blog" class="headerlink" title="Week 4 blog"></a>Week 4 blog</h1><p><strong>Date:</strong> 21 Feb - 27 Feb</p>
+<p>After last week’s research, we now have the theoretical knowledge to complete the simulation of three actions. By setting the pitch angle, yaw angle, and roll angle, the angles that motors need to rotate can be calculated. Thus, three actions can be completed. The last task is to complete the writing of the code. In addition, we started the design work for the poster. In the poster, we will explain how the simulation works, and the final result will also be revealed.</p>
+<h2 id="Goals-for-week-4"><a href="#Goals-for-week-4" class="headerlink" title="Goals for week 4"></a>Goals for week 4</h2><ol>
+<li>Finish the code task.</li>
+<li>Complete the poster design.</li>
+</ol>
+<h2 id="The-code-of-every-simulation-and-demonstration"><a href="#The-code-of-every-simulation-and-demonstration" class="headerlink" title="The code of every simulation and demonstration"></a>The code of every simulation and demonstration</h2><h3 id="Library-for-the-preparation"><a href="#Library-for-the-preparation" class="headerlink" title="Library for the preparation"></a>Library for the preparation</h3><p>Before starting to code each action, we first built a library, which is used to prepare for the simulation and set the original parameters.</p>
+<p><img src="/year2-proj/2022/Week-4-Blog/liba.png" alt="library"></p>
+<p>The code in the figure creates a simulation environment for pybullet and imports the a1 model into it. The initial position and orientation of the model are also set. After that, the IDs of each motor in the model are obtained, and the positions of the motors represented by each ID are listed in a matrix. The matrix has a total of four columns, representing the robot’s front right leg, front left leg, hind right leg, and hind left leg. The three rows of the matrix represent three types of motors. The first type is the motor that controls hip abduction and adduction. The second type is the motor that controls hip flexion and extension. The third type is the motor that controls knee joint. This greatly facilitates future work. The robot’s leg length, body length, body width, and other information are also set in advance in the code.</p>
+<p><img src="/year2-proj/2022/Week-4-Blog/liba-set-initial-pos-of-motors.png" alt="set initial position of motors"></p>
+<p>After that, we set the initial positions of the three types of motors respectively.</p>
+<h3 id="Pitch-motion"><a href="#Pitch-motion" class="headerlink" title="Pitch motion"></a>Pitch motion</h3><p><img src="/year2-proj/2022/Week-4-Blog/pitching.png" alt="pitching code"></p>
+<p>In the process of writing the code, we found that the model was too light weight. This causes the model to float easily during motion. So we set the gravity to 30 instead of the normal 9.8. Next we set the position of the camera in pybullet to better observe the movement of the robot. As we talked about in our blog last week, to complete the pitch action, we need to set the magnitude of the pitch angle. Through the pitch angle and other set conditions, the position of the foot before and after the movement and the angle that each motor needs to rotate can be calculated. We set up a slide button to smoothly change the magnitude of pitch angle. The pitch range is from -31 rad to +31 rad. Then we use code to complete the calculation of forward kinematics and inverse kinematics to get motor’s position. After set motor position, the simulation is completed.</p>
+<div align="center">
+    <img src="/year2-proj/2022/Week-4-Blog/pitching.gif" width=60% height=60% />
+</div>
+
+<h3 id="Roll-motion"><a href="#Roll-motion" class="headerlink" title="Roll motion"></a>Roll motion</h3><p><img src="/year2-proj/2022/Week-4-Blog/rolling.png" alt="rolling code"></p>
+<p>Similar idea to pitching. We set the roll angle range from -0.7 rad to +0.7 rad. We also set a “Reset Position” button to help us reset robot’s position easily.</p>
+<div align="center">
+    <img src="/year2-proj/2022/Week-4-Blog/rolling.gif" width=60% height=60% />
+</div>
+
+<h3 id="Yaw-motion"><a href="#Yaw-motion" class="headerlink" title="Yaw motion"></a>Yaw motion</h3><p><img src="/year2-proj/2022/Week-4-Blog/yawing.png" alt="yawing code"></p>
+<p>In the code of yaw motion, we add two extra button which can change the view to top view or front view.</p>
+<div align="center">
+    <img src="/year2-proj/2022/Week-4-Blog/yawing-initial-view.gif" width=60% height=60% />
+</div>
+
+<div align="center">
+    <img src="/year2-proj/2022/Week-4-Blog/yawing-front-view.gif" width=60% height=60% />
+</div>
+
+<div align="center">
+    <img src="/year2-proj/2022/Week-4-Blog/yawing-top-view.gif" width=60% height=60% />
+</div>
+
+<h3 id="Extra-motion-squat"><a href="#Extra-motion-squat" class="headerlink" title="Extra motion: squat"></a>Extra motion: squat</h3><p><img src="/year2-proj/2022/Week-4-Blog/squatting.png" alt="squatting code"></p>
+<p>After completing the simulation of the three motions set in the original plan, we designed an extra squat motion. The principle is to complete the action by changing the height of the robot. Different from the previous motion algorithms, in the squat motion we only need to calculate the position of the motor and the foot according to the height of the robot. This squat motion will make the robot jump when the speed of the height change from low to high is too fast. This gave us inspiration, maybe the jumping action of the robot can be realized through this idea.</p>
+<div align="center">
+    <img src="/year2-proj/2022/Week-4-Blog/squatting.gif" width=60% height=60% />
+</div>
+
+<h2 id="Poster-design"><a href="#Poster-design" class="headerlink" title="Poster design"></a>Poster design</h2><p><img src="/year2-proj/2022/Week-4-Blog/poster-design.png" alt="poster design"></p>
+<p>The design of the poster has been completed. The content is currently undergoing further revision and layout. In the poster, we added some bullet points to organise information.</p>
+<h2 id="Week-4-summary"><a href="#Week-4-summary" class="headerlink" title="Week 4 summary"></a>Week 4 summary</h2><p>We successfully completed the code work for three actions this week. Even overcompleted the task, designed one more action. The design of the poster has also been completed. The next thing to do is perfect the information in the poster and prepare for our bench inspection next week.</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/year2-proj/2022/Week-3-Blog/" rel="prev" title="Week 3 Blog">
+      <i class="fa fa-chevron-left"></i> Week 3 Blog
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Week-4-blog"><span class="nav-number">1.</span> <span class="nav-text">Week 4 blog</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Goals-for-week-4"><span class="nav-number">1.1.</span> <span class="nav-text">Goals for week 4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-code-of-every-simulation-and-demonstration"><span class="nav-number">1.2.</span> <span class="nav-text">The code of every simulation and demonstration</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Library-for-the-preparation"><span class="nav-number">1.2.1.</span> <span class="nav-text">Library for the preparation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pitch-motion"><span class="nav-number">1.2.2.</span> <span class="nav-text">Pitch motion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Roll-motion"><span class="nav-number">1.2.3.</span> <span class="nav-text">Roll motion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Yaw-motion"><span class="nav-number">1.2.4.</span> <span class="nav-text">Yaw motion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Extra-motion-squat"><span class="nav-number">1.2.5.</span> <span class="nav-text">Extra motion: squat</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Poster-design"><span class="nav-number">1.3.</span> <span class="nav-text">Poster design</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-4-summary"><span class="nav-number">1.4.</span> <span class="nav-text">Week 4 summary</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Zepeng Pang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/year2-proj/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zepeng Pang</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/year2-proj/lib/anime.min.js"></script>
+  <script src="/year2-proj/lib/velocity/velocity.min.js"></script>
+  <script src="/year2-proj/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/year2-proj/js/utils.js"></script>
+
+<script src="/year2-proj/js/motion.js"></script>
+
+
+<script src="/year2-proj/js/schemes/pisces.js"></script>
+
+
+<script src="/year2-proj/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
