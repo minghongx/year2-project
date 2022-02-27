@@ -73,7 +73,7 @@ while True:
             case "fl" | "hl":
                 roll = np.array([[ 1,  0,          0,          0                 ],
                                  [ 0,  np.cos(δ), -np.sin(δ), -W * np.cos(δ) + W ],
-                                 [ 0,  np.sin(δ),  np.cos(δ), -W *  np.sin(δ)    ],
+                                 [ 0,  np.sin(δ),  np.cos(δ), -W * np.sin(δ)     ],
                                  [ 0,  0,          0,          1                 ]])
         x, y, z, _ = roll.dot(np.array([x, y, z, 1]))
         h = np.sqrt(z**2 + y**2 - a**2)

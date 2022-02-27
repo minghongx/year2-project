@@ -71,25 +71,25 @@ while True:
 
         match leg:
             case "fr":
-                yaw = np.array([[ np.cos(δ), -np.sin(δ),   0,   L*np.cos(δ) - W*np.sin(δ) - L ],
-                                [ np.sin(δ),  np.cos(δ),   0,   L*np.sin(δ) + W*np.cos(δ) - W ],
-                                [ 0,          0,           1,   0                             ],
-                                [ 0,          0,           0,   1                             ]])
+                yaw = np.array([[ np.cos(δ), -np.sin(δ),   0,   L * np.cos(δ) - W * np.sin(δ) - L ],
+                                [ np.sin(δ),  np.cos(δ),   0,   L * np.sin(δ) + W * np.cos(δ) - W ],
+                                [ 0,          0,           1,   0                                 ],
+                                [ 0,          0,           0,   1                                 ]])
             case "fl":
-                yaw = np.array([[ np.cos(δ), -np.sin(δ),   0,   L*np.cos(δ) + W*np.sin(δ) - L ],
-                                [ np.sin(δ),  np.cos(δ),   0,   L*np.sin(δ) - W*np.cos(δ) + W ],
-                                [ 0,          0,           1,   0                             ],
-                                [ 0,          0,           0,   1                             ]])
+                yaw = np.array([[ np.cos(δ), -np.sin(δ),   0,   L * np.cos(δ) + W * np.sin(δ) - L ],
+                                [ np.sin(δ),  np.cos(δ),   0,   L * np.sin(δ) - W * np.cos(δ) + W ],
+                                [ 0,          0,           1,   0                                 ],
+                                [ 0,          0,           0,   1                                 ]])
             case "hr":
-                yaw = np.array([[ np.cos(δ), -np.sin(δ),   0,  -L*np.cos(δ) - W*np.sin(δ) + L ],
-                                [ np.sin(δ),  np.cos(δ),   0,  -L*np.sin(δ) + W*np.cos(δ) - W ],
-                                [ 0,          0,           1,   0                             ],
-                                [ 0,          0,           0,   1                             ]])
+                yaw = np.array([[ np.cos(δ), -np.sin(δ),   0,  -L * np.cos(δ) - W * np.sin(δ) + L ],
+                                [ np.sin(δ),  np.cos(δ),   0,  -L * np.sin(δ) + W * np.cos(δ) - W ],
+                                [ 0,          0,           1,   0                                 ],
+                                [ 0,          0,           0,   1                                 ]])
             case "hl":
-                yaw = np.array([[ np.cos(δ), -np.sin(δ),   0,  -L*np.cos(δ) + W*np.sin(δ) + L ],
-                                [ np.sin(δ),  np.cos(δ),   0,  -L*np.sin(δ) - W*np.cos(δ) + W ],
-                                [ 0,          0,           1,   0                             ],
-                                [ 0,          0,           0,   1                             ]])
+                yaw = np.array([[ np.cos(δ), -np.sin(δ),   0,  -L * np.cos(δ) + W * np.sin(δ) + L ],
+                                [ np.sin(δ),  np.cos(δ),   0,  -L * np.sin(δ) - W * np.cos(δ) + W ],
+                                [ 0,          0,           1,   0                                 ],
+                                [ 0,          0,           0,   1                                 ]])
         x, y, z, _ = yaw.dot(np.array([x, y, z, 1]))
         h = np.sqrt(z**2 + y**2 - a**2)
 
