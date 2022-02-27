@@ -19,20 +19,16 @@ bullet.resetDebugVisualizerCamera(
 
 debug_yaw_angle = bullet.addUserDebugParameter(
     paramName = "yaw angle",
-    rangeMin = -0.5,
-    rangeMax = 0.5,
+    rangeMin = -0.36,
+    rangeMax = 0.36,
     startValue = 0)
 
-#Use the reset buttom to reset the robot
 reset = bullet.addUserDebugParameter(
     paramName="Reset Position",
     rangeMin=1,
     rangeMax=0,
-    startValue=0
-)
+    startValue=0)
 previous_btn_value = bullet.readUserDebugParameter(reset)
-
-
 
 sleep(1)
 ref_motor_positions = a1.motor_indices.applymap(lambda index: bullet.getJointState(a1.id, index, a1.in_physics_client)[0])
@@ -94,7 +90,6 @@ while True:
                 positions[0] = np.arctan2(np.abs(z), y) - np.arctan2(h, a)
 
 
-    #set joint position
     for positions, indices in zip(motor_positions.itertuples(index=False), a1.motor_indices.itertuples(index=False)):
         bullet.setJointMotorControlArray(
             physicsClientId = physics_server_id,
@@ -104,6 +99,5 @@ while True:
             targetPositions = positions)
 
     if bullet.readUserDebugParameter(reset) != previous_btn_value:
-        #reset the base position
         bullet.resetBasePositionAndOrientation(a1.id, [0, 0, 0.43], [0, 0, 0, 1])
         previous_btn_value = bullet.readUserDebugParameter(reset)
