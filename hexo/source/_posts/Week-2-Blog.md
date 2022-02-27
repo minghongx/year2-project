@@ -31,7 +31,9 @@ The code in the figure is the basic operation code provided by pybullet. With th
 
 Through the code in the picture above, we control the robot's joint number 4 to lift forward. The result of the code execution is shown in the video below. It can be seen that the robot's right front leg is successfully raised forward.
 
-![test video](test-video.gif)
+<div align="center">
+    <img src="/year2-proj/2022/Week-2-Blog/test-video.gif" width=60% height=60% />
+</div>
 
 After this, each member of the group actually tried it out. Everyone chooses different joints and different movement directions. The actual effect is similar to the video above, so we won't show it again.
 

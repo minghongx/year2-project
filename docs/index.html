@@ -258,6 +258,110 @@ mjx-container[display="true"] + br {
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://minghongalexxu.github.io/year2-proj/2022/Week-4-Blog/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/year2-proj/images/avatar.gif">
+      <meta itemprop="name" content="Zepeng Pang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LivUni ELEC222 Year 2 Project">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/year2-proj/2022/Week-4-Blog/" class="post-title-link" itemprop="url">Week-4-Blog</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-02-27 15:29:44 / Modified: 23:13:51" itemprop="dateCreated datePublished" datetime="2022-02-27T15:29:44Z">2022-02-27</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Week-4-blog"><a href="#Week-4-blog" class="headerlink" title="Week 4 blog"></a>Week 4 blog</h1><p><strong>Date:</strong> 21 Feb - 27 Feb</p>
+<p>After last week’s research, we now have the theoretical knowledge to complete the simulation of three actions. By setting the pitch angle, yaw angle, and roll angle, the angles that motors need to rotate can be calculated. Thus, three actions can be completed. The last task is to complete the writing of the code. In addition, we started the design work for the poster. In the poster, we will explain how the simulation works, and the final result will also be revealed.</p>
+<h2 id="Goals-for-week-4"><a href="#Goals-for-week-4" class="headerlink" title="Goals for week 4"></a>Goals for week 4</h2><ol>
+<li>Finish the code task.</li>
+<li>Complete the poster design.</li>
+</ol>
+<h2 id="The-code-of-every-simulation-and-demonstration"><a href="#The-code-of-every-simulation-and-demonstration" class="headerlink" title="The code of every simulation and demonstration"></a>The code of every simulation and demonstration</h2><h3 id="Library-for-the-preparation"><a href="#Library-for-the-preparation" class="headerlink" title="Library for the preparation"></a>Library for the preparation</h3><p>Before starting to code each action, we first built a library, which is used to prepare for the simulation and set the original parameters.</p>
+<p><img src="/year2-proj/2022/Week-4-Blog/liba.png" alt="library"></p>
+<p>The code in the figure creates a simulation environment for pybullet and imports the a1 model into it. The initial position and orientation of the model are also set. After that, the IDs of each motor in the model are obtained, and the positions of the motors represented by each ID are listed in a matrix. The matrix has a total of four columns, representing the robot’s front right leg, front left leg, hind right leg, and hind left leg. The three rows of the matrix represent three types of motors. The first type is the motor that controls hip abduction and adduction. The second type is the motor that controls hip flexion and extension. The third type is the motor that controls knee joint. This greatly facilitates future work. The robot’s leg length, body length, body width, and other information are also set in advance in the code.</p>
+<p><img src="/year2-proj/2022/Week-4-Blog/liba-set-initial-pos-of-motors.png" alt="set initial position of motors"></p>
+<p>After that, we set the initial positions of the three types of motors respectively.</p>
+<h3 id="Pitch-motion"><a href="#Pitch-motion" class="headerlink" title="Pitch motion"></a>Pitch motion</h3><p><img src="/year2-proj/2022/Week-4-Blog/pitching.png" alt="pitching code"></p>
+<p>In the process of writing the code, we found that the model was too light weight. This causes the model to float easily during motion. So we set the gravity to 30 instead of the normal 9.8. Next we set the position of the camera in pybullet to better observe the movement of the robot. As we talked about in our blog last week, to complete the pitch action, we need to set the magnitude of the pitch angle. Through the pitch angle and other set conditions, the position of the foot before and after the movement and the angle that each motor needs to rotate can be calculated. We set up a slide button to smoothly change the magnitude of pitch angle. The pitch range is from -31 rad to +31 rad. Then we use code to complete the calculation of forward kinematics and inverse kinematics to get motor’s position. After set motor position, the simulation is completed.</p>
+<div align="center">
+    <img src="/year2-proj/2022/Week-4-Blog/pitching.gif" width=60% height=60% />
+</div>
+
+<h3 id="Roll-motion"><a href="#Roll-motion" class="headerlink" title="Roll motion"></a>Roll motion</h3><p><img src="/year2-proj/2022/Week-4-Blog/rolling.png" alt="rolling code"></p>
+<p>Similar idea to pitching. We set the roll angle range from -0.7 rad to +0.7 rad. We also set a “Reset Position” button to help us reset robot’s position easily.</p>
+<div align="center">
+    <img src="/year2-proj/2022/Week-4-Blog/rolling.gif" width=60% height=60% />
+</div>
+
+<h3 id="Yaw-motion"><a href="#Yaw-motion" class="headerlink" title="Yaw motion"></a>Yaw motion</h3><p><img src="/year2-proj/2022/Week-4-Blog/yawing.png" alt="yawing code"></p>
+<p>In the code of yaw motion, we add two extra button which can change the view to top view or front view.</p>
+<div align="center">
+    <img src="/year2-proj/2022/Week-4-Blog/yawing-initial-view.gif" width=60% height=60% />
+</div>
+
+<div align="center">
+    <img src="/year2-proj/2022/Week-4-Blog/yawing-front-view.gif" width=60% height=60% />
+</div>
+
+<div align="center">
+    <img src="/year2-proj/2022/Week-4-Blog/yawing-top-view.gif" width=60% height=60% />
+</div>
+
+<h3 id="Extra-motion-squat"><a href="#Extra-motion-squat" class="headerlink" title="Extra motion: squat"></a>Extra motion: squat</h3><p><img src="/year2-proj/2022/Week-4-Blog/squatting.png" alt="squatting code"></p>
+<p>After completing the simulation of the three motions set in the original plan, we designed an extra squat motion. The principle is to complete the action by changing the height of the robot. Different from the previous motion algorithms, in the squat motion we only need to calculate the position of the motor and the foot according to the height of the robot. This squat motion will make the robot jump when the speed of the height change from low to high is too fast. This gave us inspiration, maybe the jumping action of the robot can be realized through this idea.</p>
+<div align="center">
+    <img src="/year2-proj/2022/Week-4-Blog/squatting.gif" width=60% height=60% />
+</div>
+
+<h2 id="Poster-design"><a href="#Poster-design" class="headerlink" title="Poster design"></a>Poster design</h2><p><img src="/year2-proj/2022/Week-4-Blog/poster-design.png" alt="poster design"></p>
+<p>The design of the poster has been completed. The content is currently undergoing further revision and layout. In the poster, we added some bullet points to organise information.</p>
+<h2 id="Week-4-summary"><a href="#Week-4-summary" class="headerlink" title="Week 4 summary"></a>Week 4 summary</h2><p>We successfully completed the code work for three actions this week. Even overcompleted the task, designed one more action. The design of the poster has also been completed. The next thing to do is perfect the information in the poster and prepare for our bench inspection next week.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://minghongalexxu.github.io/year2-proj/2022/Week-3-Blog/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -289,7 +393,7 @@ mjx-container[display="true"] + br {
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-02-27 00:56:03" itemprop="dateModified" datetime="2022-02-27T00:56:03Z">2022-02-27</time>
+                <time title="Modified: 2022-02-27 22:16:40" itemprop="dateModified" datetime="2022-02-27T22:16:40Z">2022-02-27</time>
               </span>
 
           
@@ -304,7 +408,7 @@ mjx-container[display="true"] + br {
 
       
           <h1 id="Week-3-blog"><a href="#Week-3-blog" class="headerlink" title="Week 3 blog"></a>Week 3 blog</h1><p><strong>Date:</strong> 14 Feb - 20 Feb</p>
-<p>At the supervisor meeting on Monday, we identified the actions to be done by the simulation. There are three motions in total, pitch motion, yaw motion and roll motion. We have learned the correct way to control the robot to complete the action by consulting the data. Before the research, we thought the simulation of an action is  the combination of simple movements of multiple joints. In fact, the correct theory should be to control the motor by calculating the coordinates of each key point on the robot body before and after the movement. The three actions we chose apply the idea of the simulation in three directions of space, respectively. This method requires modeling the robot and applying transformation matrices to calculate the hip and foot positions.</p>
+<p>At the supervisor meeting on Monday, we identified the actions to be done by the simulation. There are three motions in total, pitch motion, yaw motion, and roll motion. We have learned the correct way to control the robot to complete the action by consulting the data. Before the research, we thought the simulation of an action is  the combination of simple movements of multiple joints. In fact, the correct theory should be to control the motor by calculating the coordinates of each key point on the robot body before and after the movement. The three actions we chose apply the idea of the simulation in three directions of space, respectively. This method requires modeling the robot and applying transformation matrices to calculate the hip and foot positions.</p>
 <h2 id="Goals-for-week-3"><a href="#Goals-for-week-3" class="headerlink" title="Goals for week 3"></a>Goals for week 3</h2><ol>
 <li>Research investigates kinematic modeling of quadruped robots.</li>
 <li>Study the matrix transformation of the coordinate system to calculate the coordinates before and after the action.</li>
@@ -388,7 +492,7 @@ mjx-container[display="true"] + br {
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-02-27 00:36:44" itemprop="dateModified" datetime="2022-02-27T00:36:44Z">2022-02-27</time>
+                <time title="Modified: 2022-02-27 23:15:53" itemprop="dateModified" datetime="2022-02-27T23:15:53Z">2022-02-27</time>
               </span>
 
           
@@ -417,6 +521,10 @@ mjx-container[display="true"] + br {
 <p><img src="/year2-proj/2022/Week-2-Blog/testcode.png" alt="test code"></p>
 <p>Through the code in the picture above, we control the robot’s joint number 4 to lift forward. The result of the code execution is shown in the video below. It can be seen that the robot’s right front leg is successfully raised forward.</p>
 <p><img src="/year2-proj/2022/Week-2-Blog/test-video.gif" alt="test video"></p>
+<div align="center">
+    <img src="/year2-proj/2022/Week-2-Blog/test-video.gif" width=60% height=60% />
+</div>
+
 <p>After this, each member of the group actually tried it out. Everyone chooses different joints and different movement directions. The actual effect is similar to the video above, so we won’t show it again.</p>
 <p><img src="/year2-proj/2022/Week-2-Blog/gantt-chart.png" alt="gantt chart"></p>
 <p>Following aa’s suggestion, we designed a gantt chart. From this chart, we can clearly see the assignment of tasks to each team member. The relationship between the various tasks is also clear at a glance. This undoubtedly makes it easier for us to control the progress of the project.</p>
@@ -579,7 +687,7 @@ mjx-container[display="true"] + br {
       <div class="site-state-item site-state-posts">
           <a href="/year2-proj/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
