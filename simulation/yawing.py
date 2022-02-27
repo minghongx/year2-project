@@ -17,19 +17,25 @@ bullet.resetDebugVisualizerCamera(
     cameraYaw = 40,
     cameraPitch = -15)
 
+debug_yaw_angle = bullet.addUserDebugParameter(
+    paramName = "yaw angle",
+    rangeMin = -0.36,
+    rangeMax = 0.36,
+    startValue = 0)
+
 debug_front_view = bullet.addUserDebugParameter(
-    paramName="Front View",
+    paramName="front view",
     rangeMin=1,
     rangeMax=0,
     startValue=0)
 front_view = bullet.readUserDebugParameter(debug_front_view)
 
-debug_overlook_view = bullet.addUserDebugParameter(
-    paramName="Overlook View",
+debug_top_view = bullet.addUserDebugParameter(
+    paramName="top view",
     rangeMin=1,
     rangeMax=0,
     startValue=0)
-overlook_view = bullet.readUserDebugParameter(debug_overlook_view)
+top_view = bullet.readUserDebugParameter(debug_top_view)
 
 reset = bullet.addUserDebugParameter(
     paramName="Reset Position",
@@ -37,12 +43,6 @@ reset = bullet.addUserDebugParameter(
     rangeMax=0,
     startValue=0)
 previous_btn_value = bullet.readUserDebugParameter(reset)
-
-debug_yaw_angle = bullet.addUserDebugParameter(
-    paramName = "yaw angle",
-    rangeMin = -0.36,
-    rangeMax = 0.36,
-    startValue = 0)
 
 sleep(1)
 ref_motor_positions = a1.motor_indices.applymap(lambda index: bullet.getJointState(a1.id, index, a1.in_physics_client)[0])
@@ -126,7 +126,7 @@ while True:
             cameraPitch = 0)
         front_view = bullet.readUserDebugParameter(debug_front_view)
 
-    if bullet.readUserDebugParameter(debug_overlook_view) != overlook_view:
+    if bullet.readUserDebugParameter(debug_top_view) != top_view:
         # set the camera to be overlook view
         bullet.resetDebugVisualizerCamera(
             physicsClientId = physics_server_id,
@@ -134,4 +134,4 @@ while True:
             cameraDistance = 1.5,
             cameraYaw = 90,
             cameraPitch = -89)
-        overlook_view = bullet.readUserDebugParameter(debug_overlook_view)
+        top_view = bullet.readUserDebugParameter(debug_top_view)
