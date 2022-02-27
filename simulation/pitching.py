@@ -9,7 +9,7 @@ physics_server_id = bullet.connect(bullet.GUI)
 bullet.setRealTimeSimulation(enableRealTimeSimulation=True, physicsClientId=physics_server_id)
 bullet.setGravity(0, 0, -30, physics_server_id)  # FIXME 模型质量太轻
 import pybullet_data; bullet.setAdditionalSearchPath(pybullet_data.getDataPath())
-bullet.loadURDF("plane.urdf")
+bullet.loadURDF("plane.urdf", physicsClientId=physics_server_id)
 a1 = A1(physics_server_id)
 bullet.resetDebugVisualizerCamera(
     physicsClientId = physics_server_id,
@@ -21,7 +21,7 @@ bullet.resetDebugVisualizerCamera(
 debug_pitch_angle = bullet.addUserDebugParameter(
     paramName = "pitch angle (rad)",
     rangeMin = -0.31,
-    rangeMax = 0.31,
+    rangeMax =  0.31,
     startValue = 0,)
 
 sleep(1)  # 初始化是异步的。等待一秒保证初始化结束再读取电机位置
@@ -36,7 +36,7 @@ while True:
         l1 = a1.thigh_len
         l2 = a1.calf_len
         L  = a1.body_len / 2
-        a  = a1.a
+        o  = a1.hip_offset
         δ  = pitch_angle
 
         # 从当前电机位置得出当前足端相对于髋关节的位置
@@ -44,11 +44,11 @@ while True:
         h =  l1 * np.cos(t1) + l2 * np.cos(t1 + t2)
         match leg:
             case "fr" | "hr":
-                y = -a * np.cos(t0) - h * np.sin(t0)
-                z =  a * np.sin(t0) - h * np.cos(t0)
+                y = -o * np.cos(t0) - h * np.sin(t0)
+                z =  o * np.sin(t0) - h * np.cos(t0)
             case "fl" | "hl":
-                y =  a * np.cos(t0) - h * np.sin(t0)
-                z = -a * np.sin(t0) - h * np.cos(t0)
+                y =  o * np.cos(t0) - h * np.sin(t0)
+                z = -o * np.sin(t0) - h * np.cos(t0)
 
         # pitch 后足端相对于髋关节的位置
         match leg:
@@ -61,7 +61,7 @@ while True:
                                   [ np.sin(δ),  np.cos(δ), -L * np.sin(δ)     ],
                                   [ 0,          0,          1                 ]])
         x, z, _ = pitch.dot(np.array([x, z, 1]))
-        h = np.sqrt(z**2 + y**2 - a**2)
+        h = np.sqrt(z**2 + y**2 - o**2)
 
         # 从 pitch 后足端相对于髋关节的位置反算电机位置
         c2 = (-l1**2 - l2**2 + x**2 + h**2) / (2 * l1 * l2)

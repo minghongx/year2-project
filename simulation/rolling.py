@@ -8,7 +8,7 @@ physics_server_id = bullet.connect(bullet.GUI)
 bullet.setRealTimeSimulation(enableRealTimeSimulation=True, physicsClientId=physics_server_id)
 bullet.setGravity(0, 0, -30, physics_server_id)
 import pybullet_data; bullet.setAdditionalSearchPath(pybullet_data.getDataPath())
-bullet.loadURDF("plane.urdf")
+bullet.loadURDF("plane.urdf", physicsClientId=physics_server_id)
 a1 = A1(physics_server_id)
 bullet.resetDebugVisualizerCamera(
     physicsClientId = physics_server_id,
@@ -19,22 +19,22 @@ bullet.resetDebugVisualizerCamera(
 
 debug_roll_angle = bullet.addUserDebugParameter(
     paramName = "roll angle (rad)",
-    rangeMin = -0.7,
-    rangeMax = 0.7,
+    rangeMin = -0.5,
+    rangeMax =  0.5,
     startValue = 0,)
 
 debug_front_view = bullet.addUserDebugParameter(
     paramName="front view",
-    rangeMin=1,
-    rangeMax=0,
-    startValue=0)
+    rangeMin = 1,
+    rangeMax = 0,
+    startValue = 0)
 front_view = bullet.readUserDebugParameter(debug_front_view)
 
 reset = bullet.addUserDebugParameter(
     paramName="Reset Position",
-    rangeMin=1,
-    rangeMax=0,
-    startValue=0)
+    rangeMin = 1,
+    rangeMax = 0,
+    startValue = 0)
 previous_btn_value = bullet.readUserDebugParameter(reset)
 
 sleep(1)
@@ -49,7 +49,7 @@ while True:
         l1 = a1.thigh_len
         l2 = a1.calf_len
         W  = a1.body_width / 2
-        a  = a1.a
+        o  = a1.hip_offset
         δ  = roll_angle
 
         # The position of the foot relative to the hip joint
@@ -57,11 +57,11 @@ while True:
         h =  l1 * np.cos(t1) + l2 * np.cos(t1 + t2)
         match leg:
             case "fl" | "hl":
-                y = -a * np.cos(t0) - h * np.sin(t0)
-                z =  a * np.sin(t0) - h * np.cos(t0)
+                y = -o * np.cos(t0) - h * np.sin(t0)
+                z =  o * np.sin(t0) - h * np.cos(t0)
             case "fr" | "hr":
-                y =  a * np.cos(t0) - h * np.sin(t0)
-                z = -a * np.sin(t0) - h * np.cos(t0)
+                y =  o * np.cos(t0) - h * np.sin(t0)
+                z = -o * np.sin(t0) - h * np.cos(t0)
 
         # perform coordinate transformation
         match leg:
@@ -76,7 +76,7 @@ while True:
                                  [ 0,  np.sin(δ),  np.cos(δ), -W * np.sin(δ)     ],
                                  [ 0,  0,          0,          1                 ]])
         x, y, z, _ = roll.dot(np.array([x, y, z, 1]))
-        h = np.sqrt(z**2 + y**2 - a**2)
+        h = np.sqrt(z**2 + y**2 - o**2)
 
         # inverse kinematics solution
         c2 = (-l1**2 - l2**2 + x**2 + h**2) / (2 * l1 * l2)
@@ -85,9 +85,9 @@ while True:
         positions[1] = np.arccos((l1**2 + x**2 + h**2 - l2**2) / (2 * l1 * np.sqrt(x**2 + h**2))) - np.arctan2(x, h)
         match leg:
             case "fl" | "hl":
-                positions[0] = np.arctan2(h, a) - np.arctan2(np.abs(z), -y)
+                positions[0] = np.arctan2(h, o) - np.arctan2(np.abs(z), -y)
             case "fr" | "hr":
-                positions[0] = np.arctan2(np.abs(z), y) - np.arctan2(h, a)
+                positions[0] = np.arctan2(np.abs(z), y) - np.arctan2(h, o)
 
     # set motor positions
     for positions, indices in zip(motor_positions.itertuples(index=False), a1.motor_indices.itertuples(index=False)):
@@ -112,4 +112,3 @@ while True:
             cameraYaw = 90,
             cameraPitch = 0)
         front_view = bullet.readUserDebugParameter(debug_front_view)
-

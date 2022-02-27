@@ -26,7 +26,7 @@ gantt
     Contribution to Project Deliverables [TBD] : active, 2022-02-25, 2022-03-02
 
     section Presentation
-    Poster [Zehao Ye] : crit, active, 2022-02-25, 2022-03-02
+    Poster [Zehao Ye, Kai Yang] : crit, active, 2022-02-25, 2022-03-02
     Functional Bench Demonstration [TBD] : crit, active, 2022-02-25, 2022-03-02
     Group Talk : 2022-03-03, 8h
 
@@ -53,13 +53,11 @@ gantt
 
 <pre>
 📦year2-proj
- ┣ 📂blogs
- ┃ ┣ 📂week1
- ┃ ┣ 📂week2
- ┃ ┣ 📂week3
- ┃ ┣ 📂week4
- ┃ ┗ 📂week5
- ┣ 📂gantt_chart
+ ┣ 📂docs
+ ┣ 📂hexo
+ ┃ ┣ 📂themes/next
+ ┃ ┃ ┗ 📜_config.yml
+ ┃ ┗ 📜_config.yml
  ┣ 📂poster
  ┃ ┣ 📂images
  ┃ ┣ 📂preamble
@@ -77,7 +75,6 @@ gantt
  ┃ ┃ ┗ 📜titlepage.tex
  ┃ ┗ 📜report.tex
  ┣ 📂simulation
- ┣ ┗ 📂refs
  ┣ 📜.editorconfig
  ┣ 📜.gitignore
  ┣ 📜README.md
@@ -87,6 +84,8 @@ gantt
 
 Folder / File | Description
 :---: | :---
+📂docs | From where GitHub Pages site is built.
+📂hexo | Hexo manages the project website here and publishes website to 📂docs.
 📜.editorconfig | EditorConfig helps maintain consistent coding styles for multiple developers working on the same project across various editors and IDEs. The EditorConfig project consists of a file format for defining coding styles and a collection of text editor plugins that enable editors to read the file format and adhere to defined styles.
 📂preamble | Where preliminary or preparatory statements are placed.
 📜packages.tex | Where package-importing statements are placed.

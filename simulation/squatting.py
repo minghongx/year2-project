@@ -7,7 +7,7 @@ physics_server_id = bullet.connect(bullet.GUI)
 bullet.setRealTimeSimulation(enableRealTimeSimulation=True, physicsClientId=physics_server_id)
 bullet.setGravity(0, 0, -9.8, physics_server_id)
 import pybullet_data; bullet.setAdditionalSearchPath(pybullet_data.getDataPath())
-bullet.loadURDF("plane.urdf")
+bullet.loadURDF("plane.urdf", physicsClientId=physics_server_id)
 a1 = A1(physics_server_id)
 bullet.resetDebugVisualizerCamera(
     physicsClientId = physics_server_id,

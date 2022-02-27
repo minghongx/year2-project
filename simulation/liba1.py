@@ -35,11 +35,11 @@ class A1:
         # Obtained by measuring the STL file of the thigh and calf. Both are 0.2mm.
         self.thigh_len = 200
         self.calf_len  = 200
-        # FIXME 髋关节距离主体的偏移
-        self.a = 80
-        # FIXME 身长
+        # FIXME: Obtain more accurate values
+        self.hip_offset = 80
+        # FIXME: Obtain more accurate values
         self.body_len = 360
-        # FIXME 身宽
+        # FIXME: Obtain more accurate values
         self.body_width = 200
         # Set initial postion of motors.
         bullet.setJointMotorControlArray(

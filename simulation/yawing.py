@@ -8,7 +8,7 @@ physics_server_id = bullet.connect(bullet.GUI)
 bullet.setRealTimeSimulation(enableRealTimeSimulation=True, physicsClientId=physics_server_id)
 bullet.setGravity(0, 0, -30, physics_server_id)
 import pybullet_data; bullet.setAdditionalSearchPath(pybullet_data.getDataPath())
-bullet.loadURDF("plane.urdf")
+bullet.loadURDF("plane.urdf", physicsClientId=physics_server_id)
 a1 = A1(physics_server_id)
 bullet.resetDebugVisualizerCamera(
     physicsClientId = physics_server_id,
@@ -20,28 +20,28 @@ bullet.resetDebugVisualizerCamera(
 debug_yaw_angle = bullet.addUserDebugParameter(
     paramName = "yaw angle",
     rangeMin = -0.36,
-    rangeMax = 0.36,
+    rangeMax =  0.36,
     startValue = 0)
 
 debug_front_view = bullet.addUserDebugParameter(
     paramName="front view",
-    rangeMin=1,
-    rangeMax=0,
-    startValue=0)
+    rangeMin = 1,
+    rangeMax = 0,
+    startValue = 0)
 front_view = bullet.readUserDebugParameter(debug_front_view)
 
 debug_top_view = bullet.addUserDebugParameter(
     paramName="top view",
-    rangeMin=1,
-    rangeMax=0,
-    startValue=0)
+    rangeMin = 1,
+    rangeMax = 0,
+    startValue = 0)
 top_view = bullet.readUserDebugParameter(debug_top_view)
 
 reset = bullet.addUserDebugParameter(
     paramName="Reset Position",
-    rangeMin=1,
-    rangeMax=0,
-    startValue=0)
+    rangeMin = 1,
+    rangeMax = 0,
+    startValue = 0)
 previous_btn_value = bullet.readUserDebugParameter(reset)
 
 sleep(1)
@@ -56,18 +56,18 @@ while True:
         l2 = a1.calf_len
         L  = a1.body_len / 2
         W  = a1.body_width / 2
-        a  = a1.a
+        o  = a1.hip_offset
         δ  = yaw_angle
 
         x = -l1 * np.sin(t1) - l2 * np.sin(t1 + t2)
         h =  l1 * np.cos(t1) + l2 * np.cos(t1 + t2)
         match leg:
             case "fl" | "hl":
-                y = -a * np.cos(t0) - h * np.sin(t0)
-                z =  a * np.sin(t0) - h * np.cos(t0)
+                y = -o * np.cos(t0) - h * np.sin(t0)
+                z =  o * np.sin(t0) - h * np.cos(t0)
             case "fr" | "hr":
-                y =  a * np.cos(t0) - h * np.sin(t0)
-                z = -a * np.sin(t0) - h * np.cos(t0)
+                y =  o * np.cos(t0) - h * np.sin(t0)
+                z = -o * np.sin(t0) - h * np.cos(t0)
 
         match leg:
             case "fr":
@@ -91,7 +91,7 @@ while True:
                                 [ 0,          0,           1,   0                                 ],
                                 [ 0,          0,           0,   1                                 ]])
         x, y, z, _ = yaw.dot(np.array([x, y, z, 1]))
-        h = np.sqrt(z**2 + y**2 - a**2)
+        h = np.sqrt(z**2 + y**2 - o**2)
 
         c2 = (-l1**2 - l2**2 + x**2 + h**2) / (2 * l1 * l2)
         s2 = -np.sqrt(1 - c2**2)
@@ -99,9 +99,9 @@ while True:
         positions[1] = np.arccos((l1**2 + x**2 + h**2 - l2**2) / (2 * l1 * np.sqrt(x**2 + h**2))) - np.arctan2(x, h)
         match leg:
             case "fl" | "hl":
-                positions[0] = np.arctan2(h, a) - np.arctan2(np.abs(z), -y)
+                positions[0] = np.arctan2(h, o) - np.arctan2(np.abs(z), -y)
             case "fr" | "hr":
-                positions[0] = np.arctan2(np.abs(z), y) - np.arctan2(h, a)
+                positions[0] = np.arctan2(np.abs(z), y) - np.arctan2(h, o)
 
     for positions, indices in zip(motor_positions.itertuples(index=False), a1.motor_indices.itertuples(index=False)):
         bullet.setJointMotorControlArray(
