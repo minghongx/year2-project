@@ -17,11 +17,19 @@ bullet.resetDebugVisualizerCamera(
     cameraYaw = 40,
     cameraPitch = -15)
 
-debug_yaw_angle = bullet.addUserDebugParameter(
-    paramName = "yaw angle",
-    rangeMin = -0.36,
-    rangeMax = 0.36,
-    startValue = 0)
+debug_front_view = bullet.addUserDebugParameter(
+    paramName="Front View",
+    rangeMin=1,
+    rangeMax=0,
+    startValue=0)
+front_view = bullet.readUserDebugParameter(debug_front_view)
+
+debug_overlook_view = bullet.addUserDebugParameter(
+    paramName="Overlook View",
+    rangeMin=1,
+    rangeMax=0,
+    startValue=0)
+overlook_view = bullet.readUserDebugParameter(debug_overlook_view)
 
 reset = bullet.addUserDebugParameter(
     paramName="Reset Position",
@@ -29,6 +37,15 @@ reset = bullet.addUserDebugParameter(
     rangeMax=0,
     startValue=0)
 previous_btn_value = bullet.readUserDebugParameter(reset)
+
+
+debug_yaw_angle = bullet.addUserDebugParameter(
+    paramName = "yaw angle",
+    rangeMin = -0.36,
+    rangeMax = 0.36,
+    startValue = 0)
+
+
 
 sleep(1)
 ref_motor_positions = a1.motor_indices.applymap(lambda index: bullet.getJointState(a1.id, index, a1.in_physics_client)[0])
@@ -98,5 +115,31 @@ while True:
             targetPositions = positions)
 
     if bullet.readUserDebugParameter(reset) != previous_btn_value:
+        #reset position
         bullet.resetBasePositionAndOrientation(a1.id, [0, 0, 0.43], [0, 0, 0, 1])
         previous_btn_value = bullet.readUserDebugParameter(reset)
+
+    if bullet.readUserDebugParameter(debug_front_view) != front_view:
+        #set the camera to be front view
+        bullet.resetDebugVisualizerCamera(
+            physicsClientId = physics_server_id,
+            cameraTargetPosition = [0, 0, 0.4],
+            cameraDistance = 1.5,
+            cameraYaw = 90,
+            cameraPitch = 0)
+        front_view = bullet.readUserDebugParameter(debug_front_view)
+
+    if bullet.readUserDebugParameter(debug_overlook_view) != overlook_view:
+        #set the camera to be overlook view
+        bullet.resetDebugVisualizerCamera(
+            physicsClientId = physics_server_id,
+            cameraTargetPosition = [0, 0, 0.4],
+            cameraDistance = 1.5,
+            cameraYaw = 90,
+            cameraPitch = -89)
+        overlook_view = bullet.readUserDebugParameter(debug_overlook_view)
+
+
+
+
+
