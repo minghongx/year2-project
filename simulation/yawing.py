@@ -37,6 +37,13 @@ debug_top_view = bullet.addUserDebugParameter(
     startValue = 0)
 top_view = bullet.readUserDebugParameter(debug_top_view)
 
+debug_bottom_view = bullet.addUserDebugParameter(
+    paramName="bottom view",
+    rangeMin = 1,
+    rangeMax = 0,
+    startValue = 0)
+bottom_view = bullet.readUserDebugParameter(debug_bottom_view)
+
 reset = bullet.addUserDebugParameter(
     paramName="Reset Position",
     rangeMin = 1,
@@ -135,3 +142,13 @@ while True:
             cameraYaw = 90,
             cameraPitch = -89)
         top_view = bullet.readUserDebugParameter(debug_top_view)
+
+    if bullet.readUserDebugParameter(debug_bottom_view) != bottom_view:
+        # set the camera to be overlook view
+        bullet.resetDebugVisualizerCamera(
+            physicsClientId = physics_server_id,
+            cameraTargetPosition = [0, 0, 0.4],
+            cameraDistance = 1.5,
+            cameraYaw = 90,
+            cameraPitch = 89)
+        bottom_view = bullet.readUserDebugParameter(debug_bottom_view)
