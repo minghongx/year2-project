@@ -1,4 +1,3 @@
-from cgitb import reset
 import pybullet as bullet
 import numpy as np
 from liba1 import A1
@@ -23,24 +22,21 @@ debug_pitch_angle = bullet.addUserDebugParameter(
     rangeMin = -0.31,
     rangeMax =  0.31,
     startValue = 0,)
-
 debug_roll_angle = bullet.addUserDebugParameter(
     paramName = "roll angle (rad)",
     rangeMin = -0.5,
     rangeMax =  0.5,
     startValue = 0,)
-
 debug_yaw_angle = bullet.addUserDebugParameter(
-    paramName = "yaw angle",
+    paramName = "yaw angle (rad)",
     rangeMin = -0.36,
     rangeMax =  0.36,
     startValue = 0)
-
 debug_height = bullet.addUserDebugParameter(
     paramName = "height",
     rangeMin = 10,
     rangeMax = 370,
-    startValue = 200,)
+    startValue = 270,)
 
 debug_initial_view = bullet.addUserDebugParameter(
     paramName="initial view",
@@ -48,14 +44,12 @@ debug_initial_view = bullet.addUserDebugParameter(
     rangeMax = 0,
     startValue = 0)
 initial_view = bullet.readUserDebugParameter(debug_initial_view)
-
 debug_front_view = bullet.addUserDebugParameter(
     paramName="front view",
     rangeMin = 1,
     rangeMax = 0,
     startValue = 0)
 front_view = bullet.readUserDebugParameter(debug_front_view)
-
 debug_top_view = bullet.addUserDebugParameter(
     paramName="top view",
     rangeMin = 1,
@@ -79,7 +73,7 @@ while True:
     roll_angle = bullet.readUserDebugParameter(debug_roll_angle)
 
     for leg, positions in motor_positions.items():
-        t0, t1, t2 = positions
+        θ0, θ1, θ2 = positions
         l1 = a1.thigh_len
         l2 = a1.calf_len
         L  = a1.body_len / 2
@@ -89,15 +83,15 @@ while True:
         β  = pitch_angle
         λ  = roll_angle
 
-        x = -l1 * np.sin(t1) - l2 * np.sin(t1 + t2)
-        h =  l1 * np.cos(t1) + l2 * np.cos(t1 + t2)
+        x = -l1 * np.sin(θ1) - l2 * np.sin(θ1 + θ2)
+        h =  l1 * np.cos(θ1) + l2 * np.cos(θ1 + θ2)
         match leg:
             case "fl" | "hl":
-                y = -o * np.cos(t0) - h * np.sin(t0)
-                # z =  o * np.sin(t0) - h * np.cos(t0)
+                y = -o * np.cos(θ0) - h * np.sin(θ0)
+                # z =  o * np.sin(θ0) - h * np.cos(θ0)
             case "fr" | "hr":
-                y =  o * np.cos(t0) - h * np.sin(t0)
-                # z = -o * np.sin(t0) - h * np.cos(t0)
+                y =  o * np.cos(θ0) - h * np.sin(θ0)
+                # z = -o * np.sin(θ0) - h * np.cos(θ0)
         z = -bullet.readUserDebugParameter(debug_height)  # z is negative height
 
         match leg:
@@ -146,6 +140,7 @@ while True:
                                  [ 0,  np.sin(λ),  np.cos(λ), -W * np.sin(λ)     ],
                                  [ 0,  0,          0,          1                 ]])
         x, y, z, _ = roll.dot(np.array([x, y, z, 1]))
+
         h = np.sqrt(z**2 + y**2 - o**2)
 
         c2 = (-l1**2 - l2**2 + x**2 + h**2) / (2 * l1 * l2)
@@ -200,4 +195,3 @@ while True:
             cameraYaw = 90,
             cameraPitch = -89)
         top_view = bullet.readUserDebugParameter(debug_top_view)
-
