@@ -10,8 +10,8 @@
 |     :-:     | :-:
 | Minghong Xu | Project Manager, Designer, and Implementer
 | Zehao Ye    | Designer and Implementer
-| Kai Yang    | Implementer
-| Zepeng Pang | Technical Writer
+| Kai Yang    | Implementer and Technical Writer
+| Zepeng Pang | Technical Writer and Implementer
 
 
 ## Responsibility Matrix
