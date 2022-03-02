@@ -13,7 +13,7 @@ gantt
     Week 1 [Yang Kai, Zepeng Pang] : blog1, 2022-02-03, 7d
     Week 2 [Yang Kai, Zepeng Pang] : blog2, after blog1, 7d
     Week 3 [Zepeng Pang] : blog3, after blog2, 7d
-    Week 4 [Zepeng Pang] : active, blog4, after blog3, 5d
+    Week 4 [Zepeng Pang] : blog4, after blog3, 5d
     Setup GitHub Pages for publishing [Minghong Xu] : milestone, 2022-02-26, 0d
     Blog Submission : crit, after blog4, 2022-03-02
     Week 5 [Minghong Xu] : 2022-03-03, 7d
@@ -26,7 +26,7 @@ gantt
     Contribution to Project Deliverables [TBD] : active, 2022-02-25, 2022-03-02
 
     section Presentation
-    Poster [Zehao Ye, Kai Yang] : crit, active, 2022-02-25, 2022-03-02
+    Poster [Zehao Ye, Kai Yang] : crit, 2022-02-25, 2022-03-02
     Functional Bench Demonstration [TBD] : crit, active, 2022-02-25, 2022-03-02
     Group Talk : 2022-03-03, 8h
 
@@ -59,11 +59,6 @@ gantt
  ┃ ┃ ┗ 📜_config.yml
  ┃ ┗ 📜_config.yml
  ┣ 📂poster
- ┃ ┣ 📂images
- ┃ ┣ 📂preamble
- ┃ ┃ ┣ 📜packages.tex
- ┃ ┃ ┗ 📜top_matter.tex
- ┃ ┗ 📜poster.tex
  ┣ 📂proj_mgmt_forms
  ┣ 📂report
  ┃ ┣ 📂figures
