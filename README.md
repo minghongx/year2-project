@@ -19,15 +19,15 @@ gantt
     Week 5 [Minghong Xu] : 2022-03-03, 7d
 
     section Project Management Documents
-    Supervisor Weekly Meeting Log [Zepeng Pang] : crit, active, 2022-01-31, 2022-02-25
+    Supervisor Weekly Meeting Log [Zepeng Pang] : crit, 2022-01-31, 2022-02-25
     LogBook is Git log: milestone, 2022-02-03, 0d
-    Attendance Record [Minghong Xu] : active, 2022-02-03, 2022-02-27
+    Attendance Record [Minghong Xu, Zepeng Pang] : 2022-02-03, 2022-02-27
     Role Allocation (responsibility matrix) [Minghong Xu] : milestone, 2022-02-14, 0d
-    Contribution to Project Deliverables [TBD] : active, 2022-02-25, 2022-03-02
+    Contribution to Project Deliverables [Zepeng Pang] : 2022-02-25, 2022-03-02
 
     section Presentation
     Poster [Zehao Ye, Kai Yang] : crit, 2022-02-25, 2022-03-02
-    Functional Bench Demonstration [TBD] : crit, active, 2022-02-25, 2022-03-02
+    Functional Bench Demonstration : crit, 2022-02-25, 2022-03-02
     Group Talk : 2022-03-03, 8h
 
     section Simulation
