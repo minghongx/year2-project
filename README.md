@@ -27,7 +27,7 @@ gantt
 
     section Presentation
     Poster [Zehao Ye, Kai Yang] : crit, 2022-02-25, 2022-03-02
-    Functional Bench Demonstration : crit, 2022-02-25, 2022-03-02
+    Functional Bench Demonstration [Zepeng Pang] : crit, 2022-02-25, 2022-03-02
     Group Talk : 2022-03-03, 8h
 
     section Simulation
