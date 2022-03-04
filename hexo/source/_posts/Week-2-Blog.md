@@ -3,7 +3,7 @@ title: Week 2 Blog
 date: 2022-02-10 15:40:10
 tags:
 ---
-# Week 2 blog
+
 **Date:** 7 Feb - 13 Feb
 
 In a meeting with aa on Monday, aa set us a new task to make a gantt chart. The gantt chart makes the structure of our project clearer, and also allows members to collaborate with each other and allocate time more easily. Also our main task this week is to select the model we want to simulate and import the quadruped robot model file into pybullet. Learn how to use pybullet to simulate manipulating a robot. After the previous work is done, we plan everyone to try to write some simple code to make the robot move. For example, manipulating a joint of a robot and bending it.

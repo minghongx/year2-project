@@ -4,7 +4,6 @@ date: 2022-02-03 15:09:53
 tags:
 ---
 
-# Week 1 blog
 **Date:** 31 Jan - 6 Feb
 
 During the group discussion and work in week 1, we downloaded the software to be used and configured the development environment of the project.

@@ -1,9 +1,9 @@
 ---
-title: Week-4-Blog
+title: Week 4 Blog
 date: 2022-02-27 15:29:44
 tags:
 ---
-# Week 4 blog
+
 **Date:** 21 Feb - 27 Feb
 
 After last week's research, we now have the theoretical knowledge to complete the simulation of three actions. By setting the pitch angle, yaw angle, and roll angle, the angles that motors need to rotate can be calculated. Thus, three actions can be completed. The last task is to complete the writing of the code. In addition, we started the design work for the poster. In the poster, we will explain how the simulation works, and the final result will also be revealed.
