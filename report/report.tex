@@ -1,13 +1,21 @@
 % !TEX program = xelatex
 
-\documentclass{}
+\documentclass[a4paper, 12pt]{report}
 
-\input{./preamble/packages.tex}
-\input{./preamble/top_matter.tex}
+\input{preamble/packages.tex}
+\input{preamble/top_matter.tex}
 
 \begin{document}
 
-\input{./titlepage/titlepage.tex}
-
+\input{front_matter/titlepage.tex}
+\input{front_matter/abstractpage.tex}
+\input{front_matter/declaration.tex}
+\input{front_matter/contents.tex}
+\input{body/introduction.tex}
+\input{body/materials_and_methods.tex}
+\input{body/results_and_analysis.tex}
+\input{body/discussion_and_conclusions.tex}
+\input{body/references.tex}
+\input{back_matter/appendices.tex}
 
 \end{document}
