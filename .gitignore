@@ -1,2 +1,13 @@
 /.idea/
 /simulation/__pycache__
+
+# Log of XeTeX
+**/X.log
+
+# Ignore LaTeX auxiliary files
+/report/report.*
+!/report/report.tex
+
+# Ignore LaTeX auxiliary files
+/refs/Template_for_Y2_project_report/template.*
+!/refs/Template_for_Y2_project_report/template.tex
