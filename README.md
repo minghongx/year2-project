@@ -60,15 +60,24 @@ gantt
  ┃ ┗ 📜_config.yml
  ┣ 📂poster
  ┣ 📂proj_mgmt_forms
+ ┣ 📂refs
  ┣ 📂report
- ┃ ┣ 📂figures
  ┃ ┣ 📂preamble
  ┃ ┃ ┣ 📜packages.tex
  ┃ ┃ ┗ 📜top_matter.tex
- ┃ ┣ 📂titlepage
+ ┃ ┣ 📂front_matter
  ┃ ┃ ┣ 📜LivUniCrest.pdf
- ┃ ┃ ┗ 📜titlepage.tex
- ┃ ┗ 📜report.tex
+ ┃ ┃ ┣ 📜titlepage.tex
+ ┃ ┃ ┣ 📜abstractpage.tex
+ ┃ ┃ ┣ 📜declaration.tex
+ ┃ ┃ ┗ 📜contents.tex
+ ┃ ┣ 📂body
+ ┃ ┣ 📂back_matter
+ ┃ ┃ ┗ 📜appendices.tex
+ ┃ ┣ 📂figures
+ ┃ ┣ 📜refs.bib
+ ┃ ┣ 📜report.tex
+ ┃ ┗ 📜snippets.tex
  ┣ 📂simulation
  ┣ 📜.editorconfig
  ┣ 📜.gitignore
