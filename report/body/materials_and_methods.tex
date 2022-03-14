@@ -49,20 +49,18 @@
 
 Firstly, a geometric model of the quadruped robot was established.
 
-% \begin{figure}[htbp]
+% \begin{figure}[htbp]\label{fig:}
 %    \centering
 %    \includegraphics[width=0.8\textwidth]{figures/}
 %    \caption{}
-%    \label{fig:}
 % \end{figure}
 
 Figure <++> shows a trimetric view of the model. The body is reduced to a square and the legs are reduced to three connecting rods. The joint between the body and the legs is called hip. The uppermost rod of the leg is called the hip offset, followed by the thigh and finally the shank. In a robot entity, the distance from centre of motor controlling hip abduction/adduction to top centre of the thigh is approximated by the hip offset.
 
-% \begin{figure}[htbp]
+% \begin{figure}[htbp]\label{fig:}
 %    \centering
 %    \includegraphics[width=0.8\textwidth]{figures/}
 %    \caption{}
-%    \label{fig:}
 % \end{figure}
 
 The leg has four important parts. There are three movable parts, named hip abduction/adduction (abd/add) joint, hip flextion/extension (fle/ext) joint, and knee joint from top to bottom. The end of the leg is called toe.
@@ -71,23 +69,21 @@ In order to describe leg movements using mathematics, it is first necessary to e
 
 Specifying initial position of the motor and positive direction of rotation is as important as establishing the coordinate system. The quadruped robot model used for this project, Unitree A1, specifies them in its unified-robotics-description-format file, so these provisions are directly followed. The initial position of the motors is shown in Figure <++>, and the positive direction of rotation is shown in Figure <++>.
 
-% \begin{figure}[htbp]
+% \begin{figure}[htbp]\label{fig:}
 %    \centering
 %    \includegraphics[width=0.8\textwidth]{figures/}
 %    \caption{}
-%    \label{fig:}
 % \end{figure}
 
-% \begin{figure}[htbp]
+% \begin{figure}[htbp]\label{fig:}
 %    \centering
 %    \includegraphics[width=0.8\textwidth]{figures/}
 %    \caption{}
-%    \label{fig:}
 % \end{figure}
 
 The Unitree A1's unified-robotics-description-format file also specifies the boundary positions of the motors. They are listed in Table \ref{table:motors_boundary_positions}. For the sake of readability, front-left is abbreviated as fl, front-right as fr, hind-left as hl, and hind-right as hr.
 
-\begin{table}[htbp]
+\begin{table}[htbp]\label{table:motors_boundary_positions}
    \centering
    \caption{Motors boundary positions}
    \begin{tabular}{|c|c|c|}
@@ -106,7 +102,6 @@ The Unitree A1's unified-robotics-description-format file also specifies the bou
    hl knee        & -0.916 & -2.697 \\ \hline
    hr knee        & -0.916 & -2.697 \\ \hline
    \end{tabular}
-   \label{table:motors_boundary_positions}
 \end{table}
 
 The next step is to derive the relationship between the toe coordinates before and after posture adjustment. The posture adjustment including pitching, yawing, rolling, and squatting.
@@ -115,11 +110,10 @@ The next step is to derive the relationship between the toe coordinates before a
 
 When pitching, the body length is constant, and the central axis of the body remains in the same position. Using these two conditions, the coordinates after pitching can be obtained by transforming the coordinate system three times. Take the front-right leg as an example:
 
-% \begin{figure}[htbp]
+% \begin{figure}[htbp]\label{fig:}
 %    \centering
 %    \includegraphics[width=0.8\textwidth]{figures/}
 %    \caption{}
-%    \label{fig:}
 % \end{figure}
 
 The process of translating the coordinate system from hip to the central axis can be described by pre-multipling a transformation matrix
@@ -167,6 +161,48 @@ Then, rotate the coordinate system by the pitching angle $\alpha$ and transform 
 \end{equation}
 
 The coordinates after pitching are obtained. Note that the y-coordinate does not change when pitching.
+
+The two two matrix multiplication above can be combined into one
+
+\begin{equation}\label{eq:pitching_fr_leg}
+   \begin{bmatrix}
+   x_\text{after pitching} \\
+   z_\text{after pitching} \\
+   1                       \\
+   \end{bmatrix}
+   =
+   \begin{bmatrix}
+   \cos\alpha & -\sin\alpha & L \times \cos\alpha - L \\
+   \sin\alpha & \cos\alpha & L \times \sin\alpha \\
+   0 & 0 & 1 \\
+   \end{bmatrix}
+   \begin{bmatrix}
+   x \\
+   z \\
+   1 \\
+   \end{bmatrix}
+\end{equation}
+
+The above calculation process is all for the front-right leg. By calculating the other legs it can be seen that for both front legs Eq. \ref{eq:pitching_fr_leg} holds. For hind legs, the equation is
+
+\begin{equation}
+   \begin{bmatrix}
+   x_\text{after pitching} \\
+   z_\text{after pitching} \\
+   1                       \\
+   \end{bmatrix}
+   =
+   \begin{bmatrix}
+   \cos\alpha & -\sin\alpha & -L \times \cos\alpha + L \\
+   \sin\alpha & \cos\alpha & -L \times \sin\alpha \\
+   0 & 0 & 1 \\
+   \end{bmatrix}
+   \begin{bmatrix}
+   x \\
+   z \\
+   1 \\
+   \end{bmatrix}
+\end{equation}
 
 \subsubsection{Yawing}
 
