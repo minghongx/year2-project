@@ -1,1 +1,122 @@
 \chapter{Materials and Methods}
+
+\section{Materials}
+
+\subsection{Simulation Enviornment}
+
+\begin{itemize}
+   \item \textbf{programming language:} Python 3.10
+   \item \textbf{robotics simulator:} PyBullet 3.2.0
+   \item \textbf{quadruped robot 3D model:} Unitree A1
+   \item \textbf{packages that extend Python's array programming capability:}
+      \subitem Numpy 1.22.2
+      \subitem Pandas 1.4.0
+\end{itemize}
+
+\subsection{Development Environment}
+
+\begin{itemize}
+   \item \textbf{terminal emulator:} Windows Terminal
+   \item \textbf{shell:} PowerShell 7.2.1
+   \item \textbf{package manager:} Scoop
+   \item \textbf{Python version manager:} pyenv-win
+   \item \textbf{Python packaging and dependency manager:} Poetry
+   \item \textbf{version control system:} Git
+   \item \textbf{code hosting platform:} GitHub
+   \item \textbf{languages for documentation:}
+      \subitem Markdown
+      \subitem \LaTeXe
+         \subsubitem TeX distribution: MiKTeX 21.12
+         \subsubitem typesetting engine: XeTeX
+         \subsubitem reference management: BibTeX
+      \subitem Mermaid 8.14.0
+   \item \textbf{editor:} VSCode
+      \subitem \textbf{Python support:} Python extension pack 2022.2.1924087327
+      \subitem \textbf{Markdown support:} Markdown All in One 3.4.0
+      \subitem \textbf{\LaTeX\ support:} LaTeX Workshop 8.23.0
+   \item \textbf{3D CAD modeling:} Shapr3D
+   \item \textbf{file format:} EditorConfig
+   \item \textbf{blog framework:} Hexo
+      \subitem \textbf{theme:} NexT
+      \subitem \textbf{Markdown renderer:} hexo-renderer-marked
+      \subitem \textbf{MathJax renderer:} hexo-filter-mathjax
+   \item \textbf{static site hosting service:} GitHub Pages
+\end{itemize}
+
+\section{Methods}
+
+\subsection{Modelling}
+
+Firstly, a geometric model of the quadruped robot was established.
+
+% \begin{figure}[htbp]
+%    \centering
+%    \includegraphics[width=0.8\textwidth]{figures/}
+%    \caption{}
+%    \label{fig:}
+% \end{figure}
+
+Figure <++> shows a trimetric view of the model. The body is reduced to a square and the legs are reduced to three connecting rods. The joint between the body and the legs is called hip. The uppermost rod of the leg is called the hip offset, followed by the thigh and finally the shank. In a robot entity, the distance from centre of motor controlling hip abduction/adduction to top centre of the thigh is approximated by the hip offset.
+
+% \begin{figure}[htbp]
+%    \centering
+%    \includegraphics[width=0.8\textwidth]{figures/}
+%    \caption{}
+%    \label{fig:}
+% \end{figure}
+
+The leg has four important parts. There are three movable parts, named hip abduction/adduction (abd/add) joint, hip flextion/extension (fle/ext) joint, and knee joint from top to bottom. The end of the leg is called toe.
+
+In order to describe leg movements using mathematics, it is first necessary to establish a coordinate system. In terms of leg movements, the hip and the toe are the parts of the leg that receive the most attention; because once the position of the toe in relation to the hip has been determined, the shape of the leg is fixed. The hip is located in the body and is a immovable point for the body, so setting it as the origin is convient for thinking. The positive direction of the coordinate system is shown in Figure <++>. There will be a coordinate system on each hip. This means that the four legs will be studied separately.
+
+Specifying initial position of the motor and positive direction of rotation is as important as establishing the coordinate system. The quadruped robot model used for this project, Unitree A1, specifies them in its unified-robotics-description-format file, so these provisions are directly followed. The initial position of the motors is shown in Figure <++>, and the positive direction of rotation is shown in Figure <++>.
+
+% \begin{figure}[htbp]
+%    \centering
+%    \includegraphics[width=0.8\textwidth]{figures/}
+%    \caption{}
+%    \label{fig:}
+% \end{figure}
+
+% \begin{figure}[htbp]
+%    \centering
+%    \includegraphics[width=0.8\textwidth]{figures/}
+%    \caption{}
+%    \label{fig:}
+% \end{figure}
+
+The Unitree A1's unified-robotics-description-format file also specifies the boundary positions of the motors. They are listed in Table \ref{table:motors_boundary_positions}. For the sake of readability, front-left is abbreviated as fl, front-right as fr, hind-left as hl, and hind-right as hr.
+
+\begin{table}[htbp]
+   \centering
+   \caption{Motors boundary positions}
+   \begin{tabular}{|c|c|c|}
+   \hline
+   Motors & Positive Boundary (rad) & Negative Boundary (rad) \\ \hline
+   fl hip abd/add & & \\ \hline
+   fr hip abd/add & & \\ \hline
+   hl hip abd/add & & \\ \hline
+   hr hip abd/add & & \\ \hline
+   fl hip fle/ext & & \\ \hline
+   fr hip fle/ext & & \\ \hline
+   hl hip fle/ext & & \\ \hline
+   hr hip fle/ext & & \\ \hline
+   fl knee        & & \\ \hline
+   fr knee        & & \\ \hline
+   hl knee        & & \\ \hline
+   hr knee        & & \\ \hline
+   \end{tabular}
+   \label{table:motors_boundary_positions}
+\end{table}
+
+
+
+\subsection{Coding}
+
+
+
+\subsection{Documenting}
+
+
+
+\subsection{Teamwork}
