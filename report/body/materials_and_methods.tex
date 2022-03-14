@@ -1,1 +1,225 @@
 \chapter{Materials and Methods}
+
+\section{Materials}
+
+\subsection{Simulation Enviornment}
+
+\begin{itemize}
+   \item \textbf{programming language:} Python 3.10
+   \item \textbf{robotics simulator:} PyBullet 3.2.0
+   \item \textbf{quadruped robot 3D model:} Unitree A1
+   \item \textbf{packages that extend Python's array programming capability:}
+      \subitem Numpy 1.22.2
+      \subitem Pandas 1.4.0
+\end{itemize}
+
+\subsection{Development Environment}
+
+\begin{itemize}
+   \item \textbf{terminal emulator:} Windows Terminal
+   \item \textbf{shell:} PowerShell 7.2.1
+   \item \textbf{package manager:} Scoop
+   \item \textbf{Python version manager:} pyenv-win
+   \item \textbf{Python packaging and dependency manager:} Poetry
+   \item \textbf{version control system:} Git
+   \item \textbf{code hosting platform:} GitHub
+   \item \textbf{languages for documentation:}
+      \subitem Markdown
+      \subitem \LaTeXe
+         \subsubitem TeX distribution: MiKTeX 21.12
+         \subsubitem typesetting engine: XeTeX
+         \subsubitem reference management: BibTeX
+      \subitem Mermaid 8.14.0
+   \item \textbf{editor:} VSCode
+      \subitem \textbf{Python support:} Python extension pack 2022.2.1924087327
+      \subitem \textbf{Markdown support:} Markdown All in One 3.4.0
+      \subitem \textbf{\LaTeX\ support:} LaTeX Workshop 8.23.0
+   \item \textbf{3D CAD modeling:} Shapr3D
+   \item \textbf{file format:} EditorConfig
+   \item \textbf{blog framework:} Hexo
+      \subitem \textbf{theme:} NexT
+      \subitem \textbf{Markdown renderer:} hexo-renderer-marked
+      \subitem \textbf{MathJax renderer:} hexo-filter-mathjax
+   \item \textbf{static site hosting service:} GitHub Pages
+\end{itemize}
+
+\section{Methods}
+
+\subsection{Modelling}
+
+Firstly, a geometric model of the quadruped robot was established.
+
+% \begin{figure}[htbp]\label{fig:}
+%    \centering
+%    \includegraphics[width=0.8\textwidth]{figures/}
+%    \caption{}
+% \end{figure}
+
+Figure <++> shows a trimetric view of the model. The body is reduced to a square and the legs are reduced to three connecting rods. The joint between the body and the legs is called hip. The uppermost rod of the leg is called the hip offset, followed by the thigh and finally the shank. In a robot entity, the distance from centre of motor controlling hip abduction/adduction to top centre of the thigh is approximated by the hip offset.
+
+% \begin{figure}[htbp]\label{fig:}
+%    \centering
+%    \includegraphics[width=0.8\textwidth]{figures/}
+%    \caption{}
+% \end{figure}
+
+The leg has four important parts. There are three movable parts, named hip abduction/adduction (abd/add) joint, hip flextion/extension (fle/ext) joint, and knee joint from top to bottom. The end of the leg is called toe.
+
+In order to describe leg movements using mathematics, it is first necessary to establish a coordinate system. In terms of leg movements, the hip and the toe are the parts of the leg that receive the most attention; because once the position of the toe in relation to the hip has been determined, the shape of the leg is fixed. The hip is located in the body and is a immovable point for the body, so setting it as the origin is convient for thinking. The positive direction of the coordinate system is shown in Figure <++>. There will be a coordinate system on each hip. This means that the four legs will be studied separately.
+
+Specifying initial position of the motor and positive direction of rotation is as important as establishing the coordinate system. The quadruped robot model used for this project, Unitree A1, specifies them in its unified-robotics-description-format file, so these provisions are directly followed. The initial position of the motors is shown in Figure <++>, and the positive direction of rotation is shown in Figure <++>.
+
+% \begin{figure}[htbp]\label{fig:}
+%    \centering
+%    \includegraphics[width=0.8\textwidth]{figures/}
+%    \caption{}
+% \end{figure}
+
+% \begin{figure}[htbp]\label{fig:}
+%    \centering
+%    \includegraphics[width=0.8\textwidth]{figures/}
+%    \caption{}
+% \end{figure}
+
+The Unitree A1's unified-robotics-description-format file also specifies the boundary positions of the motors. They are listed in Table \ref{table:motors_boundary_positions}. For the sake of readability, front-left is abbreviated as fl, front-right as fr, hind-left as hl, and hind-right as hr.
+
+\begin{table}[htbp]\label{table:motors_boundary_positions}
+   \centering
+   \caption{Motors boundary positions}
+   \begin{tabular}{|c|c|c|}
+   \hline
+   Motors & Positive Boundary (rad) & Negative Boundary (rad) \\ \hline
+   fl hip abd/add &  0.803 & -0.803 \\ \hline
+   fr hip abd/add &  0.803 & -0.803 \\ \hline
+   hl hip abd/add &  0.803 & -0.803 \\ \hline
+   hr hip abd/add &  0.803 & -0.803 \\ \hline
+   fl hip fle/ext &  4.189 & -1.047 \\ \hline
+   fr hip fle/ext &  4.189 & -1.047 \\ \hline
+   hl hip fle/ext &  4.189 & -1.047 \\ \hline
+   hr hip fle/ext &  4.189 & -1.047 \\ \hline
+   fl knee        & -0.916 & -2.697 \\ \hline
+   fr knee        & -0.916 & -2.697 \\ \hline
+   hl knee        & -0.916 & -2.697 \\ \hline
+   hr knee        & -0.916 & -2.697 \\ \hline
+   \end{tabular}
+\end{table}
+
+The next step is to derive the relationship between the toe coordinates before and after posture adjustment. The posture adjustment including pitching, yawing, rolling, and squatting.
+
+\subsubsection{Pitching}
+
+When pitching, the body length is constant, and the central axis of the body remains in the same position. Using these two conditions, the coordinates after pitching can be obtained by transforming the coordinate system three times. Take the front-right leg as an example:
+
+% \begin{figure}[htbp]\label{fig:}
+%    \centering
+%    \includegraphics[width=0.8\textwidth]{figures/}
+%    \caption{}
+% \end{figure}
+
+The process of translating the coordinate system from hip to the central axis can be described by pre-multipling a transformation matrix
+
+\begin{equation}
+   \begin{bmatrix}
+   x_\text{after translating} \\
+   z_\text{after translating} \\
+   1                       \\
+   \end{bmatrix}
+   =
+   \begin{bmatrix}
+   1 & 0 & L \\
+   0 & 1 & 0 \\
+   0 & 0 & 1 \\
+   \end{bmatrix}
+   \begin{bmatrix}
+   x \\
+   z \\
+   1 \\
+   \end{bmatrix}
+\end{equation}
+
+where L is half body length.
+
+Then, rotate the coordinate system by the pitching angle $\alpha$ and transform it to the new location of the hip. The matrix multiplication for this process is
+
+\begin{equation}
+   \begin{bmatrix}
+   x_\text{after pitching} \\
+   z_\text{after pitching} \\
+   1                       \\
+   \end{bmatrix}
+   =
+   \begin{bmatrix}
+   \cos\alpha & -\sin\alpha & -L \\
+   \sin\alpha & \cos\alpha & 0 \\
+   0 & 0 & 1 \\
+   \end{bmatrix}
+   \begin{bmatrix}
+   x_\text{after translating} \\
+   z_\text{after translating} \\
+   1                       \\
+   \end{bmatrix}
+\end{equation}
+
+The coordinates after pitching are obtained. Note that the y-coordinate does not change when pitching.
+
+The two two matrix multiplication above can be combined into one
+
+\begin{equation}\label{eq:pitching_fr_leg}
+   \begin{bmatrix}
+   x_\text{after pitching} \\
+   z_\text{after pitching} \\
+   1                       \\
+   \end{bmatrix}
+   =
+   \begin{bmatrix}
+   \cos\alpha & -\sin\alpha & L \times \cos\alpha - L \\
+   \sin\alpha & \cos\alpha & L \times \sin\alpha \\
+   0 & 0 & 1 \\
+   \end{bmatrix}
+   \begin{bmatrix}
+   x \\
+   z \\
+   1 \\
+   \end{bmatrix}
+\end{equation}
+
+The above calculation process is all for the front-right leg. By calculating the other legs it can be seen that for both front legs Eq. \ref{eq:pitching_fr_leg} holds. For hind legs, the equation is
+
+\begin{equation}
+   \begin{bmatrix}
+   x_\text{after pitching} \\
+   z_\text{after pitching} \\
+   1                       \\
+   \end{bmatrix}
+   =
+   \begin{bmatrix}
+   \cos\alpha & -\sin\alpha & -L \times \cos\alpha + L \\
+   \sin\alpha & \cos\alpha & -L \times \sin\alpha \\
+   0 & 0 & 1 \\
+   \end{bmatrix}
+   \begin{bmatrix}
+   x \\
+   z \\
+   1 \\
+   \end{bmatrix}
+\end{equation}
+
+\subsubsection{Yawing}
+
+
+
+\subsubsection{Rolling}
+
+
+
+\subsubsection{Squatting}
+
+Squatting is actually the process of continuously changing the height of each hip above the ground. In all cases, the z-coordinate represents this height. Assuming that the standing surface does not change, then simply changing the z-coordinate can achieve a squat.
+
+\subsection{Forward and Inverse Kinematics}
+
+
+
+\subsection{Coding}
+
+
