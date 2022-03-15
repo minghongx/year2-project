@@ -181,7 +181,7 @@ The two two matrix multiplication above can be combined into one
    \end{bmatrix}
 \end{equation}
 
-The above calculation process is all for the front-right leg. By calculating the other legs it can be seen that for both front legs Eq. \ref{eq:pitching_fr_leg} holds. For hind legs, the equation is
+The above calculation process is all for the front-right leg. By calculating the other legs it can be seen that for both \textbf{front} legs Eq \ref{eq:pitching_fr_leg} holds. For \textbf{hind} legs, the equation is
 \begin{equation}
    \begin{bmatrix}
    x_\text{after pitching} \\
@@ -201,7 +201,30 @@ The above calculation process is all for the front-right leg. By calculating the
    \end{bmatrix}
 \end{equation}
 
-Adding the information that y does not change during pitching to the matrix multiplication, the final form is
+Adding the information that y does not change during pitching to the matrix multiplication, the final form for the \textbf{front} legs is
+\begin{equation}
+   \begin{bmatrix}
+   x_\text{after pitching} \\
+   y_\text{after pitching} \\
+   z_\text{after pitching} \\
+   1                       \\
+   \end{bmatrix}
+   =
+   \begin{bmatrix}
+   \cos\alpha & 0 & -\sin\alpha & L \times \cos\alpha - L \\
+   0 & 1 & 0 & 0 \\
+   \sin\alpha & 0 & \cos\alpha & L \times \sin\alpha \\
+   0 & 0 & 0 & 1 \\
+   \end{bmatrix}
+   \begin{bmatrix}
+   x \\
+   y \\
+   z \\
+   1 \\
+   \end{bmatrix}
+\end{equation}
+
+and for the \textbf{hind} legs is
 \begin{equation}
    \begin{bmatrix}
    x_\text{after pitching} \\
