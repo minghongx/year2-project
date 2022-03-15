@@ -139,7 +139,7 @@ The process of translating the coordinate system from hip to the central axis ca
 
 where L is half body length.
 
-Then, rotate the coordinate system by the pitching angle $\alpha$ and transform it to the new location of the hip. The matrix multiplication for this process is
+Then, rotate the coordinate system by the pitching angle $\delta$ and transform it to the new location of the hip. The matrix multiplication for this process is
 \begin{equation}
    \begin{bmatrix}
    x_\text{after pitching} \\
@@ -148,8 +148,8 @@ Then, rotate the coordinate system by the pitching angle $\alpha$ and transform 
    \end{bmatrix}
    =
    \begin{bmatrix}
-   \cos\alpha & -\sin\alpha & -L \\
-   \sin\alpha & \cos\alpha & 0 \\
+   \cos\delta & -\sin\delta & -L \\
+   \sin\delta & \cos\delta & 0 \\
    0 & 0 & 1 \\
    \end{bmatrix}
    \begin{bmatrix}
@@ -170,8 +170,8 @@ The two two matrix multiplication above can be combined into one
    \end{bmatrix}
    =
    \begin{bmatrix}
-   \cos\alpha & -\sin\alpha & L \times \cos\alpha - L \\
-   \sin\alpha & \cos\alpha & L \times \sin\alpha \\
+   \cos\delta & -\sin\delta & L \times \cos\delta - L \\
+   \sin\delta & \cos\delta & L \times \sin\delta \\
    0 & 0 & 1 \\
    \end{bmatrix}
    \begin{bmatrix}
@@ -190,8 +190,8 @@ The above calculation process is all for the front-right leg. By calculating the
    \end{bmatrix}
    =
    \begin{bmatrix}
-   \cos\alpha & -\sin\alpha & -L \times \cos\alpha + L \\
-   \sin\alpha & \cos\alpha & -L \times \sin\alpha \\
+   \cos\delta & -\sin\delta & -L \times \cos\delta + L \\
+   \sin\delta & \cos\delta & -L \times \sin\delta \\
    0 & 0 & 1 \\
    \end{bmatrix}
    \begin{bmatrix}
@@ -211,9 +211,9 @@ Adding the information that y does not change during pitching to the matrix mult
    \end{bmatrix}
    =
    \begin{bmatrix}
-   \cos\alpha & 0 & -\sin\alpha & L \times \cos\alpha - L \\
+   \cos\delta & 0 & -\sin\delta & L \times \cos\delta - L \\
    0 & 1 & 0 & 0 \\
-   \sin\alpha & 0 & \cos\alpha & L \times \sin\alpha \\
+   \sin\delta & 0 & \cos\delta & L \times \sin\delta \\
    0 & 0 & 0 & 1 \\
    \end{bmatrix}
    \begin{bmatrix}
@@ -234,9 +234,9 @@ and for the \textbf{hind} legs is
    \end{bmatrix}
    =
    \begin{bmatrix}
-   \cos\alpha & 0 & -\sin\alpha & -L \times \cos\alpha + L \\
+   \cos\delta & 0 & -\sin\delta & -L \times \cos\delta + L \\
    0 & 1 & 0 & 0 \\
-   \sin\alpha & 0 & \cos\alpha & -L \times \sin\alpha \\
+   \sin\delta & 0 & \cos\delta & -L \times \sin\delta \\
    0 & 0 & 0 & 1 \\
    \end{bmatrix}
    \begin{bmatrix}
@@ -429,15 +429,15 @@ It is necessary to discuss the left and right sides in separate cases, as the Un
 
 Give that thigh length is $l_1$, shank length is $l_2$, distance from the toe to the top point of the thigh rod is h, position of the hip fle/ext joint is $\theta_1$, and position of the knee joint is $\theta_2$. The following equation can be obtained easily from the left-side view of the right leg model shown in Figure \ref{fig:right_leg_model_left-side_view}.
 
-$\theta_1, \theta_2 \Rightarrow x, h$:
+$\theta_1, \theta_2 \rightarrow x, h$:
 \begin{align*}
 x &= -l_1 \times \sin\theta_1 - l_2 \times \sin(\theta_1 + \theta_2) \\
 h &=  l_1 \times \cos\theta_1 + l_2 \times \cos(\theta_1 + \theta_2)
 \end{align*}
 
-$x, h \Rightarrow \theta_1, \theta_2$:
+$x, h \rightarrow \theta_1, \theta_2$:
 \begin{align*}
-\cos\theta_2 &= \frac{-l_1^2 - l_2^2 + x^2 + h^2}{2 l_1 l_2} -l1 \\
+\cos\theta_2 &= \frac{-l_1^2 - l_2^2 + x^2 + h^2}{2 l_1 l_2} \\
 \sin\theta_2 &= -\sqrt{1 - \cos^2\theta_2} \\
 \theta_1 &= \arccos(\frac{l_1^2 + x^2 + h^2 - l_2^2}{2 l_1 \sqrt{x^2 + h^2}}) - \arctantwo(\frac{x}{h}) \\
 \theta_2 &= \arctantwo(\frac{\sin\theta_2}{\cos\theta_2})
@@ -454,14 +454,14 @@ Give that the hip offset is o and position of hip abd/add joint is $\theta_3$. A
 For the \textbf{right} side:
 
 \indent\indent
-$\theta_0 \Rightarrow y, z$:
+$\theta_0 \rightarrow y, z$:
 \begin{align*}
 y &=  o \times \cos\theta_0 - h \times \sin\theta_0 \\
-z &= -o \times \sin\theta_0 - h \times \cos\theta_0 \\
+z &= -o \times \sin\theta_0 - h \times \cos\theta_0
 \end{align*}
 
 \indent\indent
-$y, z \Rightarrow \theta_0$:
+$y, z \rightarrow \theta_0$:
 \begin{equation*}
    \theta_0 = \arctantwo(\frac{\lvert z \lvert}{y}) - \arctantwo(\frac{h}{o})
 \end{equation*}
@@ -469,14 +469,14 @@ $y, z \Rightarrow \theta_0$:
 but for the \textbf{left} side:
 
 \indent\indent
-$\theta_0 \Rightarrow y, z$:
+$\theta_0 \rightarrow y, z$:
 \begin{align*}
 y &= -o \times \cos\theta_0 - h \times \sin\theta_0 \\
-z &=  o \times \sin\theta_0 - h \times \cos\theta_0 \\
+z &=  o \times \sin\theta_0 - h \times \cos\theta_0
 \end{align*}
 
 \indent\indent
-$y, z \Rightarrow \theta_0$:
+$y, z \rightarrow \theta_0$:
 \begin{equation*}
    \theta_0 = \arctantwo(\frac{h}{o}) - \arctantwo(\frac{\lvert z \lvert}{-y})
 \end{equation*}
@@ -486,45 +486,47 @@ $y, z \Rightarrow \theta_0$:
 \noindent
 Forward kinematics:
 
-$\theta_1, \theta_2 \Rightarrow x, h$:
+$\theta_1, \theta_2 \rightarrow x, h$:
 \begin{align}
 x &= -l_1 \times \sin\theta_1 - l_2 \times \sin(\theta_1 + \theta_2) \\
 h &=  l_1 \times \cos\theta_1 + l_2 \times \cos(\theta_1 + \theta_2)
 \end{align}
 
-$\theta_0 \Rightarrow y, z$ for \textbf{right} side:
+$\theta_0 \rightarrow y, z$ for \textbf{right} side:
 \begin{align}
 y &=  o \times \cos\theta_0 - h \times \sin\theta_0 \\
-z &= -o \times \sin\theta_0 - h \times \cos\theta_0 \\
+z &= -o \times \sin\theta_0 - h \times \cos\theta_0
 \end{align}
 
-$\theta_0 \Rightarrow y, z$ for \textbf{left} side:
+$\theta_0 \rightarrow y, z$ for \textbf{left} side:
 \begin{align}
 y &= -o \times \cos\theta_0 - h \times \sin\theta_0 \\
-z &=  o \times \sin\theta_0 - h \times \cos\theta_0 \\
+z &=  o \times \sin\theta_0 - h \times \cos\theta_0
 \end{align}
 
 \noindent
 Inverse kinematics:
 
-$x, h \Rightarrow \theta_1, \theta_2$:
+$x, h \rightarrow \theta_1, \theta_2$:
 \begin{align}
-\cos\theta_2 &= \frac{-l_1^2 - l_2^2 + x^2 + h^2}{2 l_1 l_2} -l1 \\
+\cos\theta_2 &= \frac{-l_1^2 - l_2^2 + x^2 + h^2}{2 l_1 l_2} \\
 \sin\theta_2 &= -\sqrt{1 - \cos^2\theta_2} \\
 \theta_1 &= \arccos(\frac{l_1^2 + x^2 + h^2 - l_2^2}{2 l_1 \sqrt{x^2 + h^2}}) - \arctantwo(\frac{x}{h}) \\
 \theta_2 &= \arctantwo(\frac{\sin\theta_2}{\cos\theta_2})
 \end{align}
 
-$y, z \Rightarrow \theta_0$ for \textbf{right} side:
+$y, z \rightarrow \theta_0$ for \textbf{right} side:
 \begin{equation}
    \theta_0 = \arctantwo(\frac{\lvert z \lvert}{y}) - \arctantwo(\frac{h}{o})
 \end{equation}
 
-$y, z \Rightarrow \theta_0$ for \textbf{left} side:
+$y, z \rightarrow \theta_0$ for \textbf{left} side:
 \begin{equation}
    \theta_0 = \arctantwo(\frac{h}{o}) - \arctantwo(\frac{\lvert z \lvert}{-y})
 \end{equation}
 
 \subsection{Coding}
 
+Equation derivation and coding were carried out simultaneously. After a set of equations for a movement had been derived, a simple Python script was used to verify correctness. If the result seen in the simulator was correct, the algorithm in the script would then be encapsulated into a library which is named liba1.py (See Appendix <++>).
 
+Once a movement had been ecapsulated, a corresponding application was written for debugging and testing purpose. After all the movements completed, a demo application was written which used in presentation of bench inspection. See Appendix <++>.
