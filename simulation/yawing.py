@@ -51,72 +51,11 @@ reset = bullet.addUserDebugParameter(
     startValue = 0)
 previous_btn_value = bullet.readUserDebugParameter(reset)
 
-sleep(1)
-ref_motor_positions = a1.motor_indices.applymap(lambda index: bullet.getJointState(a1.id, index, a1.in_physics_client)[0])
+sleep(1)  # Ugly so FIXME
+# The initialisation is asynchronous. Wait one second to ensure that the motors reach their initial position before reading the position values.
+ref_pos = a1.current_motor_angular_positions()
 while True:
-    motor_positions = ref_motor_positions.copy()
-    yaw_angle = bullet.readUserDebugParameter(debug_yaw_angle)
-
-    for leg, positions in motor_positions.items():
-        t0, t1, t2 = positions
-        l1 = a1.thigh_len
-        l2 = a1.calf_len
-        L  = a1.body_len / 2
-        W  = a1.body_width / 2
-        o  = a1.hip_offset
-        δ  = yaw_angle
-
-        x = -l1 * np.sin(t1) - l2 * np.sin(t1 + t2)
-        h =  l1 * np.cos(t1) + l2 * np.cos(t1 + t2)
-        match leg:
-            case "fl" | "hl":
-                y = -o * np.cos(t0) - h * np.sin(t0)
-                z =  o * np.sin(t0) - h * np.cos(t0)
-            case "fr" | "hr":
-                y =  o * np.cos(t0) - h * np.sin(t0)
-                z = -o * np.sin(t0) - h * np.cos(t0)
-
-        match leg:
-            case "fr":
-                yaw = np.array([[ np.cos(δ), -np.sin(δ),   0,   L * np.cos(δ) - W * np.sin(δ) - L ],
-                                [ np.sin(δ),  np.cos(δ),   0,   L * np.sin(δ) + W * np.cos(δ) - W ],
-                                [ 0,          0,           1,   0                                 ],
-                                [ 0,          0,           0,   1                                 ]])
-            case "fl":
-                yaw = np.array([[ np.cos(δ), -np.sin(δ),   0,   L * np.cos(δ) + W * np.sin(δ) - L ],
-                                [ np.sin(δ),  np.cos(δ),   0,   L * np.sin(δ) - W * np.cos(δ) + W ],
-                                [ 0,          0,           1,   0                                 ],
-                                [ 0,          0,           0,   1                                 ]])
-            case "hr":
-                yaw = np.array([[ np.cos(δ), -np.sin(δ),   0,  -L * np.cos(δ) - W * np.sin(δ) + L ],
-                                [ np.sin(δ),  np.cos(δ),   0,  -L * np.sin(δ) + W * np.cos(δ) - W ],
-                                [ 0,          0,           1,   0                                 ],
-                                [ 0,          0,           0,   1                                 ]])
-            case "hl":
-                yaw = np.array([[ np.cos(δ), -np.sin(δ),   0,  -L * np.cos(δ) + W * np.sin(δ) + L ],
-                                [ np.sin(δ),  np.cos(δ),   0,  -L * np.sin(δ) - W * np.cos(δ) + W ],
-                                [ 0,          0,           1,   0                                 ],
-                                [ 0,          0,           0,   1                                 ]])
-        x, y, z, _ = yaw.dot(np.array([x, y, z, 1]))
-        h = np.sqrt(z**2 + y**2 - o**2)
-
-        c2 = (-l1**2 - l2**2 + x**2 + h**2) / (2 * l1 * l2)
-        s2 = -np.sqrt(1 - c2**2)
-        positions[2] = np.arctan2(s2, c2)
-        positions[1] = np.arccos((l1**2 + x**2 + h**2 - l2**2) / (2 * l1 * np.sqrt(x**2 + h**2))) - np.arctan2(x, h)
-        match leg:
-            case "fl" | "hl":
-                positions[0] = np.arctan2(h, o) - np.arctan2(np.abs(z), -y)
-            case "fr" | "hr":
-                positions[0] = np.arctan2(np.abs(z), y) - np.arctan2(h, o)
-
-    for positions, indices in zip(motor_positions.itertuples(index=False), a1.motor_indices.itertuples(index=False)):
-        bullet.setJointMotorControlArray(
-            physicsClientId = physics_server_id,
-            bodyUniqueId = a1.id,
-            jointIndices = indices,
-            controlMode = bullet.POSITION_CONTROL,
-            targetPositions = positions)
+    a1.yawing(bullet.readUserDebugParameter(debug_yaw_angle), ref_pos)
 
     if bullet.readUserDebugParameter(reset) != previous_btn_value:
         # reset position
