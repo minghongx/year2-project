@@ -17,6 +17,7 @@ bullet.resetDebugVisualizerCamera(
     cameraYaw = 40,
     cameraPitch = -15)
 
+# Debug parameter silders to adjust the robot's motions
 debug_pitch_angle = bullet.addUserDebugParameter(
     paramName = "pitch angle (rad)",
     rangeMin = -0.31,
@@ -38,6 +39,7 @@ debug_height = bullet.addUserDebugParameter(
     rangeMax = 370,
     startValue = 270,)
 
+# Buttons to change the observing views
 debug_initial_view = bullet.addUserDebugParameter(
     paramName="initial view",
     rangeMin = 1,
@@ -57,12 +59,13 @@ debug_top_view = bullet.addUserDebugParameter(
     startValue = 0)
 top_view = bullet.readUserDebugParameter(debug_top_view)
 
+# Button to reset the robot position
 reset = bullet.addUserDebugParameter(
     paramName="Reset Position",
     rangeMin = 1,
     rangeMax = 0,
     startValue = 0)
-previous_btn_value = bullet.readUserDebugParameter(reset)
+reset_value  = bullet.readUserDebugParameter(reset)
 
 sleep(1)
 ref_motor_positions = a1.motor_indices.applymap(lambda index: bullet.getJointState(a1.id, index, a1.in_physics_client)[0])
@@ -161,10 +164,10 @@ while True:
             controlMode = bullet.POSITION_CONTROL,
             targetPositions = positions)
 
-    if bullet.readUserDebugParameter(reset) != previous_btn_value:
+    if bullet.readUserDebugParameter(reset) != reset_value:
         # reset position
         bullet.resetBasePositionAndOrientation(a1.id, [0, 0, 0.43], [0, 0, 0, 1])
-        previous_btn_value = bullet.readUserDebugParameter(reset)
+        reset_value = bullet.readUserDebugParameter(reset)
 
     if bullet.readUserDebugParameter(debug_initial_view) != initial_view:
         # set the camera to be initial view
