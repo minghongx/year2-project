@@ -1,1 +1,23 @@
 \chapter{Discussion and Conclusions}
+
+
+\section{Limitations and Improvement}
+\subsection{Ranges of Debug Parameters}
+In the simulation, the debug parameters were utilized to adjust the locomotion of the quadruped robot. The ranges of debug parameters are given in advance. The fixed ranges would not affect the robot when it performs a single action. Nevertheless, it is not appropriate for the robot to use the fixed range when performing multiple actions at the same time. For example, if the robot stretches its legs to reach the highest squatting position, which means the legs have reached the longest. Afterwards, moving other sliders will lead to program errors, and the robot will disappear in the GUI~\cite{ref:GUI} owing to the errors. 
+To avoid the error caused by the fixed range, the approach is to calculate the real-time debug parameter range according to the joint state of the robot. However, the real-time value ranges need to get the joints' state firstly, then bring them into the correlation matrix to deduce the value range inversely, and compare it with the value range of the joint itself. The complexity of real-time range is close to the quadrupedal locomotion, so it is hard for us to spare time to optimize this part of the code. Otherwise, there is another way to improve the robustness of the code, which is to narrow the range make it so that the robot cannot reach the limit range. Although the problem is not solved from the root, there is less possibility that the code will make mistakes during operation.
+
+\subsection{Non-zero steady-state error}
+When the robot is stationary, its joints are not completely static. The robot's joints would move in a minute range. The range of this steady-state error is approximately five decimal places. However, the current state read is used as a reference when controlling the attitude of the robot. Therefore, the previous steady-state error will be substituted into the next action, and the program does not know the generation of this error. In the process of research, we find that as long as the accuracy of the parameters is controlled in three places after the decimal point, the steady-state error can be effectively reduced. But in theory, the problem of steady-state error should not be solved in this way. Therefore, in the following aspects that can be improved, we hope to reduce the steady-state error by using the robust integral controller~\cite{ref:RNIcontrol} for the nonlinear system.
+
+\subsection{Friction between the plane and robot}
+When dragging the slider rapidlly to adjust the attitude of the robot, the robot will shift from the original position. This is because the friction between the toe joints of the robot and the plane is too small to provide the necessary force for the robot to move under this acceleration. The solution is to increase the friction coefficient between the toe joints and the plane in order to increase the friction force.
+
+
+\section{Future work}
+
+
+\section{Intellectual property}
+
+\section{Completion degree of objectives}
+
+\section{Conclusion}
