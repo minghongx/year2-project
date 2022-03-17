@@ -125,6 +125,8 @@ class A1:
         establishing the body's Euler angles. Another is based upon roll, pitch and yaw, although these terms also
         refer to incremental deviations from the nominal attitude.
 
+        The attitude is described by attitude coordinates, and consists of at least three coordinates.
+
         Available: https://en.wikipedia.org/wiki/Orientation_(geometry) [Accessed: 17 March 2022]
 
         Tait-Bryan angles is the convention normally used for aerospace applications, so that zero degrees elevation
@@ -221,6 +223,8 @@ class A1:
             x, y, z, _ = yaw.dot(np.array([x, y, z, 1]))
 
             θ[0], θ[1], θ[2] = A1._inverse_kinematics(leg, x, y, z)
+
+            # FIXME: If θ[0] or θ[1] or θ[2] exceeds its limits, aborting them by using return
 
         # Control angular position of each motor
         for positions_of_one_leg, indices_of_one_leg in zip(pose.itertuples(index=False), A1.motor_indices.itertuples(index=False)):
