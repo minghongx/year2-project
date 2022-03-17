@@ -82,37 +82,83 @@ class A1:
         return A1.motor_indices.applymap(lambda index: bullet.getJointInfo(self.id, index))
 
 
-    def current_motor_angular_positions(self):
+    def current_pose(self):
         return A1.motor_indices.applymap(lambda index: bullet.getJointState(self.id, index, self.in_physics_client)[0])
 
 
-    def adjust_posture(self, roll_angle=0., pitch_angle=0., yaw_angle=0., Δz=0., ref_motor_angular_positions=None) -> None:
+    def pose_control(self, roll_angle=0., pitch_angle=0., yaw_angle=0., Δz=0., reference_pose=None) -> None:
         """
-        Adjust trunk posture relative to another posture
+        Adjust pose of fuselage; move the fuselage from a reference placement to a desired placement
+
+        fuselage
+        : the central body portion of an aircraft designed to accommodate the crew and the passengers or cargo
+        Available: https://www.merriam-webster.com/dictionary/fuselage [Accessed: 17 March 2022]
+
+        Attitude and position fully describe how an object is placed in space. (For some applications such as in
+        robotics and computer vision, it is customary to combine position and attitude together into a single
+        description known as Pose.)
+        Available: https://en.wikipedia.org/wiki/Attitude_control#Geometry [Accessed: 17 March 2022]
+        Further Read: https://en.wikipedia.org/wiki/Pose_(computer_vision)
+
+        In geometry, the orientation, angular position, attitude, or direction of an object such as a line, plane,
+        or rigid body is part of the description of how it is placed in the space it occupies. More specifically,
+        it refers to the imaginary rotation that is needed to move the object from a reference placement to its
+        current placement. A rotation may not be enough to reach the current placement. It may be necessary to add
+        an imaginary translation, called the object's location (or position, or linear position). The location and
+        orientation together fully describe how the object is placed in space. The above-mentioned imaginary rotation
+        and translation may be thought to occur in any order, as the orientation of an object does not change when
+        it translates, and its location does not change when it rotates.
+
+        Euler's rotation theorem shows that in three dimensions any orientation can be reached with a single rotation
+        around a fixed axis. This gives one common way of representing the orientation using an axis-angle
+        representation. Other widely used methods include rotation quaternions, rotors, Euler angles, or rotation
+        matrices. More specialist uses include Miller indices in crystallography, strike and dip in geology and grade
+        on maps and signs. Unit vector may also be used to represent an object's normal vector orientation.
+
+        Typically, the orientation is given relative to a frame of reference, usually specified by a Cartesian
+        coordinate system.
+
+        The attitude of a rigid body is its orientation as described, for example, by the orientation of a frame
+        fixed in the body relative to a fixed reference frame. The attitude is described by attitude coordinates, and
+        consists of at least three coordinates. One scheme for orienting a rigid body is based upon body-axes
+        rotation; successive rotations three times about the axes of the body's fixed reference frame, thereby
+        establishing the body's Euler angles. Another is based upon roll, pitch and yaw, although these terms also
+        refer to incremental deviations from the nominal attitude.
+
+        Available: https://en.wikipedia.org/wiki/Orientation_(geometry) [Accessed: 17 March 2022]
+
+        Tait-Bryan angles is the convention normally used for aerospace applications, so that zero degrees elevation
+        represents the horizontal attitude. Tait-Bryan angles represent the orientation of the aircraft with respect
+        to the world frame. When dealing with other vehicles, different axes conventions are possible.
+
+        Alternative names
+        For an aircraft, they can be obtained with three rotations around its principal axes if done in the proper
+        order. A yaw will obtain the bearing, a pitch will yield the elevation and a roll gives the bank angle.
+        Therefore, in aerospace they are sometimes called yaw, pitch and roll. Notice that this will not work if the
+        rotations are applied in any other order or if the airplane axes start in any position non-equivalent to the
+        reference frame.
+
+        Available: https://en.wikipedia.org/wiki/Euler_angles [Accessed: 17 March 2022]
 
         :param Δz:
-            Height is not easily defined for a legged robot on uneven terrains;
-            hence, z-coordinate of the toe relative to the coordinate system on
-            the hip of each leg is used.
-        :param ref_motor_angular_positions:
-            represents a trunk posture, and the changed trunk posture after using
-            this method is relative to this one. For example, if roll_angle is
-            set to 0.4 and others are zero, and set this param to whatever
-            posture, then this method rolls the robot by 0.4 rad relative to this
-            posture.
+            Height is not easily defined for a legged robot on uneven terrains; hence, z-coordinate of the toe
+            relative to the coordinate system on the hip of each leg is used.
+        :param reference_pose:
+            A frame of reference which the attitude and position given by the other params is relative to
         """
 
-        if ref_motor_angular_positions is None:
+        if reference_pose is None:
             # FIXME: 取 angle 为 0.0 相对当前位置反复计算可以观察到, 误差会累加, 机器狗姿态慢慢畸形.
             # Possible Sol: 数值精度缩小到 3 decimal places
-            angular_positions = self.current_motor_angular_positions()
+            pose = self.current_pose()
         else:
-            angular_positions = ref_motor_angular_positions.copy()
+            pose = reference_pose.copy()
 
-        for leg, θ in angular_positions.items():  #! 引用传递; 修改 θ 即修改 angular_positions 中的元素
+        for leg, θ in pose.items():  #! 引用传递; 修改 θ 即修改 pose 中的元素
             # θ is a tuple of three motor angular positions of one leg
 
             # Abbreviating to increase readability
+            # FIXME: Adhere to typical notation (ψ, θ, φ) given by the Euler angles
             λ = roll_angle
             δ = pitch_angle
             β = yaw_angle
@@ -122,7 +168,7 @@ class A1:
             x, y, z = A1._forward_kinematics(leg, *θ)
 
             # Adjust height
-            z -= Δz
+            z -= Δz  # FIXME: Wrong algrithm.
 
             # x, y, z after rolling
             match leg:
@@ -176,8 +222,8 @@ class A1:
 
             θ[0], θ[1], θ[2] = A1._inverse_kinematics(leg, x, y, z)
 
-        # Motor angular position control
-        for positions_of_one_leg, indices_of_one_leg in zip(angular_positions.itertuples(index=False), A1.motor_indices.itertuples(index=False)):
+        # Control angular position of each motor
+        for positions_of_one_leg, indices_of_one_leg in zip(pose.itertuples(index=False), A1.motor_indices.itertuples(index=False)):
             bullet.setJointMotorControlArray(
                 physicsClientId = self.in_physics_client,
                 bodyUniqueId = self.id,

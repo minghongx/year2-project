@@ -50,9 +50,9 @@ previous_btn_value = bullet.readUserDebugParameter(reset)
 
 sleep(1)  # Ugly so FIXME
 # The initialisation is asynchronous. Wait one second to ensure that the motors reach their initial position before reading the position values.
-ini_pos = a1.current_motor_angular_positions()
+ini_pose = a1.current_pose()
 while True:
-    a1.adjust_posture(yaw_angle=bullet.readUserDebugParameter(debug_yaw_angle), ref_motor_angular_positions=ini_pos)
+    a1.pose_control(yaw_angle=bullet.readUserDebugParameter(debug_yaw_angle), reference_pose=ini_pose)
 
     if bullet.readUserDebugParameter(reset) != previous_btn_value:
         # reset position

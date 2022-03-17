@@ -68,14 +68,14 @@ reset_value  = bullet.readUserDebugParameter(reset)
 
 sleep(1)  # Ugly so FIXME
 # The initialisation is asynchronous. Wait one second to ensure that the motors reach their initial position before reading the position values.
-ini_pos = a1.current_motor_angular_positions()
+ini_pose = a1.current_pose()
 while True:
-    a1.adjust_posture(
+    a1.pose_control(
         roll_angle  = bullet.readUserDebugParameter(debug_roll_angle),
         pitch_angle = bullet.readUserDebugParameter(debug_pitch_angle),
         yaw_angle   = bullet.readUserDebugParameter(debug_yaw_angle),
         Δz          = bullet.readUserDebugParameter(debug_height),
-        ref_motor_angular_positions=ini_pos)
+        reference_pose=ini_pose)
 
     if bullet.readUserDebugParameter(debug_initial_view) != initial_view:
         # set the camera to be initial view

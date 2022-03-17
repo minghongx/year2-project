@@ -24,6 +24,6 @@ debug_height = bullet.addUserDebugParameter(
 
 sleep(1)  # Ugly so FIXME
 # The initialisation is asynchronous. Wait one second to ensure that the motors reach their initial position before reading the position values.
-ini_pos = a1.current_motor_angular_positions()
+ini_pose = a1.current_pose()
 while True:
-    a1.adjust_posture(Δz=bullet.readUserDebugParameter(debug_height), ref_motor_angular_positions=ini_pos)
+    a1.pose_control(Δz=bullet.readUserDebugParameter(debug_height), reference_pose=ini_pose)

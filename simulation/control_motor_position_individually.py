@@ -15,14 +15,14 @@ bullet.resetDebugVisualizerCamera(
     cameraYaw = 40,
     cameraPitch = -15)
 
-motor_debug = a1.motor_info.applymap(
+debug_motors = a1.motor_info().applymap(
     lambda info: (index := info[0], bullet.addUserDebugParameter(
                                         physicsClientId = physics_server_id,
                                         paramName = info[1].decode("UTF-8"),
                                         rangeMin = info[8],
                                         rangeMax = info[9],
-                                        startValue = 0.7 if index in a1.motor_indices.loc["hip fle/ext", :].to_numpy()
-                                               else -0.7*2 if index in a1.motor_indices.loc["knee", :].to_numpy()
+                                        startValue = 0.7 if index in a1.motor_indices.loc[A1.Motor.h_fe.value, :].to_numpy()    # FIXME: Use 3.11 enum.StrEnum to remove .value
+                                               else -0.7*2 if index in a1.motor_indices.loc[A1.Motor.knee.value, :].to_numpy()  # FIXME: Use 3.11 enum.StrEnum to remove .value
                                                else  0,))
 ).to_numpy().flatten()
 
@@ -30,6 +30,6 @@ while True:
     bullet.setJointMotorControlArray(
         physicsClientId = physics_server_id,
         bodyUniqueId = a1.id,
-        jointIndices = [index for index, _ in motor_debug],
+        jointIndices = [index for index, _ in debug_motors],
         controlMode = bullet.POSITION_CONTROL,
-        targetPositions = [bullet.readUserDebugParameter(param) for _, param in motor_debug],)
+        targetPositions = [bullet.readUserDebugParameter(param) for _, param in debug_motors],)
