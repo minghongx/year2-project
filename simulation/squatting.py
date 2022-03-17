@@ -1,5 +1,4 @@
 import pybullet as bullet
-import numpy as np
 from liba1 import A1
 from time import sleep
 
