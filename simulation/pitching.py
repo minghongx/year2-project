@@ -25,6 +25,6 @@ debug_pitch_angle = bullet.addUserDebugParameter(
 
 sleep(1)  # Ugly so FIXME
 # The initialisation is asynchronous. Wait one second to ensure that the motors reach their initial position before reading the position values.
-ref_pos = a1.current_motor_angular_positions()
+ini_pos = a1.current_motor_angular_positions()
 while True:
-    a1.pitching(bullet.readUserDebugParameter(debug_pitch_angle), ref_pos)
+    a1.adjust_posture(pitch_angle=bullet.readUserDebugParameter(debug_pitch_angle), ref_motor_angular_positions=ini_pos)

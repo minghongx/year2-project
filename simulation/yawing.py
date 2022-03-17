@@ -18,7 +18,7 @@ bullet.resetDebugVisualizerCamera(
     cameraPitch = -15)
 
 debug_yaw_angle = bullet.addUserDebugParameter(
-    paramName = "yaw angle",
+    paramName = "yaw angle (rad)",
     rangeMin = -0.36,
     rangeMax =  0.36,
     startValue = 0)
@@ -29,14 +29,12 @@ debug_front_view = bullet.addUserDebugParameter(
     rangeMax = 0,
     startValue = 0)
 front_view = bullet.readUserDebugParameter(debug_front_view)
-
 debug_top_view = bullet.addUserDebugParameter(
     paramName="top view",
     rangeMin = 1,
     rangeMax = 0,
     startValue = 0)
 top_view = bullet.readUserDebugParameter(debug_top_view)
-
 debug_bottom_view = bullet.addUserDebugParameter(
     paramName="bottom view",
     rangeMin = 1,
@@ -53,9 +51,9 @@ previous_btn_value = bullet.readUserDebugParameter(reset)
 
 sleep(1)  # Ugly so FIXME
 # The initialisation is asynchronous. Wait one second to ensure that the motors reach their initial position before reading the position values.
-ref_pos = a1.current_motor_angular_positions()
+ini_pos = a1.current_motor_angular_positions()
 while True:
-    a1.yawing(bullet.readUserDebugParameter(debug_yaw_angle), ref_pos)
+    a1.adjust_posture(yaw_angle=bullet.readUserDebugParameter(debug_yaw_angle), ref_motor_angular_positions=ini_pos)
 
     if bullet.readUserDebugParameter(reset) != previous_btn_value:
         # reset position
@@ -71,7 +69,6 @@ while True:
             cameraYaw = 90,
             cameraPitch = 0)
         front_view = bullet.readUserDebugParameter(debug_front_view)
-
     if bullet.readUserDebugParameter(debug_top_view) != top_view:
         # set the camera to be overlook view
         bullet.resetDebugVisualizerCamera(
@@ -81,7 +78,6 @@ while True:
             cameraYaw = 90,
             cameraPitch = -89)
         top_view = bullet.readUserDebugParameter(debug_top_view)
-
     if bullet.readUserDebugParameter(debug_bottom_view) != bottom_view:
         # set the camera to be overlook view
         bullet.resetDebugVisualizerCamera(

@@ -40,9 +40,9 @@ previous_btn_value = bullet.readUserDebugParameter(reset)
 
 sleep(1)  # Ugly so FIXME
 # The initialisation is asynchronous. Wait one second to ensure that the motors reach their initial position before reading the position values.
-ref_pos = a1.current_motor_angular_positions()
+ini_pos = a1.current_motor_angular_positions()
 while True:
-    a1.rolling(bullet.readUserDebugParameter(debug_roll_angle), ref_pos)
+    a1.adjust_posture(roll_angle=bullet.readUserDebugParameter(debug_roll_angle), ref_motor_angular_positions=ini_pos)
 
     if bullet.readUserDebugParameter(reset) != previous_btn_value:
         # reset position

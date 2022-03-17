@@ -86,7 +86,7 @@ class A1:
         return A1.motor_indices.applymap(lambda index: bullet.getJointState(self.id, index, self.in_physics_client)[0])
 
 
-    def pitching(self, angle, ref_motor_angular_positions=None) -> None:
+    def adjust_posture(self, roll_angle=0., pitch_angle=0., yaw_angle=0., δz=0., ref_motor_angular_positions=None) -> None:
 
         if ref_motor_angular_positions is None:
             # FIXME: 取 angle 为 0.0 相对当前位置反复计算可以观察到, 误差会累加, 机器狗姿态慢慢畸形.
@@ -99,10 +99,30 @@ class A1:
             # θ is a tuple of three motor angular positions of one leg
 
             # Abbreviating to increase readability
-            δ = angle
+            λ = roll_angle
+            δ = pitch_angle
+            β = yaw_angle
             L = A1.body_len / 2
+            W = A1.body_width / 2
 
             x, y, z = A1._forward_kinematics(leg, *θ)
+
+            # adjust height
+            z -= δz
+
+            # x, y, z after rolling
+            match leg:
+                case A1.Leg.fr.value | A1.Leg.hr.value:  # FIXME: Use 3.11 enum.StrEnum to remove .value
+                    roll = np.array([[ 1,  0,          0,          0                 ],
+                                     [ 0,  np.cos(λ), -np.sin(λ),  W * np.cos(λ) - W ],
+                                     [ 0,  np.sin(λ),  np.cos(λ),  W * np.sin(λ)     ],
+                                     [ 0,  0,          0,          1                 ]])
+                case A1.Leg.fl.value | A1.Leg.hl.value:  # FIXME: Use 3.11 enum.StrEnum to remove .value
+                    roll = np.array([[ 1,  0,          0,          0                 ],
+                                     [ 0,  np.cos(λ), -np.sin(λ), -W * np.cos(λ) + W ],
+                                     [ 0,  np.sin(λ),  np.cos(λ), -W * np.sin(λ)     ],
+                                     [ 0,  0,          0,          1                 ]])
+            x, y, z, _ = roll.dot(np.array([x, y, z, 1]))
 
             # x, z after pitching
             match leg:
@@ -115,37 +135,6 @@ class A1:
                                       [ np.sin(δ),  np.cos(δ), -L * np.sin(δ)     ],
                                       [ 0,          0,          1                 ]])
             x, z, _ = pitch.dot(np.array([x, z, 1]))
-
-            θ[0], θ[1], θ[2] = A1._inverse_kinematics(leg, x, y, z)
-
-        # Motor angular position control
-        for positions_of_one_leg, indices_of_one_leg in zip(angular_positions.itertuples(index=False), A1.motor_indices.itertuples(index=False)):
-            bullet.setJointMotorControlArray(
-                physicsClientId = self.in_physics_client,
-                bodyUniqueId = self.id,
-                controlMode = bullet.POSITION_CONTROL,
-                jointIndices = indices_of_one_leg,
-                targetPositions = positions_of_one_leg,)
-
-
-    def yawing(self, angle, ref_motor_angular_positions=None) -> None:
-
-        if ref_motor_angular_positions is None:
-            # FIXME: 取 angle 为 0.0 相对当前位置反复计算可以观察到, 误差会累加, 机器狗姿态慢慢畸形.
-            # Possible Sol: 数值精度缩小到 3 decimal places
-            angular_positions = self.current_motor_angular_positions()
-        else:
-            angular_positions = ref_motor_angular_positions.copy()
-
-        for leg, θ in angular_positions.items():  #! 引用传递; 修改 θ 即修改 angular_positions 中的元素
-            # θ is a tuple of three motor angular positions of one leg
-
-            # Abbreviating to increase readability
-            β = angle
-            L = A1.body_len / 2
-            W = A1.body_width / 2
-
-            x, y, z = A1._forward_kinematics(leg, *θ)
 
             # x, y, z after yawing
             match leg:
@@ -170,78 +159,6 @@ class A1:
                                     [ 0,          0,           1,   0                                 ],
                                     [ 0,          0,           0,   1                                 ]])
             x, y, z, _ = yaw.dot(np.array([x, y, z, 1]))
-
-            θ[0], θ[1], θ[2] = A1._inverse_kinematics(leg, x, y, z)
-
-        # Motor angular position control
-        for positions_of_one_leg, indices_of_one_leg in zip(angular_positions.itertuples(index=False), A1.motor_indices.itertuples(index=False)):
-            bullet.setJointMotorControlArray(
-                physicsClientId = self.in_physics_client,
-                bodyUniqueId = self.id,
-                controlMode = bullet.POSITION_CONTROL,
-                jointIndices = indices_of_one_leg,
-                targetPositions = positions_of_one_leg,)
-
-
-    def rolling(self, angle, ref_motor_angular_positions=None) -> None:
-
-        if ref_motor_angular_positions is None:
-            # FIXME: 取 angle 为 0.0 相对当前位置反复计算可以观察到, 误差会累加, 机器狗姿态慢慢畸形.
-            # Possible Sol: 数值精度缩小到 3 decimal places
-            angular_positions = self.current_motor_angular_positions()
-        else:
-            angular_positions = ref_motor_angular_positions.copy()
-
-        for leg, θ in angular_positions.items():  #! 引用传递; 修改 θ 即修改 angular_positions 中的元素
-            # θ is a tuple of three motor angular positions of one leg
-
-            # Abbreviating to increase readability
-            λ  = angle
-            W  = A1.body_width / 2
-
-            x, y, z = A1._forward_kinematics(leg, *θ)
-
-            # x, y, z after rolling
-            match leg:
-                case A1.Leg.fr.value | A1.Leg.hr.value:  # FIXME: Use 3.11 enum.StrEnum to remove .value
-                    roll = np.array([[ 1,  0,          0,          0                 ],
-                                     [ 0,  np.cos(λ), -np.sin(λ),  W * np.cos(λ) - W ],
-                                     [ 0,  np.sin(λ),  np.cos(λ),  W * np.sin(λ)     ],
-                                     [ 0,  0,          0,          1                 ]])
-                case A1.Leg.fl.value | A1.Leg.hl.value:  # FIXME: Use 3.11 enum.StrEnum to remove .value
-                    roll = np.array([[ 1,  0,          0,          0                 ],
-                                     [ 0,  np.cos(λ), -np.sin(λ), -W * np.cos(λ) + W ],
-                                     [ 0,  np.sin(λ),  np.cos(λ), -W * np.sin(λ)     ],
-                                     [ 0,  0,          0,          1                 ]])
-            x, y, z, _ = roll.dot(np.array([x, y, z, 1]))
-
-            θ[0], θ[1], θ[2] = A1._inverse_kinematics(leg, x, y, z)
-
-        # Motor angular position control
-        for positions_of_one_leg, indices_of_one_leg in zip(angular_positions.itertuples(index=False), A1.motor_indices.itertuples(index=False)):
-            bullet.setJointMotorControlArray(
-                physicsClientId = self.in_physics_client,
-                bodyUniqueId = self.id,
-                controlMode = bullet.POSITION_CONTROL,
-                jointIndices = indices_of_one_leg,
-                targetPositions = positions_of_one_leg,)
-
-
-    def squatting(self, height, ref_motor_angular_positions=None) -> None:
-
-        if ref_motor_angular_positions is None:
-            # FIXME: 取 angle 为 0.0 相对当前位置反复计算可以观察到, 误差会累加, 机器狗姿态慢慢畸形.
-            # Possible Sol: 数值精度缩小到 3 decimal places
-            angular_positions = self.current_motor_angular_positions()
-        else:
-            angular_positions = ref_motor_angular_positions.copy()
-
-        for leg, θ in angular_positions.items():  #! 引用传递; 修改 θ 即修改 angular_positions 中的元素
-            # θ is a tuple of three motor angular positions of one leg
-
-            x, y, z = A1._forward_kinematics(leg, *θ)
-
-            z = -height  # z is negative height as per coordinate system
 
             θ[0], θ[1], θ[2] = A1._inverse_kinematics(leg, x, y, z)
 

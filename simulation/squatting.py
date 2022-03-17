@@ -18,13 +18,13 @@ bullet.resetDebugVisualizerCamera(
     cameraPitch = -15)
 
 debug_height = bullet.addUserDebugParameter(
-    paramName = "height",
-    rangeMin = 10,
-    rangeMax = 370,
-    startValue = 306,)
+    paramName = "delta z",
+    rangeMin = -200,
+    rangeMax = 60,
+    startValue = 0,)
 
 sleep(1)  # Ugly so FIXME
 # The initialisation is asynchronous. Wait one second to ensure that the motors reach their initial position before reading the position values.
-ref_pos = a1.current_motor_angular_positions()
+ini_pos = a1.current_motor_angular_positions()
 while True:
-    a1.squatting(bullet.readUserDebugParameter(debug_height), ref_pos)
+    a1.adjust_posture(δz=bullet.readUserDebugParameter(debug_height), ref_motor_angular_positions=ini_pos)
