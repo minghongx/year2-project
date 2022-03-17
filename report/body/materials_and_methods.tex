@@ -50,41 +50,38 @@
 
 Firstly, a geometric model of the quadruped robot was established.
 
-\begin{figure}[htbp]\label{fig:geometric_model}
+\begin{figure}[htbp]
    \centering
    \includegraphics[width=0.65\textwidth]{figures/geometric_model.jpg}
    \caption{Geometric model of the quadruped robot}
+   \label{fig:geometric_model}
 \end{figure}
 
 Figure \ref{fig:geometric_model} shows a trimetric view of the model. The body is reduced to a square and the legs are reduced to three connecting rods. The joint between the body and the legs is called hip. The uppermost rod of the leg is called the hip offset, followed by the thigh and finally the shank. In a robot entity, the distance from centre of motor controlling hip abduction/adduction to top centre of the thigh is approximated by the hip offset.
 
-\begin{figure}[htbp]\label{fig:right_leg_model}
+\begin{figure}[htbp]
    \centering
    \includegraphics[width=0.7\textwidth]{figures/right_leg_model.jpg}
    \caption{Right leg model}
+   \label{fig:right_leg_model}
 \end{figure}
 
 The leg has four important parts. There are three movable parts, named hip abduction/adduction (abd/add) joint, hip flextion/extension (fle/ext) joint, and knee joint from top to bottom. The end of the leg is called toe.
 
 In order to describe leg movements using mathematics, it is first necessary to establish a coordinate system. In terms of leg movements, the hip and the toe are the parts of the leg that receive the most attention; because once the position of the toe in relation to the hip has been determined, the shape of the leg is fixed. The hip is located in the body and is a immovable point for the body, so setting it as the origin is convient for thinking. The positive direction of the coordinate system is shown in Figure \ref{fig:geometric_model}. There will be a coordinate system on each hip. This means that the four legs will be studied separately.
 
-Specifying initial position of the motor and positive direction of rotation is as important as establishing the coordinate system. The quadruped robot model used for this project, Unitree A1, specifies them in its unified-robotics-description-format file, so these provisions are directly followed. The initial position of the motors is shown in Figure <++>, and the positive direction of rotation is shown in Figure <++>.
+Specifying initial position of the motor and positive direction of rotation is as important as establishing the coordinate system. The quadruped robot model used for this project, Unitree A1, specifies them in its unified-robotics-description-format file, so these provisions are directly followed. The initial position of the motors and the positive direction of rotation is shown in Figure <++>.
 
-% \begin{figure}[htbp]\label{fig:}
+% \begin{figure}[htbp]
 %    \centering
 %    \includegraphics[width=0.8\textwidth]{figures/}
 %    \caption{}
-% \end{figure}
-
-% \begin{figure}[htbp]\label{fig:}
-%    \centering
-%    \includegraphics[width=0.8\textwidth]{figures/}
-%    \caption{}
+%    \label{fig:}
 % \end{figure}
 
 The Unitree A1's unified-robotics-description-format file also specifies the boundary positions of the motors. They are listed in Table \ref{table:motors_boundary_positions}. For the sake of readability, front-left is abbreviated as fl, front-right as fr, hind-left as hl, and hind-right as hr.
 
-\begin{table}[htbp]\label{table:motors_boundary_positions}
+\begin{table}[htbp]
    \centering
    \caption{Motors boundary positions}
    \begin{tabular}{|c|c|c|}
@@ -103,6 +100,7 @@ The Unitree A1's unified-robotics-description-format file also specifies the bou
    hl knee        & -0.916 & -2.697 \\ \hline
    hr knee        & -0.916 & -2.697 \\ \hline
    \end{tabular}
+   \label{table:motors_boundary_positions}
 \end{table}
 
 The next step is to derive the relationship between the toe coordinates before and after posture adjustment. The posture adjustment including pitching, yawing, rolling, and squatting.
@@ -111,11 +109,12 @@ The next step is to derive the relationship between the toe coordinates before a
 
 When pitching, the body length is constant, and the central axis of the body remains in the same position. Using these two conditions, the coordinates after pitching can be obtained by transforming the coordinate system three times. Take the front-right leg as an example:
 
-% \begin{figure}[htbp]\label{fig:}
-%    \centering
-%    \includegraphics[width=0.8\textwidth]{figures/}
-%    \caption{}
-% \end{figure}
+\begin{figure}[htbp]
+   \centering
+   \includegraphics[width=0.8\textwidth]{figures/coordinate_transformations_in_pitching.jpg}
+   \caption{Coordinate transformations in pitching}
+   \label{fig:coordinate_transformations_in_pitching}
+\end{figure}
 
 The process of translating the coordinate system from hip to the central axis can be described by pre-multipling a transformation matrix:
 \begin{equation}
@@ -249,13 +248,14 @@ and for the \textbf{hind} legs is
 
 \subsubsection{Yawing}
 
-The above idea also applies to yawing. One difference is that the matrix for translating each of the four coordinate systems is different, so that ultimately each leg corresponds to a matrix. See Figure <++>.
+The above idea also applies to yawing. One difference is that the matrix for translating each of the four coordinate systems is different, so that ultimately each leg corresponds to a matrix. See Figure \ref{fig:coordinate_transformations_in_yawing}.
 
-% \begin{figure}[htbp]\label{fig:}
-%    \centering
-%    \includegraphics[width=0.8\textwidth]{figures/}
-%    \caption{}
-% \end{figure}
+\begin{figure}[htbp]
+   \centering
+   \includegraphics[width=0.8\textwidth]{figures/coordinate_transformations_in_yawing.jpg}
+   \caption{Coordinate transformations in yawing}
+   \label{fig:coordinate_transformations_in_yawing}
+\end{figure}
 
 As the derivation has already been described in section Pitching, it is omitted here, and the final form of matrix multiplication for yawing for each leg are listed directly. Give that the yawing angle is $\beta$, half body length is L, and half body width is W.
 
@@ -355,13 +355,14 @@ For \textbf{hind-left} leg:
 
 Unlike yawing, in rolloing, the right two legs share a transformation matrix, as do the left two legs. This is because the translation operation of the coordinate system is different for the left and right sides, while the rotation operation is the same for each leg.
 
-% \begin{figure}[htbp]\label{fig:}
-%    \centering
-%    \includegraphics[width=0.8\textwidth]{figures/}
-%    \caption{}
-% \end{figure}
+\begin{figure}[htbp]
+   \centering
+   \includegraphics[width=0.6\textwidth]{figures/coordinate_transformations_in_rolling.jpg}
+   \caption{Coordinate transformations in rolling}
+   \label{fig:coordinate_transformations_in_rolling}
+\end{figure}
 
-Give that rolling angle is $\gamma$, and half body width is W. Again, the derivation is omitted and only the final form of matrix multiplication is presented.
+Give that rolling angle is $\lambda$, and half body width is W. Again, the derivation is omitted and only the final form of matrix multiplication is presented.
 
 For \textbf{right} legs:
 \begin{equation}
@@ -374,8 +375,8 @@ For \textbf{right} legs:
    =
    \begin{bmatrix}
    1 & 0 & 0 & 0 \\
-   0 & \cos\gamma & -\sin\gamma & W \times \cos\gamma - W \\
-   0 & \sin\gamma & \cos\gamma & W \times \sin\gamma \\
+   0 & \cos\lambda & -\sin\lambda & W \times \cos\lambda - W \\
+   0 & \sin\lambda & \cos\lambda & W \times \sin\lambda \\
    0 & 0 & 0 & 1 \\
    \end{bmatrix}
    \begin{bmatrix}
@@ -397,8 +398,8 @@ For \textbf{left} legs:
    =
    \begin{bmatrix}
    1 & 0 & 0 & 0 \\
-   0 & \cos\gamma & -\sin\gamma & -W \times \cos\gamma + W \\
-   0 & \sin\gamma & \cos\gamma & -W \times \sin\gamma \\
+   0 & \cos\lambda & -\sin\lambda & -W \times \cos\lambda + W \\
+   0 & \sin\lambda & \cos\lambda & -W \times \sin\lambda \\
    0 & 0 & 0 & 1 \\
    \end{bmatrix}
    \begin{bmatrix}
@@ -421,10 +422,11 @@ The forward kinematics means finding the coordinates of toe relative to the hip 
 
 It is necessary to discuss the left and right sides in separate cases, as the Unitree A1's right-side motor configuration of the hip abd/add joint which includes initial position and positive direction does not consistent with the left side. Again, to save space, the equations on both sides are given directly.
 
-\begin{figure}[htbp]\label{fig:right_leg_model_left-side_view}
+\begin{figure}[htbp]
    \centering
    \includegraphics[width=0.58\textwidth]{figures/right_leg_model_left-side_view.jpg}
    \caption{Left-side view of the right leg model}
+   \label{fig:right_leg_model_left-side_view}
 \end{figure}
 
 Give that thigh length is $l_1$, shank length is $l_2$, distance from the toe to the top point of the thigh rod is h, position of the hip fle/ext joint is $\theta_1$, and position of the knee joint is $\theta_2$. The following equation can be obtained easily from the left-side view of the right leg model shown in Figure \ref{fig:right_leg_model_left-side_view}.
@@ -445,10 +447,11 @@ $x, h \rightarrow \theta_1, \theta_2$:
 
 Give that the hip offset is o and position of hip abd/add joint is $\theta_3$. A second set of equations can be obtained from the front view of the right leg model (Figure \ref{fig:right_leg_model_front_view}). As mentioned above, the motor configuration of hip abd/add joint is different on the left and right side; hence, two sets of equations are required.
 
-\begin{figure}[htbp]\label{fig:right_leg_model_front_view}
+\begin{figure}[htbp]
    \centering
    \includegraphics[width=0.55\textwidth]{figures/right_leg_model_front_view.jpg}
    \caption{Front view of the right leg model}
+   \label{fig:right_leg_model_front_view}
 \end{figure}
 
 For the \textbf{right} side:
