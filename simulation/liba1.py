@@ -86,7 +86,21 @@ class A1:
         return A1.motor_indices.applymap(lambda index: bullet.getJointState(self.id, index, self.in_physics_client)[0])
 
 
-    def adjust_posture(self, roll_angle=0., pitch_angle=0., yaw_angle=0., δz=0., ref_motor_angular_positions=None) -> None:
+    def adjust_posture(self, roll_angle=0., pitch_angle=0., yaw_angle=0., Δz=0., ref_motor_angular_positions=None) -> None:
+        """
+        Adjust trunk posture relative to another posture
+
+        :param Δz:
+            Height is not easily defined for a legged robot on uneven terrains;
+            hence, z-coordinate of the toe relative to the coordinate system on
+            the hip of each leg is used.
+        :param ref_motor_angular_positions:
+            represents a trunk posture, and the changed trunk posture after using
+            this method is relative to this one. For example, if roll_angle is
+            set to 0.4 and others are zero, and set this param to whatever
+            posture, then this method rolls the robot by 0.4 rad relative to this
+            posture.
+        """
 
         if ref_motor_angular_positions is None:
             # FIXME: 取 angle 为 0.0 相对当前位置反复计算可以观察到, 误差会累加, 机器狗姿态慢慢畸形.
@@ -107,8 +121,8 @@ class A1:
 
             x, y, z = A1._forward_kinematics(leg, *θ)
 
-            # adjust height
-            z -= δz
+            # Adjust height
+            z -= Δz
 
             # x, y, z after rolling
             match leg:
@@ -187,7 +201,7 @@ class A1:
         ℓ1 = cls.thigh_len
         ℓ2 = cls.shank_len
         o  = cls.hip_offset
-        h =  ℓ1 * np.cos(θ1) + ℓ2 * np.cos(θ1 + θ2)  # distance from the toe to the top centre of the thigh rod
+        h  =  ℓ1 * np.cos(θ1) + ℓ2 * np.cos(θ1 + θ2)  # distance from the toe to the top centre of the thigh rod
 
         x = -ℓ1 * np.sin(θ1) - ℓ2 * np.sin(θ1 + θ2)
         match leg:
@@ -214,7 +228,7 @@ class A1:
         ℓ1 = cls.thigh_len
         ℓ2 = cls.shank_len
         o  = cls.hip_offset
-        h = np.sqrt(z**2 + y**2 - o**2)
+        h  = np.sqrt(z**2 + y**2 - o**2)
 
         cosθ2 = (-ℓ1**2 - ℓ2**2 + x**2 + h**2) / (2 * ℓ1 * ℓ2)
         sinθ2 = -np.sqrt(1 - cosθ2**2)  # takes negative suqare root, because the knee's position is specified as negative

@@ -34,7 +34,7 @@ debug_yaw_angle = bullet.addUserDebugParameter(
     rangeMax =  0.36,
     startValue = 0,)
 debug_height = bullet.addUserDebugParameter(
-    paramName = "delta z",
+    paramName = "Delta z",
     rangeMin = -200,
     rangeMax = 60,
     startValue = 0,)
@@ -75,7 +75,7 @@ while True:
         roll_angle  = bullet.readUserDebugParameter(debug_roll_angle),
         pitch_angle = bullet.readUserDebugParameter(debug_pitch_angle),
         yaw_angle   = bullet.readUserDebugParameter(debug_yaw_angle),
-        δz          = bullet.readUserDebugParameter(debug_height),
+        Δz          = bullet.readUserDebugParameter(debug_height),
         ref_motor_angular_positions=ini_pos)
 
     if bullet.readUserDebugParameter(debug_initial_view) != initial_view:
