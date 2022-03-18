@@ -150,13 +150,14 @@ class A1:
         """
 
         if reference_pose is None:
-            # FIXME: 取 angle 为 0.0 相对当前位置反复计算可以观察到, 误差会累加, 机器狗姿态慢慢畸形.
-            # Possible Sol: 数值精度缩小到 3 decimal places
+            # FIXME: Taking an angle of 0.0 and calculating it repeatedly with respect to the current pose,
+            # it can be observed that the errors add up and the pose of the robot is slowly distorted.
+            # Possible Sol: Decrease to 3 decimal places
             pose = self.current_pose()
         else:
             pose = reference_pose.copy()
 
-        for leg, θ in pose.items():  #! 引用传递; 修改 θ 即修改 pose 中的元素
+        for leg, θ in pose.items():  #! Pass by reference; modify θ will also modify the element in pose
             # θ is a tuple of three motor angular positions of one leg
 
             # Abbreviating to increase readability
@@ -248,12 +249,12 @@ class A1:
         """
 
         # Abbreviating to increase readability
-        ℓ1 = cls.thigh_len
-        ℓ2 = cls.shank_len
+        l1 = cls.thigh_len
+        l2 = cls.shank_len
         o  = cls.hip_offset
-        h  =  ℓ1 * np.cos(θ1) + ℓ2 * np.cos(θ1 + θ2)  # distance from the toe to the top centre of the thigh rod
+        h  =  l1 * np.cos(θ1) + l2 * np.cos(θ1 + θ2)  # distance from the toe to the top centre of the thigh rod
 
-        x = -ℓ1 * np.sin(θ1) - ℓ2 * np.sin(θ1 + θ2)
+        x = -l1 * np.sin(θ1) - l2 * np.sin(θ1 + θ2)
         match leg:
             case A1.Leg.fr.value | A1.Leg.hr.value:  # FIXME: Use 3.11 enum.StrEnum to remove .value
                 y =  o * np.cos(θ0) - h * np.sin(θ0)
@@ -275,19 +276,19 @@ class A1:
         """
 
         # Abbreviating to increase readability
-        ℓ1 = cls.thigh_len
-        ℓ2 = cls.shank_len
+        l1 = cls.thigh_len
+        l2 = cls.shank_len
         o  = cls.hip_offset
         h  = np.sqrt(z**2 + y**2 - o**2)
 
-        cosθ2 = (-ℓ1**2 - ℓ2**2 + x**2 + h**2) / (2 * ℓ1 * ℓ2)
+        cosθ2 = (-l1**2 - l2**2 + x**2 + h**2) / (2 * l1 * l2)
         sinθ2 = -np.sqrt(1 - cosθ2**2)  # takes negative suqare root, because the knee's position is specified as negative
         match leg:
             case A1.Leg.fr.value | A1.Leg.hr.value:  # FIXME: Use 3.11 enum.StrEnum to remove .value
                 θ0 = np.arctan2(np.abs(z), y) - np.arctan2(h, o)
             case A1.Leg.fl.value | A1.Leg.hl.value:  # FIXME: Use 3.11 enum.StrEnum to remove .value
                 θ0 = np.arctan2(h, o) - np.arctan2(np.abs(z), -y)
-        θ1 = np.arccos((ℓ1**2 + x**2 + h**2 - ℓ2**2) / (2 * ℓ1 * np.sqrt(x**2 + h**2))) - np.arctan2(x, h)
+        θ1 = np.arccos((l1**2 + x**2 + h**2 - l2**2) / (2 * l1 * np.sqrt(x**2 + h**2))) - np.arctan2(x, h)
         θ2 = np.arctan2(sinθ2, cosθ2)
 
         return (θ0, θ1, θ2)

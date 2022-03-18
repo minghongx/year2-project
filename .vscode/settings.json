@@ -2,8 +2,9 @@
     "[latex]": {
         "editor.wordWrap": "on"
     },
-    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.latex.autoBuild.run": "never",
     "latex-workshop.latex.outDir": "%DIR%/build",
+    "latex-workshop.view.pdf.viewer": "tab",
     "latex-workshop.latex.option.maxPrintLine.enabled": false,  // https://github.com/James-Yu/LaTeX-Workshop/issues/885
     "latex-workshop.latex.tools":[
         {

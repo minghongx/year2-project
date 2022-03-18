@@ -70,14 +70,14 @@ The leg has four important parts. There are three movable parts, named hip abduc
 
 In order to describe leg movements using mathematics, it is first necessary to establish a coordinate system. In terms of leg movements, the hip and the toe are the parts of the leg that receive the most attention; because once the position of the toe in relation to the hip has been determined, the shape of the leg is fixed. The hip is located in the body and is a immovable point for the body, so setting it as the origin is convient for thinking. The positive direction of the coordinate system is shown in Figure \ref{fig:geometric_model}. There will be a coordinate system on each hip. This means that the four legs will be studied separately.
 
-Specifying initial position of the motor and positive direction of rotation is as important as establishing the coordinate system. The quadruped robot model used for this project, Unitree A1, specifies them in its unified-robotics-description-format file, so these provisions are directly followed. The initial position of the motors and the positive direction of rotation is shown in Figure <++>.
+Specifying initial position of the motor and positive direction of rotation is as important as establishing the coordinate system. The quadruped robot model used for this project, Unitree A1, specifies them in its unified-robotics-description-format file, so these provisions are directly followed. The initial position of the motors and the positive direction of rotation is shown in Figure ref{fig:ini_pos_and_positive_direction}.
 
-% \begin{figure}[htbp]
-%    \centering
-%    \includegraphics[width=0.8\textwidth]{figures/}
-%    \caption{}
-%    \label{fig:}
-% \end{figure}
+\begin{figure}[htbp]
+   \centering
+   \includegraphics[width=0.8\textwidth]{figures/ini_pos_and_positive_direction.png}
+   \caption{Initial position and positive direction of motors}
+   \label{fig:ini_pos_and_positive_direction}
+\end{figure}
 
 The Unitree A1's unified-robotics-description-format file also specifies the boundary positions of the motors. They are listed in Table \ref{table:motors_boundary_positions}. For the sake of readability, front-left is abbreviated as fl, front-right as fr, hind-left as hl, and hind-right as hr.
 
