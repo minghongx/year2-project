@@ -3,7 +3,11 @@
 
 \section{Limitations and Improvement}
 \subsection{Ranges of Debug Parameters}
+<<<<<<< Updated upstream
 In the simulation, the debug parameters were utilized to adjust the locomotion of the quadruped robot. The ranges of debug parameters are given in advance. The fixed ranges would not affect the robot when it performs a single action. Nevertheless, it is not appropriate for the robot to use the fixed range when performing multiple actions at the same time. For example, if the robot stretches its legs to reach the highest squatting position, which means the legs have reached the longest. Afterwards, moving other sliders will lead to program errors, and the robot will disappear in the GUI\cite{ref:GUI} owing to the errors. 
+=======
+In the simulation, the debug parameters were utilized to adjust the locomotion of the quadruped robot. The ranges of debug parameters are given in advance. The fixed ranges would not affect the robot when it performs a single action. Nevertheless, it is not appropriate for the robot to use the fixed range when performing multiple actions at the same time. For example, if the robot stretches its legs to reach the highest squatting position, which means the legs have reached the longest. Afterwards, moving other sliders will lead to program errors, and the robot will disappear in the GUI~\cite{ref:GUI} owing to the errors.
+>>>>>>> Stashed changes
 To avoid the error caused by the fixed range, the approach is to calculate the real-time debug parameter range according to the joint state of the robot. However, the real-time value ranges need to get the joints' state firstly, then bring them into the correlation matrix to deduce the value range inversely, and compare it with the value range of the joint itself. The complexity of real-time range is close to the quadrupedal locomotion, so it is hard for us to spare time to optimize this part of the code. Otherwise, there is another way to improve the robustness of the code, which is to narrow the range make it so that the robot cannot reach the limit range. Although the problem is not solved from the root, there is less possibility that the code will make mistakes during operation.
 
 \subsection{Non-zero steady-state error}
@@ -18,15 +22,26 @@ Due to lack of time, many different adaptations, tests, and experiments are left
 This project mainly focuses on three actions of the quadruped robot, namely pitch angle, yaw angle, and roll angle, and also includes a squat action. The basic theories are basically from robotics and mathematics (geometry and linear algebra), and the following ideas can be tested in future work:
 \subsection{New motions}
 1. It may be interesting to consider more new motions, such as Z-axis-based bouncing or climbing, depending on deep learning and flexible use of robotics, such as creating new kinematic equations and matrices. For example, using these movements in practice will facilitate movement on more complex terrain. In addition, try to study more complex movements, such as back flips, which Boston Dynamics achieved.
+<<<<<<< Updated upstream
 \subsection{New robot model}
 2. Create a new robot model (Unified Robot Description Format): Instead of using an existing open-source model, the robot is described based on the XML syntax framework. ROS provides a C++ interpreter for URDF files, which can parse this kind of robot. format file. Fortunately, although starting from building a model is a tedious task, it is possible to start with what we have learned in the second semester of ELEC230. 
 
 \section{Intellectual property}
 This project is based on the "pybullet" open source physics simulation platform for simulation, and the used model "A1" is also open sourced according to the open source software license: Mozilla Public License 2.0(Published and regulated by the Mozilla Foundation). Users of MPL licensed code could: commercialize, alter, distribute code, use patent notices, sub-license binaries, place warranty. For example, the express grant of patent rights protects users against certain patent lawsuits from contributors. However, for contributors, Mozilla 2.0 also provides strong protection for patent claims by terminating copyright licenses. Additionally, the Mozilla Public License 2.0 does not grant trademark rights, which means that users of MPL 2.0 licensed code cannot commercialize the trademarks, names, logos, etc. of the original project or its contributors. Although this is a piece of open source code with a public license, to show the team's respect for contributors and inventors, their patent details should be displayed. It is necessary to declare their patent here: U.S. patent number D916,202 [Application Number D/718,514] was granted by the patent office on 2021-04-13 for quadruped robot. The grantee listed for this patent is HangZhou YuShu TECHNOLOGY CO., LTD.. Invention is credited to Xingxing Wang, Zhiyu Yang. 
 
+=======
 
-\section{Completion degree of objectives}
+2. Create a new robot model (Unified Robot Description Format): Instead of using an existing open-source model, the robot is described based on the XML syntax framework. ROS provides a C++ interpreter for URDF files, which can parse this kind of robot. format file. Fortunately, although starting from building a model is a tedious task, it is possible to start with what we have learned in the second semester of ELEC230.
 
+\section{Intellectual property}
+This project uses the robot model "A1" of Shuyu Technology, which is a patent belonging to their company. It is necessary to declare their patent here: U.S. patent number D916,202 [Application Number D/718,514] was granted by the patent office on 2021-04-13 for quadruped robot. The grantee listed for this patent is HangZhou YuShu TECHNOLOGY CO., LTD.. Invention is credited to Xingxing Wang, Zhiyu Yang.
+>>>>>>> Stashed changes
+
+\section{Completion of objectives}
+\subsection{Pitching}
+When the pitch angle is 0, the body of the robot remains perpendicular to the longitudinal axis perpendicular to the ground. By changing the pitch angle, the front or rear leg of the robot is flexed, while the other leg is extended. What is visually reflected is that the robot is constantly leaning forward and backward with the adjustment of the pitch angle. The simulation of the pitching motion was quite successful.
+
+<<<<<<< Updated upstream
 
 
 
@@ -34,3 +49,35 @@ This project is based on the "pybullet" open source physics simulation platform 
 
 
 \section{Conclusion}
+=======
+\subsection{Yawing}
+When changing the magnitude of the yaw angle, it can be seen from the direction perpendicular to the body of the robot from below that the legs on the front side of the robot move in opposite directions to the legs on the back side. The body of the robot rotates during yaw. When the yaw angle is positive, the robot body rotates clockwise, and when the yaw angle is negative, the robot body rotates counterclockwise. However, due to the influence of ground friction, the robot will slide when the yaw angle is changed many times, but this does not affect the simulation. The objective for the simulation of yaw motion was also successfully completed.
+
+\subsection{Rolling}
+When changing the magnitude of the roll angle, from the front view of the robot, the leg on one side of the robot is extended and the leg on the other side is flexed. The observed scenario is that one side of the robot is raised in height, while the other side is lowered in height. This means that the simulation of the roll motion has been successfully completed.
+
+\subsection{squatting}
+As an additional goal of the project, squatting is actually simpler than the other three motions, so the simulation of this action is done first. When we pull the height slider in the program, the four legs of the robot will flex or stretch at the same time, thus completing the adjustment of the body height.
+
+\subsection{Motion combination}
+
+After combining the three simulation programs, an attitude control program that can adjust three angles at the same time is obtained. In Fig.\ref{fig: Combination_of_three_motions}, the first picture is to adjust the roll angle, the second picture is to adjust the pitch angle based on the first picture, and the third picture is to adjust the yaw angle based on the second picture.
+
+\begin{figure}[htbp]
+   \centering
+   \includegraphics[width=0.8\textwidth]{figures/Combination_of_three_motions.png}
+   \caption{Combination of three motions}
+   \label{fig: Combination_of_three_motions}
+\end{figure}
+
+After combining the attitude adjustment program including three actions with the height adjustment program, the attitude adjustment program with height adjustment function is obtained, which is the final result of this project. The simulation results are shown in Fig.\ref{fig: Pose_control_with_height}. The first picture in Fig.\ref{fig: Pose_control_with_height} is the attitude of the robot after adjusting the pitch angle, yaw angle and roll angle. By adjusting the height, the attitude in the second picture is obtained.
+
+\begin{figure}[htbp]
+   \centering
+   \includegraphics[width=0.8\textwidth]{figures/Pose_control_with_height.png}
+   \caption{Pose control with height}
+   \label{fig: Pose_control_with_height}
+\end{figure}
+
+\chapter{Conclusion}
+>>>>>>> Stashed changes
