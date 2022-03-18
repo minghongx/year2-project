@@ -5,8 +5,7 @@
 **/X.log
 
 # Ignore LaTeX auxiliary files
-/report/report.*
-!/report/report.tex
+/report/build/**
 
 # Ignore LaTeX auxiliary files
 /refs/Template_for_Y2_project_report/template.*

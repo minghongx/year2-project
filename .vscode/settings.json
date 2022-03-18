@@ -1,0 +1,24 @@
+{
+    "[latex]": {
+        "editor.wordWrap": "on"
+    },
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.latex.tools":[
+        {
+            "name": "latexmk_rconly",
+            "command": "latexmk",
+            "args": [
+                "%DOC%"  // https://github.com/James-Yu/LaTeX-Workshop/wiki/Compile#placeholders
+            ],
+            "env": {}
+        },
+    ],
+    "latex-workshop.latex.recipes":[
+        {
+            "name": "latexmk (latexmkrc)",
+            "tools": [
+                "latexmk_rconly"
+            ]
+        },
+    ]
+}
