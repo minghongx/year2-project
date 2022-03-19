@@ -1,13 +1,13 @@
 <h1 align="center">
   ELEC222-202122 Year 2 Project<br>
-  <sub><sup>Simulation of Quadruped-robot Locomotion</sup></sub>
+  <sub><sup>Simulating quadrupedal locomotion in PyBullet</sup></sub>
 </h1>
 
 ```mermaid
 gantt
     dateFormat  YYYY-MM-DD
 
-    Mataining this Gantt Chart [Minghong Xu] : active, 2022-02-11, 2022-03-18
+    Mataining this Gantt Chart [Minghong Xu] : 2022-02-11, 2022-03-18
 
     section Weekly Blogs
     Week 1 [Yang Kai, Zepeng Pang] : blog1, 2022-02-03, 7d
@@ -42,11 +42,17 @@ gantt
 
     section Sustainability
     Found a good reference book [Kai Yang] : milestone, 2022-02-25, 0d
-    Report [Kai Yang] : active, 2022-02-26, 2022-03-07
+    Sustainability, DevelopmentReport, and Ethical Evaluation Report [Kai Yang] : 2022-02-26, 2022-03-07
 
-    section Technical Report
-    Pitching [Minghong Xu] : 2022-03-04, 2022-03-17
-    Check Academic Style : 2022-03-10, 2d
+    section Project Report
+    Introduction [Zepeng Pang] : 2022-03-04, 2022-03-17
+    Materials and Methods [Minghong Xu] : 2022-03-04, 2022-03-17
+    Results and Analysis [Zehao Ye] : 2022-03-04, 2022-03-17
+    Discussion and Conclusions [Zepeng Pang, Zehao Ye, Kai Yang] : 2022-03-04, 2022-03-17
+    Appendices [Zepeng Pang, Minghong Xu]: 2022-03-17, 2022-03-18
+    Abstract [Zepeng Pang] : 2022-03-17, 2022-03-18
+    Check Academic Style : 2022-03-16, 2d
+    Submission DDL: milestone, 2022-03-18, 0d
 ```
 
 ## Structure of the Repository
@@ -75,15 +81,18 @@ gantt
  ┃ ┣ 📂back_matter
  ┃ ┃ ┗ 📜appendices.tex
  ┃ ┣ 📂figures
+ ┃ ┣ 📜.latexmkrc
  ┃ ┣ 📜refs.bib
  ┃ ┣ 📜report.tex
  ┃ ┗ 📜snippets.tex
+ ┣ 📂sde_report
  ┣ 📂simulation
  ┣ 📜.editorconfig
+ ┣ 📜.gitattributes
  ┣ 📜.gitignore
- ┣ 📜README.md
  ┣ 📜poetry.lock
- ┗ 📜pyproject.toml
+ ┣ 📜pyproject.toml
+ ┗ 📜README.md
 </pre>
 
 Folder / File | Description

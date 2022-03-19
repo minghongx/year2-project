@@ -19,7 +19,6 @@ In the initial position, the distance from hip joints to toe joints is 270. Whil
 The state of abduction/adduction hip joints would retain the initial state while squatting. The state of flection/extension hip joints and knee joints would change corresponding to the distance from the toe. Judging from the simulation results, the robot's legs were crooked while the robot's trunk moves downward, and were extended while the robot's trunk move upward. The state of knee joints. The state of the knee joints determined the current highest position of the robot, and then the actual position of the robot was adjusted by controlling the state of the hip joint.
 
 
-
 \section{Pitching}
 
 Pitching, for the quadruped robot, is the action of rotating about the transverse axis \cite{ref:6DOF}. By pulling the custom slider of pitching to adjust the parameters, a series of actions of the quadruped robot when pitching is shown in Fig.\ref{fig: pitching}.
@@ -67,4 +66,3 @@ Rolling, for the quadruped robot, is the action of rotating about the longitudin
 For the sake of observing the locomotion of the quadruped robot more intuitively, we chose the front view as the observation view in the screenshots of rolling. In the initial position, the heights of the left and right hip joints from the ground are the same, which means that the roll angle was 0. While the slider of debug parameter was pulled to the left, the roll angle became negative, and the robot's body made clockwise rotation about the longitudinal axis. While the slider of debug parameter was pulled to the right, the roll angle became positive, and the robot's body made counterclockwise rotation about the longitudinal axis.
 
 The change in the joints' state of rolling is similar to pitching, except that the leg state of the robot is left and right symmetrical. While the robot pitched clockwise, the front legs rotated counterclockwise, and the hind legs rotated clockwise, from the front perspective, relative to the abduction/adduction hip joints. The right-side legs would be extended and the left-side legs would be crooked.
-

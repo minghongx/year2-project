@@ -16,7 +16,6 @@ When the robot is stationary, its joints are not completely static. The robot's 
 
 When dragging the slider rapidlly to adjust the attitude of the robot, the robot will shift from the original position. This is because the friction between the toe joints of the robot and the plane is too small to provide the necessary force for the robot to move under this acceleration. The solution is to increase the friction coefficient between the toe joints and the plane in order to increase the friction force.
 
-
 \section{Future work}
 
 Due to lack of time, many different adaptations, tests, and experiments are left for the future (the depth of research that can be done in four weeks is limited). Future work can involve in-depth analysis of
@@ -30,8 +29,8 @@ This project mainly focuses on three actions of the quadruped robot, namely pitc
 2. Create a new robot model (Unified Robot Description Format): Instead of using an existing open-source model, the robot is described based on the XML syntax framework. ROS provides a C++ interpreter for URDF files, which can parse this kind of robot. format file. Fortunately, although starting from building a model is a tedious task, it is possible to start with what we have learned in the second semester of ELEC230.
 
 \section{Intellectual property}
+
 This project uses the robot model "A1" of Shuyu Technology, which is a patent belonging to their company. It is necessary to declare their patent here: U.S. patent number D916,202 [Application Number D/718,514] was granted by the patent office on 2021-04-13 for quadruped robot. The grantee listed for this patent is HangZhou YuShu TECHNOLOGY CO., LTD.. Invention is credited to Xingxing Wang, Zhiyu Yang.
->>>>>>> Stashed changes
 
 \section{Completion of objectives}
 
@@ -70,6 +69,7 @@ After combining the attitude adjustment program including three actions with the
    \caption{Pose control with height}
    \label{fig: Pose_control_with_height}
 \end{figure}
+
 
 \chapter{Conclusion}
 
