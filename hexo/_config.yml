@@ -3,8 +3,8 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: LivUni ELEC222 Year 2 Project
-subtitle: 'Simulation of Quadruped-robot Locomotion'
+title: LivUni ELEC222-202122 Year 2 Project
+subtitle: 'Simulating quadrupedal locomotion in PyBullet'
 description: ''
 keywords:
 author: Zepeng Pang
@@ -113,6 +113,13 @@ mathjax:
   extension_options: {}
     # you can put your extension options here
     # see http://docs.mathjax.org/en/latest/options/input/tex.html#tex-extension-options for more detail
+
+# https://github.com/chekun/hexo-excerpt
+excerpt:
+  depth: 2
+  excerpt_excludes: []
+  more_excludes: []
+  hideWholePostExcerpts: true
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
