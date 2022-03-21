@@ -3,6 +3,9 @@
   <sub><sup>Simulating quadrupedal locomotion in PyBullet</sup></sub>
 </h1>
 
+![feed back of bench inspection from supervisor](feedback/bench_inspection/supervisor.pdf.jpg)
+![feed back of bench inspection from assessor](feedback/bench_inspection/assessor.pdf.jpg)
+
 ```mermaid
 gantt
     dateFormat  YYYY-MM-DD
@@ -59,7 +62,9 @@ gantt
 
 <pre>
 📦year2-proj
+ ┣ 📂.vscode
  ┣ 📂docs
+ ┣ 📂feedback
  ┣ 📂hexo
  ┃ ┣ 📂themes/next
  ┃ ┃ ┗ 📜_config.yml
@@ -90,6 +95,7 @@ gantt
  ┣ 📜.editorconfig
  ┣ 📜.gitattributes
  ┣ 📜.gitignore
+ ┣ 📜LICENSE
  ┣ 📜poetry.lock
  ┣ 📜pyproject.toml
  ┗ 📜README.md
