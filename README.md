@@ -3,8 +3,8 @@
   <sub><sup>Simulating quadrupedal locomotion in PyBullet</sup></sub>
 </h1>
 
-![feed back of bench inspection from supervisor](feedback/bench_inspection/supervisor.pdf.jpg)
-![feed back of bench inspection from assessor](feedback/bench_inspection/assessor.pdf.jpg)
+![feedback of bench inspection from supervisor](feedback/bench_inspection/supervisor.pdf.jpg)
+![feedback of bench inspection from assessor](feedback/bench_inspection/assessor.pdf.jpg)
 
 ```mermaid
 gantt
