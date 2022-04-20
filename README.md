@@ -19,7 +19,6 @@ gantt
     Week 4 [Zepeng Pang] : blog4, after blog3, 5d
     Setup GitHub Pages for publishing [Minghong Xu] : milestone, 2022-02-26, 0d
     Blog Submission : crit, after blog4, 2022-03-02
-    Week 5 [Minghong Xu] : 2022-03-03, 7d
 
     section Project Management Documents
     Supervisor Weekly Meeting Log [Zepeng Pang] : crit, 2022-01-31, 2022-02-25
@@ -77,14 +76,8 @@ gantt
  ┃ ┃ ┣ 📜packages.tex
  ┃ ┃ ┗ 📜top_matter.tex
  ┃ ┣ 📂front_matter
- ┃ ┃ ┣ 📜LivUniCrest.pdf
- ┃ ┃ ┣ 📜titlepage.tex
- ┃ ┃ ┣ 📜abstractpage.tex
- ┃ ┃ ┣ 📜declaration.tex
- ┃ ┃ ┗ 📜contents.tex
  ┃ ┣ 📂body
  ┃ ┣ 📂back_matter
- ┃ ┃ ┗ 📜appendices.tex
  ┃ ┣ 📂figures
  ┃ ┣ 📜.latexmkrc
  ┃ ┣ 📜refs.bib

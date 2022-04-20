@@ -234,7 +234,7 @@ class A1:
 
             θ[0], θ[1], θ[2] = A1._inverse_kinematics(leg, x, y, z)
 
-            # If θ[0] or θ[1] or θ[2] exceeds its limits, aborting them by using return
+            # If θ[0] or θ[1] or θ[2] exceeds its limits, aborting the method
             if not all([-0.803<θ[0]<0.803, -1.047<θ[1]<4.189, -2.697<θ[2]<-0.916]):
                 logging.info('Motor limit reached')
                 return
