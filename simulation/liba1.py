@@ -1,8 +1,17 @@
 import pybullet as bullet
 import pandas as pd
 import numpy as np
+import logging
 from enum import Enum
 from typing import Iterable
+
+logging.basicConfig(
+    level=logging.DEBUG,
+    format='%(asctime)s %(funcName)s [%(levelname)s] %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S',
+    # filename='liba1.log',
+    # filemode='w',
+    encoding='utf-8')
 
 class A1:
 
@@ -225,7 +234,10 @@ class A1:
 
             θ[0], θ[1], θ[2] = A1._inverse_kinematics(leg, x, y, z)
 
-            # FIXME: If θ[0] or θ[1] or θ[2] exceeds its limits, aborting them by using return
+            # If θ[0] or θ[1] or θ[2] exceeds its limits, aborting them by using return
+            if not all([-0.803<θ[0]<0.803, -1.047<θ[1]<4.189, -2.697<θ[2]<-0.916]):
+                logging.info('Motor limit reached')
+                return
 
         # Control angular position of each motor
         for positions_of_one_leg, indices_of_one_leg in zip(pose.itertuples(index=False), A1.motor_indices.itertuples(index=False)):
