@@ -5,6 +5,7 @@
 
 ![feedback of bench inspection from supervisor](feedback/bench_inspection/supervisor.pdf.jpg)
 ![feedback of bench inspection from assessor](feedback/bench_inspection/assessor.pdf.jpg)
+![feedback of bench inspection from supervisor](feedback/proj_report/supervisor.pdf.jpg)
 
 ```mermaid
 gantt
