@@ -7,7 +7,7 @@
 
 ## Pitching
 
-<img align="right" width="400" src="docs/2022/Week-4-Blog/pitching.gif">
+<img align="right" width="40%" src="docs/2022/Week-4-Blog/pitching.gif">
 
 $$
 \begin{flalign}
