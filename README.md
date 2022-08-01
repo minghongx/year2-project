@@ -3,6 +3,30 @@
   <sub><sup>Simulating quadrupedal locomotion in PyBullet</sup></sub>
 </h1>
 
+## Accomplishment of the Project
+
+The quadrupedal locomotions were accomplished in this project, which involved pitching, yawing, rolling, and squatting. 
+
+### Pitching
+![image](docs/2022/Week-4-Blog/pitching.gif)
+
+### Rolling
+![image](docs/2022/Week-4-Blog/rolling.gif)
+
+### Squatting
+![image](docs/2022/Week-4-Blog/squatting.gif)
+
+### Yawing
+![image](docs/2022/Week-4-Blog/yawing-front-view.gif)
+![image](docs/2022/Week-4-Blog/yawing-initial-view.gif)
+![image](docs/2022/Week-4-Blog/yawing-top-view.gif)
+
+
+
+
+
+
+
 ![feedback of bench inspection from supervisor](feedback/bench_inspection/supervisor.pdf.jpg)
 ![feedback of bench inspection from assessor](feedback/bench_inspection/assessor.pdf.jpg)
 ![feedback of bench inspection from supervisor](feedback/proj_report/supervisor.pdf.jpg)
