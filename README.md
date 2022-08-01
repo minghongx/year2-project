@@ -3,10 +3,15 @@
   <sub><sup>Simulating quadrupedal locomotion in PyBullet</sup></sub>
 </h1>
 
-### Pitching
+## Notations
+
+## Pitching
+
+<img align="right" width="400" src="docs/2022/Week-4-Blog/pitching.gif">
 
 $$
-\begin{equation}
+\begin{flalign}
+&
 \begin{bmatrix}
    x_\text{after translating} \\
    z_\text{after translating} \\
@@ -23,13 +28,13 @@ $$
    z \\
    1 \\
 \end{bmatrix}
-\end{equation}
+&
+\end{flalign}
 $$
 
-<img align="right" width="500" src="report/figures/coordinate_transformations_in_pitching.jpg">
-<img align="right" width="500" src="docs/2022/Week-4-Blog/pitching.gif">
+<img src="report/figures/coordinate_transformations_in_pitching.jpg">
 
-### Rolling
+## Rolling
 ![image](docs/2022/Week-4-Blog/rolling.gif)
 
 ### Squatting
