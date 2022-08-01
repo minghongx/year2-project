@@ -6,22 +6,24 @@
 ### Pitching
 
 $$
+\begin{equation}
 \begin{bmatrix}
-x_\text{after translating} \\
-z_\text{after translating} \\
-1                          \\
+   x_\text{after translating} \\
+   z_\text{after translating} \\
+   1                          \\
 \end{bmatrix}
-=
+\=
 \begin{bmatrix}
-1 & 0 & L \\
-0 & 1 & 0 \\
-0 & 0 & 1 \\
+   1 & 0 & L \\
+   0 & 1 & 0 \\
+   0 & 0 & 1 \\
 \end{bmatrix}
 \begin{bmatrix}
-x \\
-z \\
-1 \\
+   x \\
+   z \\
+   1 \\
 \end{bmatrix}
+\end{equation}
 $$
 
 <img align="right" width="500" src="report/figures/coordinate_transformations_in_pitching.jpg">
