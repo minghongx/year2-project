@@ -3,12 +3,29 @@
   <sub><sup>Simulating quadrupedal locomotion in PyBullet</sup></sub>
 </h1>
 
-## Accomplishment of the Project
-
-The quadrupedal locomotions were accomplished in this project, which involved pitching, yawing, rolling, and squatting. 
-
 ### Pitching
-![image](docs/2022/Week-4-Blog/pitching.gif)
+
+$$
+\begin{bmatrix}
+x_\text{after translating} \\
+z_\text{after translating} \\
+1                          \\
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 & 0 & L \\
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+x \\
+z \\
+1 \\
+\end{bmatrix}
+$$
+
+<img align="right" width="500" src="report/figures/coordinate_transformations_in_pitching.jpg">
+<img align="right" width="500" src="docs/2022/Week-4-Blog/pitching.gif">
 
 ### Rolling
 ![image](docs/2022/Week-4-Blog/rolling.gif)
@@ -21,15 +38,13 @@ The quadrupedal locomotions were accomplished in this project, which involved pi
 ![image](docs/2022/Week-4-Blog/yawing-initial-view.gif)
 ![image](docs/2022/Week-4-Blog/yawing-top-view.gif)
 
-
-
-
-
-
+## Feedbacks
 
 ![feedback of bench inspection from supervisor](feedback/bench_inspection/supervisor.pdf.jpg)
 ![feedback of bench inspection from assessor](feedback/bench_inspection/assessor.pdf.jpg)
 ![feedback of bench inspection from supervisor](feedback/proj_report/supervisor.pdf.jpg)
+
+## Activity Diary
 
 ```mermaid
 gantt
