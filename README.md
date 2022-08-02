@@ -7,7 +7,7 @@
 
 ## Pitching
 
-<img align="right" width="40%" src="report/figures/coordinate_transformations_in_pitching.jpg">
+<img align="right" width="45%" src="report/figures/coordinate_transformations_in_pitching.jpg">
 
 **Front Legs**
 
@@ -62,7 +62,7 @@ $$
 
 
 ## Rolling
-<img align="right" width="40%" src="report/figures/coordinate_transformations_in_rolling.jpg">
+<img align="right" width="35%" src="report/figures/coordinate_transformations_in_rolling.jpg">
 
 **Right Legs**
 
@@ -78,8 +78,8 @@ $$
 \=
 \begin{bmatrix}
   1 & 0 & 0 & 0 \\
-  0 & \cos\delta & -\sin\delta & W \times \cos\delta - W \\
-  0 & \sin\delta & \cos\delta & W \times \sin\delta \\
+  0 & \cos\lambda & -\sin\lambda & W \times \cos\lambda - W \\
+  0 & \sin\lambda & \cos\lambda & W \times \sin\lambda \\
   0 & 0 & 0 & 1 \\
 \end{bmatrix}
 \begin{bmatrix}
@@ -106,8 +106,8 @@ $$
 \=
 \begin{bmatrix}
   1 & 0 & 0 & 0 \\
-  0 & \cos\delta & -\sin\delta & -W \times \cos\delta + W \\
-  0 & \sin\delta & \cos\delta & -W \times \sin\delta \\
+  0 & \cos\lambda & -\sin\lambda & -W \times \cos\lambda + W \\
+  0 & \sin\lambda & \cos\lambda & -W \times \sin\lambda \\
   0 & 0 & 0 & 1 \\
 \end{bmatrix}
 \begin{bmatrix}
@@ -120,13 +120,123 @@ $$
 \end{flalign}
 $$
 
-
-
 ### Squatting
 
 
 ### Yawing
-<img align="right" width="40%" src="report/figures/coordinate_transformations_in_yawing.jpg">
+<img align="right" width="45%" src="report/figures/coordinate_transformations_in_yawing.jpg">
+
+**Front Right Legs**
+
+$$
+\begin{flalign}
+&
+\begin{bmatrix}
+   x_\text{after yawing} \\
+   y_\text{after yawing} \\
+   z_\text{after yawing} \\
+   1                      \\
+\end{bmatrix}
+\=
+\begin{bmatrix}
+  \cos\beta & -\sin\beta & 0 & L \times \cos\beta - W \times \sin\beta - L \\
+  \sin\beta & \cos\beta & 0 & L \times \sin\beta + W \times \cos\beta - W  \\
+  0 & 0 & 1 & 0 \\
+  0 & 0 & 0 & 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+   x \\
+   y \\
+   z \\
+   1 \\
+\end{bmatrix}
+&
+\end{flalign}
+$$
+
+**Front Left Legs**
+
+$$
+\begin{flalign}
+&
+\begin{bmatrix}
+   x_\text{after yawing} \\
+   y_\text{after yawing} \\
+   z_\text{after yawing} \\
+   1                      \\
+\end{bmatrix}
+\=
+\begin{bmatrix}
+  \cos\beta & -\sin\beta & 0 & L \times \cos\beta + W \times \sin\beta - L \\
+  \sin\beta & \cos\beta & 0 & L \times \sin\beta - W \times \cos\beta + W  \\
+  0 & 0 & 1 & 0 \\
+  0 & 0 & 0 & 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+   x \\
+   y \\
+   z \\
+   1 \\
+\end{bmatrix}
+&
+\end{flalign}
+$$
+
+**Hind Right Legs**
+
+$$
+\begin{flalign}
+&
+\begin{bmatrix}
+   x_\text{after yawing} \\
+   y_\text{after yawing} \\
+   z_\text{after yawing} \\
+   1                      \\
+\end{bmatrix}
+\=
+\begin{bmatrix}
+  \cos\beta & -\sin\beta & 0 & -L \times \cos\beta - W \times \sin\beta + L \\
+  \sin\beta & \cos\beta & 0 & -L \times \sin\beta + W \times \cos\beta - W  \\
+  0 & 0 & 1 & 0 \\
+  0 & 0 & 0 & 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+   x \\
+   y \\
+   z \\
+   1 \\
+\end{bmatrix}
+&
+\end{flalign}
+$$
+
+**Hind Left Legs**
+
+$$
+\begin{flalign}
+&
+\begin{bmatrix}
+   x_\text{after yawing} \\
+   y_\text{after yawing} \\
+   z_\text{after yawing} \\
+   1                      \\
+\end{bmatrix}
+\=
+\begin{bmatrix}
+  \cos\beta & -\sin\beta & 0 & -L \times \cos\beta + W \times \sin\beta + L \\
+  \sin\beta & \cos\beta & 0 & -L \times \sin\beta - W \times \cos\beta + W  \\
+  0 & 0 & 1 & 0 \\
+  0 & 0 & 0 & 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+   x \\
+   y \\
+   z \\
+   1 \\
+\end{bmatrix}
+&
+\end{flalign}
+$$
 
 ## Feedbacks
 
