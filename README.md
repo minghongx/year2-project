@@ -7,7 +7,7 @@
 
 ## Pitching
 
-<img align="right" width="45%" src="report/figures/coordinate_transformations_in_pitching.jpg">
+<img align="right" width="40%" src="report/figures/coordinate_transformations_in_pitching.jpg">
 
 **Front Legs**
 
