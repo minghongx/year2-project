@@ -15,8 +15,8 @@ $$
 \begin{flalign}
 &
 \begin{bmatrix}
-   x_\text{after pitching} \\
-   z_\text{after pitching} \\
+   \hat{x} \\
+   \hat{z} \\
    1                       \\
 \end{bmatrix}
 \=
