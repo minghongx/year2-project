@@ -7,7 +7,7 @@
 
 ## Pitching
 
-<img align="right" width="40%" src="docs/2022/Week-4-Blog/pitching.gif">
+<img align="right" width="50%" src="report/figures/coordinate_transformations_in_pitching.jpg">
 
 $$
 \begin{flalign}
@@ -32,7 +32,29 @@ $$
 \end{flalign}
 $$
 
-<img src="report/figures/coordinate_transformations_in_pitching.jpg">
+**Front Legs**
+$$
+\begin{flalign}
+&
+\begin{bmatrix}
+   x_\text{after pitching} \\
+   z_\text{after pitching} \\
+   1                       \\
+\end{bmatrix}
+\=
+\begin{bmatrix}
+   \cos\delta & \sin\delta & -L \\
+   \sin\delta & \cos\delta & 0 \\
+   0 & 0 & 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+   x_\text{after translating} \\
+   z_\text{after translating} \\
+   1                          \\
+\end{bmatrix}
+&
+\end{flalign}
+$$
 
 ## Rolling
 ![image](docs/2022/Week-4-Blog/rolling.gif)
