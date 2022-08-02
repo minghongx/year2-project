@@ -49,9 +49,14 @@ $$
    0 & 0 & 1 \\
 \end{bmatrix}
 \begin{bmatrix}
-   x_\text{after translating} \\
-   z_\text{after translating} \\
-   1                          \\
+   1 & 0 & L \\
+   0 & 1 & 0 \\
+   0 & 0 & 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+   x \\
+   z \\
+   1 \\
 \end{bmatrix}
 &
 \end{flalign}
