@@ -123,7 +123,7 @@ $$
 ## Yawing
 <img align="right" width="35%" src="report/figures/coordinate_transformations_in_yawing.jpg">
 
-**Front Right Legs**
+**Front Legs**
 
 $$
 \begin{flalign}
@@ -136,8 +136,8 @@ $$
 \end{bmatrix}
 \=
 \begin{bmatrix}
-  \cos\beta & -\sin\beta & 0 & L \times \cos\beta - W \times \sin\beta - L \\
-  \sin\beta & \cos\beta & 0 & L \times \sin\beta ± W \times \cos\beta - W  \\
+  \cos\beta & -\sin\beta & 0 & L \times \cos\beta ∓ W \times \sin\beta - L \\
+  \sin\beta & \cos\beta & 0 & L \times \sin\beta ± W \times \cos\beta ∓ W  \\
   0 & 0 & 1 & 0 \\
   0 & 0 & 0 & 1 \\
 \end{bmatrix}
@@ -151,7 +151,7 @@ $$
 \end{flalign}
 $$
 
-**Front Left Legs**
+**Hind Legs**
 
 $$
 \begin{flalign}
@@ -164,8 +164,8 @@ $$
 \end{bmatrix}
 \=
 \begin{bmatrix}
-  \cos\beta & -\sin\beta & 0 & L \times \cos\beta + W \times \sin\beta - L \\
-  \sin\beta & \cos\beta & 0 & L \times \sin\beta - W \times \cos\beta + W  \\
+  \cos\beta & -\sin\beta & 0 & -L \times \cos\beta ∓ W \times \sin\beta + L \\
+  \sin\beta & \cos\beta & 0 & -L \times \sin\beta ± W \times \cos\beta ∓ W  \\
   0 & 0 & 1 & 0 \\
   0 & 0 & 0 & 1 \\
 \end{bmatrix}
@@ -178,63 +178,6 @@ $$
 &
 \end{flalign}
 $$
-
-**Hind Right Legs**
-
-$$
-\begin{flalign}
-&
-\begin{bmatrix}
-   x_\text{after yawing} \\
-   y_\text{after yawing} \\
-   z_\text{after yawing} \\
-   1                      \\
-\end{bmatrix}
-\=
-\begin{bmatrix}
-  \cos\beta & -\sin\beta & 0 & -L \times \cos\beta - W \times \sin\beta + L \\
-  \sin\beta & \cos\beta & 0 & -L \times \sin\beta + W \times \cos\beta - W  \\
-  0 & 0 & 1 & 0 \\
-  0 & 0 & 0 & 1 \\
-\end{bmatrix}
-\begin{bmatrix}
-   x \\
-   y \\
-   z \\
-   1 \\
-\end{bmatrix}
-&
-\end{flalign}
-$$
-
-**Hind Left Legs**
-
-$$
-\begin{flalign}
-&
-\begin{bmatrix}
-   x_\text{after yawing} \\
-   y_\text{after yawing} \\
-   z_\text{after yawing} \\
-   1                      \\
-\end{bmatrix}
-\=
-\begin{bmatrix}
-  \cos\beta & -\sin\beta & 0 & -L \times \cos\beta + W \times \sin\beta + L \\
-  \sin\beta & \cos\beta & 0 & -L \times \sin\beta - W \times \cos\beta + W  \\
-  0 & 0 & 1 & 0 \\
-  0 & 0 & 0 & 1 \\
-\end{bmatrix}
-\begin{bmatrix}
-   x \\
-   y \\
-   z \\
-   1 \\
-\end{bmatrix}
-&
-\end{flalign}
-$$
-
 
 ## Feedbacks
 
