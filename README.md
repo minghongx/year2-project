@@ -62,15 +62,85 @@ $$
 
 
 ## Rolling
-![image](docs/2022/Week-4-Blog/rolling.gif)
+<img align="right" width="40%" src="report/figures/coordinate_transformations_in_rolling.jpg">
+
+            match leg:
+                case A1.Leg.fr.value | A1.Leg.hr.value:  # FIXME: Use 3.11 enum.StrEnum to remove .value
+                    roll = np.array([[ 1,  0,          0,          0                 ],
+                                     [ 0,  np.cos(λ), -np.sin(λ),  W * np.cos(λ) - W ],
+                                     [ 0,  np.sin(λ),  np.cos(λ),  W * np.sin(λ)     ],
+                                     [ 0,  0,          0,          1                 ]])
+                case A1.Leg.fl.value | A1.Leg.hl.value:  # FIXME: Use 3.11 enum.StrEnum to remove .value
+                    roll = np.array([[ 1,  0,          0,          0                 ],
+                                     [ 0,  np.cos(λ), -np.sin(λ), -W * np.cos(λ) + W ],
+                                     [ 0,  np.sin(λ),  np.cos(λ), -W * np.sin(λ)     ],
+                                     [ 0,  0,          0,          1                 ]])
+            x, y, z, _ = roll.dot(np.array([x, y, z, 1]))
+
+
+**Right Legs**
+
+$$
+\begin{flalign}
+&
+\begin{bmatrix}
+   x_\text{after rolling} \\
+   y_\text{after rolling} \\
+   z_\text{after rolling} \\
+   1                      \\
+\end{bmatrix}
+\=
+\begin{bmatrix}
+  1 & 0 & 0 & 0 \\
+  0 & \cos\delta & -\sin\delta & W \times \cos\delta - W \\
+  0 & \sin\delta & \cos\delta & W \times \sin\delta \\
+  0 & 0 & 0 & 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+   x \\
+   y \\
+   z \\
+   1 \\
+\end{bmatrix}
+&
+\end{flalign}
+$$
+
+**Left Legs**
+
+$$
+\begin{flalign}
+&
+\begin{bmatrix}
+   x_\text{after rolling} \\
+   y_\text{after rolling} \\
+   z_\text{after rolling} \\
+   1                      \\
+\end{bmatrix}
+\=
+\begin{bmatrix}
+  1 & 0 & 0 & 0 \\
+  0 & \cos\delta & -\sin\delta & -W \times \cos\delta + W \\
+  0 & \sin\delta & \cos\delta & -W \times \sin\delta \\
+  0 & 0 & 0 & 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+   x \\
+   y \\
+   z \\
+   1 \\
+\end{bmatrix}
+&
+\end{flalign}
+$$
+
+
 
 ### Squatting
-![image](docs/2022/Week-4-Blog/squatting.gif)
+
 
 ### Yawing
-![image](docs/2022/Week-4-Blog/yawing-front-view.gif)
-![image](docs/2022/Week-4-Blog/yawing-initial-view.gif)
-![image](docs/2022/Week-4-Blog/yawing-top-view.gif)
+<img align="right" width="40%" src="report/figures/coordinate_transformations_in_yawing.jpg">
 
 ## Feedbacks
 
