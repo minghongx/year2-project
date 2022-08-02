@@ -34,25 +34,24 @@ $$
 
 **Front Legs**
 
-
 $$
 \begin{flalign}
 &
 \begin{bmatrix}
-   x_\text{after translating} \\
-   z_\text{after translating} \\
-   1                          \\
+   x_\text{after pitching} \\
+   z_\text{after pitching} \\
+   1                       \\
 \end{bmatrix}
 \=
 \begin{bmatrix}
-   1 & 0 & L \\
-   0 & 1 & 0 \\
+   \cos\delta & \sin\delta & -L \\
+   \sin\delta & \cos\delta & 0 \\
    0 & 0 & 1 \\
 \end{bmatrix}
 \begin{bmatrix}
-   x \\
-   z \\
-   1 \\
+   x_\text{after translating} \\
+   z_\text{after translating} \\
+   1                          \\
 \end{bmatrix}
 &
 \end{flalign}
