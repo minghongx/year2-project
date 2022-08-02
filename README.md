@@ -62,7 +62,7 @@ $$
 
 
 ## Rolling
-<img align="right" width="40%" src="report/figures/coordinate_transformations_in_rolling.jpg">
+<img align="right" width="30%" src="report/figures/coordinate_transformations_in_rolling.jpg">
 
 **Right Legs**
 
