@@ -137,7 +137,7 @@ $$
 \=
 \begin{bmatrix}
   \cos\beta & -\sin\beta & 0 & L \times \cos\beta - W \times \sin\beta - L \\
-  \sin\beta & \cos\beta & 0 & L \times \sin\beta + W \times \cos\beta - W  \\
+  \sin\beta & \cos\beta & 0 & L \times \sin\beta ± W \times \cos\beta - W  \\
   0 & 0 & 1 & 0 \\
   0 & 0 & 0 & 1 \\
 \end{bmatrix}
