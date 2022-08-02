@@ -7,7 +7,7 @@
 
 ## Pitching
 
-<img align="right" width="50%" src="report/figures/coordinate_transformations_in_pitching.jpg">
+<img align="right" width="40%" src="report/figures/coordinate_transformations_in_pitching.jpg">
 
 **Front Legs**
 
@@ -21,14 +21,9 @@ $$
 \end{bmatrix}
 \=
 \begin{bmatrix}
-   \cos\delta & \sin\delta & -L \\
-   \sin\delta & \cos\delta & 0 \\
-   0 & 0 & 1 \\
-\end{bmatrix}
-\begin{bmatrix}
-   1 & 0 & L \\
-   0 & 1 & 0 \\
-   0 & 0 & 1 \\
+  \cos\delta & -\sin\delta & L \times \cos\delta - L \\
+  \sin\delta & \cos\delta & L \times \sin\delta \\
+  0 & 0 & 1 \\
 \end{bmatrix}
 \begin{bmatrix}
    x \\
@@ -39,9 +34,16 @@ $$
 \end{flalign}
 $$
 
+**Hind Legs**
+
 $$
 \begin{flalign}
 &
+\begin{bmatrix}
+   x_\text{after pitching} \\
+   z_\text{after pitching} \\
+   1                       \\
+\end{bmatrix}
 \=
 \begin{bmatrix}
   \cos\delta & -\sin\delta & -L \times \cos\delta + L \\
