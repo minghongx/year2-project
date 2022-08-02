@@ -62,7 +62,7 @@ $$
 
 
 ## Rolling
-<img align="right" width="35%" src="report/figures/coordinate_transformations_in_rolling.jpg">
+<img align="right" width="40%" src="report/figures/coordinate_transformations_in_rolling.jpg">
 
 **Right Legs**
 
@@ -124,7 +124,7 @@ $$
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 
 ## Yawing
-<img align="right" width="35%" src="report/figures/coordinate_transformations_in_yawing.jpg">
+<img align="right" width="40%" src="report/figures/coordinate_transformations_in_yawing.jpg">
 
 **Front Right Legs**
 
