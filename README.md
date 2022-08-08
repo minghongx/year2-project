@@ -1,9 +1,78 @@
 <h1 align="center">
   ELEC222-202122 Year 2 Project<br>
-  <sub><sup>Simulating quadrupedal locomotion in PyBullet</sup></sub>
+  <sub><sup>Simulating postural control on a quadruped robot in PyBullet</sup></sub>
 </h1>
 
+
 ## Notations
+
+$\alpha$: yaw angle
+$\beta$: pitch angle
+$\gamma$: roll angle
+L: half the length of body
+W: half the width of body
+
+
+## Yawing
+
+<img align="right" width="35%" src="report/figures/coordinate_transformations_in_yawing.jpg">
+
+**Front Legs**
+
+$$
+\begin{flalign}
+&
+\begin{bmatrix}
+   x_\text{after yawing} \\
+   y_\text{after yawing} \\
+   z_\text{after yawing} \\
+   1                      \\
+\end{bmatrix}
+\=
+\begin{bmatrix}
+  \cos\beta & -\sin\beta & 0 & L \times \cos\beta ∓ W \times \sin\beta - L \\
+  \sin\beta & \cos\beta & 0 & L \times \sin\beta ± W \times \cos\beta ∓ W  \\
+  0 & 0 & 1 & 0 \\
+  0 & 0 & 0 & 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+   x \\
+   y \\
+   z \\
+   1 \\
+\end{bmatrix}
+&
+\end{flalign}
+$$
+
+**Hind Legs**
+
+$$
+\begin{flalign}
+&
+\begin{bmatrix}
+   x_\text{after yawing} \\
+   y_\text{after yawing} \\
+   z_\text{after yawing} \\
+   1                      \\
+\end{bmatrix}
+\=
+\begin{bmatrix}
+  \cos\beta & -\sin\beta & 0 & -L \times \cos\beta ∓ W \times \sin\beta + L \\
+  \sin\beta & \cos\beta & 0 & -L \times \sin\beta ± W \times \cos\beta ∓ W  \\
+  0 & 0 & 1 & 0 \\
+  0 & 0 & 0 & 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+   x \\
+   y \\
+   z \\
+   1 \\
+\end{bmatrix}
+&
+\end{flalign}
+$$
+
 
 ## Pitching
 
@@ -62,6 +131,7 @@ $$
 
 
 ## Rolling
+
 <img align="right" width="30%" src="report/figures/coordinate_transformations_in_rolling.jpg">
 
 **Right Legs**
@@ -120,64 +190,6 @@ $$
 \end{flalign}
 $$
 
-## Yawing
-<img align="right" width="35%" src="report/figures/coordinate_transformations_in_yawing.jpg">
-
-**Front Legs**
-
-$$
-\begin{flalign}
-&
-\begin{bmatrix}
-   x_\text{after yawing} \\
-   y_\text{after yawing} \\
-   z_\text{after yawing} \\
-   1                      \\
-\end{bmatrix}
-\=
-\begin{bmatrix}
-  \cos\beta & -\sin\beta & 0 & L \times \cos\beta ∓ W \times \sin\beta - L \\
-  \sin\beta & \cos\beta & 0 & L \times \sin\beta ± W \times \cos\beta ∓ W  \\
-  0 & 0 & 1 & 0 \\
-  0 & 0 & 0 & 1 \\
-\end{bmatrix}
-\begin{bmatrix}
-   x \\
-   y \\
-   z \\
-   1 \\
-\end{bmatrix}
-&
-\end{flalign}
-$$
-
-**Hind Legs**
-
-$$
-\begin{flalign}
-&
-\begin{bmatrix}
-   x_\text{after yawing} \\
-   y_\text{after yawing} \\
-   z_\text{after yawing} \\
-   1                      \\
-\end{bmatrix}
-\=
-\begin{bmatrix}
-  \cos\beta & -\sin\beta & 0 & -L \times \cos\beta ∓ W \times \sin\beta + L \\
-  \sin\beta & \cos\beta & 0 & -L \times \sin\beta ± W \times \cos\beta ∓ W  \\
-  0 & 0 & 1 & 0 \\
-  0 & 0 & 0 & 1 \\
-\end{bmatrix}
-\begin{bmatrix}
-   x \\
-   y \\
-   z \\
-   1 \\
-\end{bmatrix}
-&
-\end{flalign}
-$$
 
 ## Feedbacks
 

@@ -1,6 +1,7 @@
+from time import sleep
+
 import pybullet as bullet
 from liba1 import A1
-from time import sleep
 
 # Initialisation
 physics_server_id = bullet.connect(bullet.GUI)
@@ -68,14 +69,14 @@ reset_value  = bullet.readUserDebugParameter(reset)
 
 sleep(1)  # Ugly so FIXME
 # The initialisation is asynchronous. Wait one second to ensure that the motors reach their initial position before reading the position values.
-ini_pose = a1.current_pose()
+ini_posture = a1.current_posture()
 while True:
-    a1.pose_control(
-        roll_angle  = bullet.readUserDebugParameter(debug_roll_angle),
-        pitch_angle = bullet.readUserDebugParameter(debug_pitch_angle),
+    a1.postural_control(
         yaw_angle   = bullet.readUserDebugParameter(debug_yaw_angle),
+        pitch_angle = bullet.readUserDebugParameter(debug_pitch_angle),
+        roll_angle  = bullet.readUserDebugParameter(debug_roll_angle),
         Δz          = bullet.readUserDebugParameter(debug_height),
-        reference_pose=ini_pose)
+        reference_posture=ini_posture)
 
     if bullet.readUserDebugParameter(debug_initial_view) != initial_view:
         # set the camera to be initial view

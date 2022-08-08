@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "year2-proj"
 version = "2022.03.18"
-description = "University of Liverpool ELEC222-202122 Year 2 project: simulating quadrupedal locomotion in PyBullet. The supervisor is Dr Murat Uney."
+description = "University of Liverpool ELEC222-202122 Year 2 project: simulating postural control on a quadruped robot in PyBullet. The supervisor is Dr Murat Uney."
 authors = [
     "Minghong Xu",
     "Zepeng Pang",

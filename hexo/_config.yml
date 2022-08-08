@@ -4,7 +4,7 @@
 
 # Site
 title: LivUni ELEC222-202122 Year 2 Project
-subtitle: 'Simulating quadrupedal locomotion in PyBullet'
+subtitle: 'Simulating postural control on a quadruped robot in PyBullet'
 description: ''
 keywords:
 author: Zepeng Pang
