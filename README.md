@@ -71,7 +71,7 @@ $$
 $$
 
 <details>
-  <summary>Yawing</summary>
+  <summary>Yawing Illustration</summary>
     <img align="right" width="100%" src="report/figures/coordinate_transformations_in_yawing.jpg">
 </details>
 
@@ -129,7 +129,7 @@ $$
 $$
 
 <details>
-  <summary>Pitching</summary>
+  <summary>Pitching Illustration</summary>
     <img align="right" width="100%" src="report/figures/coordinate_transformations_in_pitching.jpg">
 </details>
 
@@ -193,7 +193,7 @@ $$
 $$
 
 <details>
-  <summary>Rolling</summary>
+  <summary>Rolling Illustration</summary>
     <img align="right" width="30%" src="report/figures/coordinate_transformations_in_rolling.jpg">
 </details>
 
