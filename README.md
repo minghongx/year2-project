@@ -84,8 +84,8 @@ $$
 \begin{flalign}
 &
 \begin{bmatrix}
-   \hat{x} \\
-   \hat{z} \\
+   x_\text{after pitching} \\
+   z_\text{after pitching} \\
    1                       \\
 \end{bmatrix}
 \=
