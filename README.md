@@ -15,10 +15,6 @@
 
 ## Yawing
 
-<img align="right" width="35%" src="report/figures/coordinate_transformations_in_yawing.jpg">
-
-
-
 $$
 \begin{flalign}
 &
@@ -73,6 +69,11 @@ $$
 &
 \end{flalign}
 $$
+
+<details>
+  <summary>Yawing</summary>
+    <img align="right" width="100%" src="report/figures/coordinate_transformations_in_yawing.jpg">
+</details>details>
 
 
 ## Pitching
