@@ -18,8 +18,7 @@
 <img align="right" width="35%" src="report/figures/coordinate_transformations_in_yawing.jpg">
 
 
-<details open>
-  <summary>Front Legs</summary>
+
 $$
 \begin{flalign}
 &
@@ -46,7 +45,6 @@ $$
 \end{flalign}
 $$
 
-</details>
 
 **Hind Legs**
 
