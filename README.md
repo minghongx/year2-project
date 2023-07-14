@@ -136,8 +136,6 @@ $$
 
 ## Rolling
 
-<img align="right" width="30%" src="report/figures/coordinate_transformations_in_rolling.jpg">
-
 **Right Legs**
 
 $$
@@ -194,6 +192,10 @@ $$
 \end{flalign}
 $$
 
+<details>
+  <summary>Yawing</summary>
+    <img align="right" width="30%" src="report/figures/coordinate_transformations_in_rolling.jpg">
+</details>
 
 ## Feedbacks
 
