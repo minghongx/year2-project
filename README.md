@@ -193,7 +193,7 @@ $$
 $$
 
 <details>
-  <summary>Yawing</summary>
+  <summary>Rolling</summary>
     <img align="right" width="30%" src="report/figures/coordinate_transformations_in_rolling.jpg">
 </details>
 
