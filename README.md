@@ -73,12 +73,10 @@ $$
 <details>
   <summary>Yawing</summary>
     <img align="right" width="100%" src="report/figures/coordinate_transformations_in_yawing.jpg">
-</details>details>
+</details>
 
 
 ## Pitching
-
-<img align="right" width="40%" src="report/figures/coordinate_transformations_in_pitching.jpg">
 
 **Front Legs**
 
@@ -130,6 +128,10 @@ $$
 \end{flalign}
 $$
 
+<details>
+  <summary>Pitching</summary>
+    <img align="right" width="100%" src="report/figures/coordinate_transformations_in_pitching.jpg">
+</details>
 
 
 ## Rolling
