@@ -6,11 +6,11 @@
 
 ## Notations
 
-$\alpha$: yaw angle
-$\beta$: pitch angle
-$\gamma$: roll angle
-L: half the length of body
-W: half the width of body
++ $\alpha$: yaw angle
++ $\beta$: pitch angle
++ $\gamma$: roll angle
++ L: half the length of body
++ W: half the width of body
 
 
 ## Yawing
