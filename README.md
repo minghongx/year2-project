@@ -182,6 +182,25 @@ $$
 \=
 \begin{bmatrix}
   1 & 0 & 0 & 0 \\
+  0 & \cos\lambda & -\sin\lambda & - W \\
+  0 & \sin\lambda & \cos\lambda & 0 \\
+  0 & 0 & 0 & 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+  1 & 0 & 0 & 0 \\
+  0 & 1 & 0 & W \\
+  0 & 0 & 1 & 1 \\
+  0 & 0 & 0 & 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+   x \\
+   y \\
+   z \\
+   1 \\
+\end{bmatrix}
+\=
+\begin{bmatrix}
+  1 & 0 & 0 & 0 \\
   0 & \cos\lambda & -\sin\lambda & W \times \cos\lambda - W \\
   0 & \sin\lambda & \cos\lambda & W \times \sin\lambda \\
   0 & 0 & 0 & 1 \\
@@ -206,6 +225,25 @@ $$
    y_\text{after rolling} \\
    z_\text{after rolling} \\
    1                      \\
+\end{bmatrix}
+\=
+\begin{bmatrix}
+  1 & 0 & 0 & 0 \\
+  0 & \cos\lambda & -\sin\lambda & + W \\
+  0 & \sin\lambda & \cos\lambda & 0 \\
+  0 & 0 & 0 & 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+  1 & 0 & 0 & 0 \\
+  0 & 1 & 0 & -W \\
+  0 & 0 & 1 & 1 \\
+  0 & 0 & 0 & 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+   x \\
+   y \\
+   z \\
+   1 \\
 \end{bmatrix}
 \=
 \begin{bmatrix}
