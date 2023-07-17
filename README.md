@@ -131,6 +131,22 @@ $$
 \end{bmatrix}
 \=
 \begin{bmatrix}
+  \cos\delta & -\sin\delta & L \\
+  \sin\delta & \cos\delta & 0 \\
+  0 & 0 & 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+  1 & 0 & -L \\
+  0 & 1 & 0 \\
+  0 & 0 & 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+   x \\
+   z \\
+   1 \\
+\end{bmatrix}
+\=
+\begin{bmatrix}
   \cos\delta & -\sin\delta & -L \times \cos\delta + L \\
   \sin\delta & \cos\delta & -L \times \sin\delta \\
   0 & 0 & 1 \\
