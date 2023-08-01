@@ -6,6 +6,13 @@
 
 ## Yawing
 
+<details>
+  <summary>Illustration</summary>
+  <p align="center">
+    <img width="70%" src="report/figures/coordinate_transformations_in_yawing.jpg">
+  </p>
+</details>
+
 ### Right foreleg
 
 $$
@@ -131,15 +138,14 @@ $$
 $$
 
 
+## Pitching
+
 <details>
-  <summary>Yawing Illustration</summary>
+  <summary>Illustration</summary>
   <p align="center">
-    <img width="70%" src="report/figures/coordinate_transformations_in_yawing.jpg">
+    <img width="70%" src="report/figures/coordinate_transformations_in_pitching.jpg">
   </p>
 </details>
-
-
-## Pitching
 
 ### Front Legs
 
@@ -203,15 +209,15 @@ $$
 \end{bmatrix}
 $$
 
-<details>
-  <summary>Pitching Illustration</summary>
-  <p align="center">
-    <img width="70%" src="report/figures/coordinate_transformations_in_pitching.jpg">
-  </p>
-</details>
-
 
 ## Rolling
+
+<details>
+  <summary>Illustration</summary>
+  <p align="center">
+    <img width="50%" src="report/figures/coordinate_transformations_in_rolling.jpg">
+  </p>
+</details>
 
 ### Right Legs
 
@@ -275,12 +281,6 @@ $$
 \end{bmatrix}
 $$
 
-<details>
-  <summary>Rolling Illustration</summary>
-  <p align="center">
-    <img width="50%" src="report/figures/coordinate_transformations_in_rolling.jpg">
-  </p>
-</details>
 
 ## Feedbacks
 
