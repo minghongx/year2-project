@@ -14,7 +14,7 @@ $$
    y_\text{after yawing} \\
    1                     \\
 \end{bmatrix}
-=
+\=
 \begin{bmatrix}
    \cos\beta & -\sin\beta & -L \\
    \sin\beta &  \cos\beta & -W \\
@@ -40,7 +40,7 @@ $$
    y_\text{after yawing} \\
    1                     \\
 \end{bmatrix}
-=
+\=
 \begin{bmatrix}
    \cos\beta & -\sin\beta & -L \\
    \sin\beta &  \cos\beta &  W \\
@@ -66,7 +66,7 @@ $$
    y_\text{after yawing} \\
    1                     \\
 \end{bmatrix}
-=
+\=
 \begin{bmatrix}
    \cos\beta & -\sin\beta &  L \\
    \sin\beta &  \cos\beta & -W \\
@@ -92,7 +92,7 @@ $$
    y_\text{after yawing} \\
    1                     \\
 \end{bmatrix}
-=
+\=
 \begin{bmatrix}
    \cos\beta & -\sin\beta & L \\
    \sin\beta &  \cos\beta & W \\
@@ -129,7 +129,7 @@ $$
    z_\text{after pitching} \\
    1                       \\
 \end{bmatrix}
-=
+\=
 \begin{bmatrix}
    \cos\delta & -\sin\delta & -L \\
    \sin\delta &  \cos\delta &  0 \\
@@ -155,7 +155,7 @@ $$
    z_\text{after pitching} \\
    1                       \\
 \end{bmatrix}
-=
+\=
 \begin{bmatrix}
    \cos\delta & -\sin\delta & L \\
    \sin\delta &  \cos\delta & 0 \\
@@ -191,7 +191,7 @@ $$
    z_\text{after rolling} \\
    1                      \\
 \end{bmatrix}
-=
+\=
 \begin{bmatrix}
    \cos\lambda & -\sin\lambda & -W \\
    \sin\lambda &  \cos\lambda &  0 \\
@@ -217,7 +217,7 @@ $$
    z_\text{after rolling} \\
    1                      \\
 \end{bmatrix}
-=
+\=
 \begin{bmatrix}
    \cos\lambda & -\sin\lambda & W \\
    \sin\lambda &  \cos\lambda & 0 \\
