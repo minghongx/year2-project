@@ -12,26 +12,22 @@ $$
 \begin{bmatrix}
    x_\text{after yawing} \\
    y_\text{after yawing} \\
-   z_\text{after yawing} \\
-   1                      \\
+   1                     \\
 \end{bmatrix}
-\=
+=
 \begin{bmatrix}
-  \cos\beta & -\sin\beta & 0 & -L \\
-  \sin\beta & \cos\beta & 0 & -W  \\
-  0 & 0 & 1 & 0 \\
-  0 & 0 & 0 & 1 \\
+   \cos\beta & -\sin\beta & -L \\
+   \sin\beta &  \cos\beta & -W \\
+   0 & 0 & 1 \\
 \end{bmatrix}
 \begin{bmatrix}
-  1 & 0 & 0 & +L \\
-  0 & 1 & 0 & +W \\
-  0 & 0 & 1 & 0 \\
-  0 & 0 & 0 & 1 \\
+   1 & 0 & L \\
+   0 & 1 & W \\
+   0 & 0 & 1 \\
 \end{bmatrix}
 \begin{bmatrix}
    x \\
    y \\
-   z \\
    1 \\
 \end{bmatrix}
 $$
@@ -42,26 +38,22 @@ $$
 \begin{bmatrix}
    x_\text{after yawing} \\
    y_\text{after yawing} \\
-   z_\text{after yawing} \\
-   1                      \\
+   1                     \\
 \end{bmatrix}
-\=
+=
 \begin{bmatrix}
-  \cos\beta & -\sin\beta & 0 & -L \\
-  \sin\beta & \cos\beta & 0 & +W  \\
-  0 & 0 & 1 & 0 \\
-  0 & 0 & 0 & 1 \\
+   \cos\beta & -\sin\beta & -L \\
+   \sin\beta &  \cos\beta &  W \\
+   0 & 0 & 1 \\
 \end{bmatrix}
 \begin{bmatrix}
-  1 & 0 & 0 & +L \\
-  0 & 1 & 0 & -W \\
-  0 & 0 & 1 & 0 \\
-  0 & 0 & 0 & 1 \\
+   1 & 0 &  L \\
+   0 & 1 & -W \\
+   0 & 0 &  1 \\
 \end{bmatrix}
 \begin{bmatrix}
    x \\
    y \\
-   z \\
    1 \\
 \end{bmatrix}
 $$
@@ -72,26 +64,22 @@ $$
 \begin{bmatrix}
    x_\text{after yawing} \\
    y_\text{after yawing} \\
-   z_\text{after yawing} \\
-   1                      \\
+   1                     \\
 \end{bmatrix}
-\=
+=
 \begin{bmatrix}
-  \cos\beta & -\sin\beta & 0 & +L \\
-  \sin\beta & \cos\beta & 0 & -W  \\
-  0 & 0 & 1 & 0 \\
-  0 & 0 & 0 & 1 \\
+   \cos\beta & -\sin\beta &  L \\
+   \sin\beta &  \cos\beta & -W \\
+   0 & 0 & 1 \\
 \end{bmatrix}
 \begin{bmatrix}
-  1 & 0 & 0 & -L \\
-  0 & 1 & 0 & +W \\
-  0 & 0 & 1 & 0 \\
-  0 & 0 & 0 & 1 \\
+   1 & 0 & -L \\
+   0 & 1 &  W \\
+   0 & 0 &  1 \\
 \end{bmatrix}
 \begin{bmatrix}
    x \\
    y \\
-   z \\
    1 \\
 \end{bmatrix}
 $$
@@ -102,26 +90,22 @@ $$
 \begin{bmatrix}
    x_\text{after yawing} \\
    y_\text{after yawing} \\
-   z_\text{after yawing} \\
-   1                      \\
+   1                     \\
 \end{bmatrix}
-\=
+=
 \begin{bmatrix}
-  \cos\beta & -\sin\beta & 0 & +L \\
-  \sin\beta & \cos\beta & 0 & +W  \\
-  0 & 0 & 1 & 0 \\
-  0 & 0 & 0 & 1 \\
+   \cos\beta & -\sin\beta & L \\
+   \sin\beta &  \cos\beta & W \\
+   0 & 0 & 1 \\
 \end{bmatrix}
 \begin{bmatrix}
-  1 & 0 & 0 & -L \\
-  0 & 1 & 0 & -W \\
-  0 & 0 & 1 & 0 \\
-  0 & 0 & 0 & 1 \\
+   1 & 0 & -L \\
+   0 & 1 & -W \\
+   0 & 0 &  1 \\
 \end{bmatrix}
 \begin{bmatrix}
    x \\
    y \\
-   z \\
    1 \\
 \end{bmatrix}
 $$
@@ -140,83 +124,53 @@ $$
 **Front Legs**
 
 $$
-\begin{flalign}
-&
 \begin{bmatrix}
    x_\text{after pitching} \\
    z_\text{after pitching} \\
    1                       \\
 \end{bmatrix}
-\=
+=
 \begin{bmatrix}
-  \cos\delta & -\sin\delta & - L \\
-  \sin\delta & \cos\delta & 0\\
-  0 & 0 & 1 \\
+   \cos\delta & -\sin\delta & -L \\
+   \sin\delta &  \cos\delta &  0 \\
+   0 & 0 & 1 \\
 \end{bmatrix}
 \begin{bmatrix}
-  1 & 0 & L \\
-  0 & 1 & 0 \\
-  0 & 0 & 1 \\
-\end{bmatrix}
-\begin{bmatrix}
-   x \\
-   z \\
-   1 \\
-\end{bmatrix}
-\=
-\begin{bmatrix}
-  \cos\delta & -\sin\delta & L \times \cos\delta - L \\
-  \sin\delta & \cos\delta & L \times \sin\delta \\
-  0 & 0 & 1 \\
+   1 & 0 & L \\
+   0 & 1 & 0 \\
+   0 & 0 & 1 \\
 \end{bmatrix}
 \begin{bmatrix}
    x \\
    z \\
    1 \\
 \end{bmatrix}
-&
-\end{flalign}
 $$
 
 **Hind Legs**
 
 $$
-\begin{flalign}
-&
 \begin{bmatrix}
    x_\text{after pitching} \\
    z_\text{after pitching} \\
    1                       \\
 \end{bmatrix}
-\=
+=
 \begin{bmatrix}
-  \cos\delta & -\sin\delta & L \\
-  \sin\delta & \cos\delta & 0 \\
-  0 & 0 & 1 \\
+   \cos\delta & -\sin\delta & L \\
+   \sin\delta &  \cos\delta & 0 \\
+   0 & 0 & 1 \\
 \end{bmatrix}
 \begin{bmatrix}
-  1 & 0 & -L \\
-  0 & 1 & 0 \\
-  0 & 0 & 1 \\
-\end{bmatrix}
-\begin{bmatrix}
-   x \\
-   z \\
-   1 \\
-\end{bmatrix}
-\=
-\begin{bmatrix}
-  \cos\delta & -\sin\delta & -L \times \cos\delta + L \\
-  \sin\delta & \cos\delta & -L \times \sin\delta \\
-  0 & 0 & 1 \\
+   1 & 0 & -L \\
+   0 & 1 &  0 \\
+   0 & 0 &  1 \\
 \end{bmatrix}
 \begin{bmatrix}
    x \\
    z \\
    1 \\
 \end{bmatrix}
-&
-\end{flalign}
 $$
 
 <details>
@@ -232,95 +186,53 @@ $$
 **Right Legs**
 
 $$
-\begin{flalign}
-&
 \begin{bmatrix}
-   x_\text{after rolling} \\
    y_\text{after rolling} \\
    z_\text{after rolling} \\
    1                      \\
 \end{bmatrix}
-\=
+=
 \begin{bmatrix}
-  1 & 0 & 0 & 0 \\
-  0 & \cos\lambda & -\sin\lambda & - W \\
-  0 & \sin\lambda & \cos\lambda & 0 \\
-  0 & 0 & 0 & 1 \\
+   \cos\lambda & -\sin\lambda & -W \\
+   \sin\lambda &  \cos\lambda &  0 \\
+   0 & 0 & 1 \\
 \end{bmatrix}
 \begin{bmatrix}
-  1 & 0 & 0 & 0 \\
-  0 & 1 & 0 & W \\
-  0 & 0 & 1 & 1 \\
-  0 & 0 & 0 & 1 \\
+   1 & 0 & W \\
+   0 & 1 & 0 \\
+   0 & 0 & 1 \\
 \end{bmatrix}
 \begin{bmatrix}
-   x \\
    y \\
    z \\
    1 \\
 \end{bmatrix}
-\=
-\begin{bmatrix}
-  1 & 0 & 0 & 0 \\
-  0 & \cos\lambda & -\sin\lambda & W \times \cos\lambda - W \\
-  0 & \sin\lambda & \cos\lambda & W \times \sin\lambda \\
-  0 & 0 & 0 & 1 \\
-\end{bmatrix}
-\begin{bmatrix}
-   x \\
-   y \\
-   z \\
-   1 \\
-\end{bmatrix}
-&
-\end{flalign}
 $$
 
 **Left Legs**
 
 $$
-\begin{flalign}
-&
 \begin{bmatrix}
-   x_\text{after rolling} \\
    y_\text{after rolling} \\
    z_\text{after rolling} \\
    1                      \\
 \end{bmatrix}
-\=
+=
 \begin{bmatrix}
-  1 & 0 & 0 & 0 \\
-  0 & \cos\lambda & -\sin\lambda & + W \\
-  0 & \sin\lambda & \cos\lambda & 0 \\
-  0 & 0 & 0 & 1 \\
+   \cos\lambda & -\sin\lambda & W \\
+   \sin\lambda &  \cos\lambda & 0 \\
+   0 & 0 & 1 \\
 \end{bmatrix}
 \begin{bmatrix}
-  1 & 0 & 0 & 0 \\
-  0 & 1 & 0 & -W \\
-  0 & 0 & 1 & 1 \\
-  0 & 0 & 0 & 1 \\
+   1 & 0 & -W \\
+   0 & 1 &  0 \\
+   0 & 0 &  1 \\
 \end{bmatrix}
 \begin{bmatrix}
-   x \\
    y \\
    z \\
    1 \\
 \end{bmatrix}
-\=
-\begin{bmatrix}
-  1 & 0 & 0 & 0 \\
-  0 & \cos\lambda & -\sin\lambda & -W \times \cos\lambda + W \\
-  0 & \sin\lambda & \cos\lambda & -W \times \sin\lambda \\
-  0 & 0 & 0 & 1 \\
-\end{bmatrix}
-\begin{bmatrix}
-   x \\
-   y \\
-   z \\
-   1 \\
-\end{bmatrix}
-&
-\end{flalign}
 $$
 
 <details>
