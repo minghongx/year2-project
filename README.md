@@ -6,9 +6,9 @@
 
 ## Yawing
 
+### Right foreleg
+
 $$
-\begin{flalign}
-&
 \begin{bmatrix}
    x_\text{after yawing} \\
    y_\text{after yawing} \\
@@ -17,27 +17,14 @@ $$
 \end{bmatrix}
 \=
 \begin{bmatrix}
-  \cos\beta & -\sin\beta & 0 & - L \\
-  \sin\beta & \cos\beta & 0 & ∓ W  \\
+  \cos\beta & -\sin\beta & 0 & -L \\
+  \sin\beta & \cos\beta & 0 & -W  \\
   0 & 0 & 1 & 0 \\
   0 & 0 & 0 & 1 \\
 \end{bmatrix}
 \begin{bmatrix}
-  1 & 0 & 1 & L \\
-  0 & 1 & 0 & ±W \\
-  0 & 0 & 1 & 0 \\
-  0 & 0 & 0 & 1 \\
-\end{bmatrix}
-\begin{bmatrix}
-   x \\
-   y \\
-   z \\
-   1 \\
-\end{bmatrix}
-\=
-\begin{bmatrix}
-  \cos\beta & -\sin\beta & 0 & L \times \cos\beta ∓ W \times \sin\beta - L \\
-  \sin\beta & \cos\beta & 0 & L \times \sin\beta ± W \times \cos\beta ∓ W  \\
+  1 & 0 & 0 & +L \\
+  0 & 1 & 0 & +W \\
   0 & 0 & 1 & 0 \\
   0 & 0 & 0 & 1 \\
 \end{bmatrix}
@@ -47,16 +34,11 @@ $$
    z \\
    1 \\
 \end{bmatrix}
-&
-\end{flalign}
 $$
 
-
-**Hind Legs**
+### Left foreleg
 
 $$
-\begin{flalign}
-&
 \begin{bmatrix}
    x_\text{after yawing} \\
    y_\text{after yawing} \\
@@ -65,14 +47,14 @@ $$
 \end{bmatrix}
 \=
 \begin{bmatrix}
-  \cos\beta & -\sin\beta & 0 & + L \\
-  \sin\beta & \cos\beta & 0 & ± W  \\
+  \cos\beta & -\sin\beta & 0 & -L \\
+  \sin\beta & \cos\beta & 0 & +W  \\
   0 & 0 & 1 & 0 \\
   0 & 0 & 0 & 1 \\
 \end{bmatrix}
 \begin{bmatrix}
-  1 & 0 & 1 & - L \\
-  0 & 1 & 0 & ∓ W \\
+  1 & 0 & 0 & +L \\
+  0 & 1 & 0 & -W \\
   0 & 0 & 1 & 0 \\
   0 & 0 & 0 & 1 \\
 \end{bmatrix}
@@ -81,11 +63,28 @@ $$
    y \\
    z \\
    1 \\
+\end{bmatrix}
+$$
+
+### Right hind leg
+
+$$
+\begin{bmatrix}
+   x_\text{after yawing} \\
+   y_\text{after yawing} \\
+   z_\text{after yawing} \\
+   1                      \\
 \end{bmatrix}
 \=
 \begin{bmatrix}
-  \cos\beta & -\sin\beta & 0 & -L \times \cos\beta ∓ W \times \sin\beta + L \\
-  \sin\beta & \cos\beta & 0 & -L \times \sin\beta ± W \times \cos\beta ∓ W  \\
+  \cos\beta & -\sin\beta & 0 & +L \\
+  \sin\beta & \cos\beta & 0 & -W  \\
+  0 & 0 & 1 & 0 \\
+  0 & 0 & 0 & 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+  1 & 0 & 0 & -L \\
+  0 & 1 & 0 & +W \\
   0 & 0 & 1 & 0 \\
   0 & 0 & 0 & 1 \\
 \end{bmatrix}
@@ -95,9 +94,38 @@ $$
    z \\
    1 \\
 \end{bmatrix}
-&
-\end{flalign}
 $$
+
+### Left hind leg
+
+$$
+\begin{bmatrix}
+   x_\text{after yawing} \\
+   y_\text{after yawing} \\
+   z_\text{after yawing} \\
+   1                      \\
+\end{bmatrix}
+\=
+\begin{bmatrix}
+  \cos\beta & -\sin\beta & 0 & +L \\
+  \sin\beta & \cos\beta & 0 & +W  \\
+  0 & 0 & 1 & 0 \\
+  0 & 0 & 0 & 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+  1 & 0 & 0 & -L \\
+  0 & 1 & 0 & -W \\
+  0 & 0 & 1 & 0 \\
+  0 & 0 & 0 & 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+   x \\
+   y \\
+   z \\
+   1 \\
+\end{bmatrix}
+$$
+
 
 <details>
   <summary>Yawing Illustration</summary>
