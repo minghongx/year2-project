@@ -141,7 +141,7 @@ $$
 
 ## Pitching
 
-**Front Legs**
+### Front Legs
 
 $$
 \begin{bmatrix}
@@ -172,7 +172,7 @@ $$
 \end{bmatrix}
 $$
 
-**Hind Legs**
+### Hind Legs
 
 $$
 \begin{bmatrix}
@@ -213,7 +213,7 @@ $$
 
 ## Rolling
 
-**Right Legs**
+### Right Legs
 
 $$
 \begin{bmatrix}
@@ -244,7 +244,7 @@ $$
 \end{bmatrix}
 $$
 
-**Left Legs**
+### Left Legs
 
 $$
 \begin{bmatrix}
