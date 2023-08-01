@@ -16,8 +16,13 @@ $$
 \end{bmatrix}
 \=
 \begin{bmatrix}
-   \cos\beta & -\sin\beta & -L \\
-   \sin\beta &  \cos\beta & -W \\
+   1 & 0 & -L \\
+   0 & 1 & -W \\
+   0 & 0 &  1 \\
+\end{bmatrix}
+\begin{bmatrix}
+   \cos\beta & -\sin\beta & 0 \\
+   \sin\beta &  \cos\beta & 0 \\
    0 & 0 & 1 \\
 \end{bmatrix}
 \begin{bmatrix}
@@ -42,8 +47,13 @@ $$
 \end{bmatrix}
 \=
 \begin{bmatrix}
-   \cos\beta & -\sin\beta & -L \\
-   \sin\beta &  \cos\beta &  W \\
+   1 & 0 & -L \\
+   0 & 1 &  W \\
+   0 & 0 &  1 \\
+\end{bmatrix}
+\begin{bmatrix}
+   \cos\beta & -\sin\beta & 0 \\
+   \sin\beta &  \cos\beta & 0 \\
    0 & 0 & 1 \\
 \end{bmatrix}
 \begin{bmatrix}
@@ -68,8 +78,13 @@ $$
 \end{bmatrix}
 \=
 \begin{bmatrix}
-   \cos\beta & -\sin\beta &  L \\
-   \sin\beta &  \cos\beta & -W \\
+   1 & 0 &  L \\
+   0 & 1 & -W \\
+   0 & 0 &  1 \\
+\end{bmatrix}
+\begin{bmatrix}
+   \cos\beta & -\sin\beta & 0 \\
+   \sin\beta &  \cos\beta & 0 \\
    0 & 0 & 1 \\
 \end{bmatrix}
 \begin{bmatrix}
@@ -94,8 +109,13 @@ $$
 \end{bmatrix}
 \=
 \begin{bmatrix}
-   \cos\beta & -\sin\beta & L \\
-   \sin\beta &  \cos\beta & W \\
+   1 & 0 & L \\
+   0 & 1 & W \\
+   0 & 0 & 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+   \cos\beta & -\sin\beta & 0 \\
+   \sin\beta &  \cos\beta & 0 \\
    0 & 0 & 1 \\
 \end{bmatrix}
 \begin{bmatrix}
@@ -131,7 +151,12 @@ $$
 \end{bmatrix}
 \=
 \begin{bmatrix}
-   \cos\delta & -\sin\delta & -L \\
+   1 & 0 & -L \\
+   0 & 1 &  0 \\
+   0 & 0 &  1 \\
+\end{bmatrix}
+\begin{bmatrix}
+   \cos\delta & -\sin\delta &  0 \\
    \sin\delta &  \cos\delta &  0 \\
    0 & 0 & 1 \\
 \end{bmatrix}
@@ -157,7 +182,12 @@ $$
 \end{bmatrix}
 \=
 \begin{bmatrix}
-   \cos\delta & -\sin\delta & L \\
+   1 & 0 & L \\
+   0 & 1 & 0 \\
+   0 & 0 & 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+   \cos\delta & -\sin\delta & 0 \\
    \sin\delta &  \cos\delta & 0 \\
    0 & 0 & 1 \\
 \end{bmatrix}
@@ -193,8 +223,13 @@ $$
 \end{bmatrix}
 \=
 \begin{bmatrix}
-   \cos\lambda & -\sin\lambda & -W \\
-   \sin\lambda &  \cos\lambda &  0 \\
+   1 & 0 & -W \\
+   0 & 1 &  0 \\
+   0 & 0 &  1 \\
+\end{bmatrix}
+\begin{bmatrix}
+   \cos\lambda & -\sin\lambda & 0 \\
+   \sin\lambda &  \cos\lambda & 0 \\
    0 & 0 & 1 \\
 \end{bmatrix}
 \begin{bmatrix}
@@ -219,7 +254,12 @@ $$
 \end{bmatrix}
 \=
 \begin{bmatrix}
-   \cos\lambda & -\sin\lambda & W \\
+   1 & 0 & W \\
+   0 & 1 & 0 \\
+   0 & 0 & 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+   \cos\lambda & -\sin\lambda & 0 \\
    \sin\lambda &  \cos\lambda & 0 \\
    0 & 0 & 1 \\
 \end{bmatrix}
