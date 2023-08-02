@@ -3,6 +3,7 @@
   <sub><sup>Simulating postural control on a quadruped robot in PyBullet</sup></sub>
 </h1>
 
+Notice that the reason for discussing different cases is that the coordinate systems are not symmetric about the body centre.
 
 ## Yawing
 
