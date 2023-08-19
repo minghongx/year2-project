@@ -296,7 +296,7 @@ Forward kinematics is a mapping function from joint space to Cartesian space.
 
 ## Inverse Kinematics
 
-Inverse kinematics is mapping from Cartesian space to joint space.
+Inverse kinematics is a inverse function of the forward kinematics (from Cartesian space to joint space).
 
 
 ## Feedbacks
