@@ -1,5 +1,5 @@
 <h1 align="center">
-  ELEC222-202122 Year 2 Project<br>
+  Year 2 Project | ELEC222's 2021-22 Session<br>
   <sub><sup>Simulating postural control on a quadruped robot in PyBullet</sup></sub>
 </h1>
 
