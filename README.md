@@ -1,9 +1,10 @@
 <h1 align="center">
-  Year 2 Project | ELEC222's 2021-22 Session<br>
+  Year 2 Project | ELEC222<br>
   <sub><sup>Simulating postural control on a quadruped robot in PyBullet</sup></sub>
 </h1>
 
-Notice that the reason for discussing different cases is that the coordinate systems are not symmetric about the body centre.
+> [!IMPORTANT]
+> We discuss various cases because the coordinate systems are asymmetric relative to the body centre.
 
 ## Yawing
 
