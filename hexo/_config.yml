@@ -3,8 +3,8 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Year 2 Project at LivUni (ELEC222, AY 2021-22)
-subtitle: 'Simulating postural control on a quadruped robot in PyBullet'
+title: Year 2 Project
+subtitle: 'Simulating postural control on a quadruped robot in PyBullet.'
 description: ''
 keywords:
 author: Zepeng Pang
@@ -18,8 +18,8 @@ root: /year2-project/
 permalink: :year/:title/
 permalink_defaults:
 pretty_urls:
-  trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
-  trailing_html: true # Set to false to remove trailing '.html' from permalinks
+  trailing_index: false # Set to false to remove trailing 'index.html' from permalinks
+  trailing_html: false # Set to false to remove trailing '.html' from permalinks
 
 # Directory
 source_dir: source
