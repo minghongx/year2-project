@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: LivUni ELEC222-202122 Year 2 Project
+title: Year 2 Project at LivUni (ELEC222, AY 2021-22)
 subtitle: 'Simulating postural control on a quadruped robot in PyBullet'
 description: ''
 keywords:
@@ -13,8 +13,8 @@ timezone: 'Europe/London'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: https://minghongalexxu.github.io/year2-proj/
-root: /year2-proj/
+url: https://minghongx.github.io/year2-project/
+root: /year2-project/
 permalink: :year/:title/
 permalink_defaults:
 pretty_urls:
