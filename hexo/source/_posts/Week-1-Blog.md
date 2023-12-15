@@ -29,7 +29,7 @@ The main goal of the first week is to complete the construction of the simulatio
 
 ## Implementation of the task
 
-First of all, in order to achieve better communication and file interaction among group members, we decided to use Github as our communication platform and created a repository called year2-proj.
+First of all, in order to achieve better communication and file interaction among group members, we decided to use Github as our communication platform and created a repository called year2-project.
 
 ![Github repository](Github.png)
 

@@ -362,7 +362,7 @@ gantt
 ## Structure of the Repository
 
 <pre>
-📦year2-proj
+📦year2-project
  ┣ 📂.vscode
  ┣ 📂docs
  ┣ 📂feedback

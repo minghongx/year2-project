@@ -36,7 +36,7 @@ After that, we set the initial positions of the three types of motors respective
 In the process of writing the code, we found that the model was too light weight. This causes the model to float easily during motion. So we set the gravity to 30 instead of the normal 9.8. Next we set the position of the camera in pybullet to better observe the movement of the robot. As we talked about in our blog last week, to complete the pitch action, we need to set the magnitude of the pitch angle. Through the pitch angle and other set conditions, the position of the foot before and after the movement and the angle that each motor needs to rotate can be calculated. We set up a slide button to smoothly change the magnitude of pitch angle. The pitch range is from -31 rad to +31 rad. Then we use code to complete the calculation of forward kinematics and inverse kinematics to get motor's position. After set motor position, the simulation is completed.
 
 <div align="center">
-    <img src="/year2-proj/2022/Week-4-Blog/pitching.gif" width=60% height=60% />
+    <img src="/year2-project/2022/Week-4-Blog/pitching.gif" width=60% height=60% />
 </div>
 
 ### Roll motion
@@ -46,7 +46,7 @@ In the process of writing the code, we found that the model was too light weight
 Similar idea to pitching. We set the roll angle range from -0.7 rad to +0.7 rad. We also set a "Reset Position" button to help us reset robot's position easily.
 
 <div align="center">
-    <img src="/year2-proj/2022/Week-4-Blog/rolling.gif" width=60% height=60% />
+    <img src="/year2-project/2022/Week-4-Blog/rolling.gif" width=60% height=60% />
 </div>
 
 ### Yaw motion
@@ -57,15 +57,15 @@ In the code of yaw motion, we add two extra button which can change the view to 
 
 
 <div align="center">
-    <img src="/year2-proj/2022/Week-4-Blog/yawing-initial-view.gif" width=60% height=60% />
+    <img src="/year2-project/2022/Week-4-Blog/yawing-initial-view.gif" width=60% height=60% />
 </div>
 
 <div align="center">
-    <img src="/year2-proj/2022/Week-4-Blog/yawing-front-view.gif" width=60% height=60% />
+    <img src="/year2-project/2022/Week-4-Blog/yawing-front-view.gif" width=60% height=60% />
 </div>
 
 <div align="center">
-    <img src="/year2-proj/2022/Week-4-Blog/yawing-top-view.gif" width=60% height=60% />
+    <img src="/year2-project/2022/Week-4-Blog/yawing-top-view.gif" width=60% height=60% />
 </div>
 
 ### Extra motion: squat
@@ -75,7 +75,7 @@ In the code of yaw motion, we add two extra button which can change the view to 
 After completing the simulation of the three motions set in the original plan, we designed an extra squat motion. The principle is to complete the action by changing the height of the robot. Different from the previous motion algorithms, in the squat motion we only need to calculate the position of the motor and the foot according to the height of the robot. This squat motion will make the robot jump when the speed of the height change from low to high is too fast. This gave us inspiration, maybe the jumping action of the robot can be realized through this idea.
 
 <div align="center">
-    <img src="/year2-proj/2022/Week-4-Blog/squatting.gif" width=60% height=60% />
+    <img src="/year2-project/2022/Week-4-Blog/squatting.gif" width=60% height=60% />
 </div>
 
 ## Poster design
