@@ -300,11 +300,62 @@ Forward kinematics is a mapping function from joint space to Cartesian space.
 Inverse kinematics is an inverse function of the forward kinematics (from Cartesian space to joint space).
 
 
+## Structure of the Repository
+
+<pre>
+📦year2-project
+ ┣ 📂.vscode
+ ┣ 📂docs
+ ┣ 📂feedback
+ ┣ 📂hexo
+ ┃ ┣ 📂themes/next
+ ┃ ┃ ┗ 📜_config.yml
+ ┃ ┗ 📜_config.yml
+ ┣ 📂poster
+ ┣ 📂proj_mgmt_forms
+ ┣ 📂refs
+ ┣ 📂report
+ ┃ ┣ 📂preamble
+ ┃ ┃ ┣ 📜packages.tex
+ ┃ ┃ ┗ 📜top_matter.tex
+ ┃ ┣ 📂front_matter
+ ┃ ┣ 📂body
+ ┃ ┣ 📂back_matter
+ ┃ ┣ 📂figures
+ ┃ ┣ 📜.latexmkrc
+ ┃ ┣ 📜refs.bib
+ ┃ ┣ 📜report.tex
+ ┃ ┗ 📜snippets.tex
+ ┣ 📂sde_report
+ ┣ 📂simulation
+ ┣ 📜.editorconfig
+ ┣ 📜.gitattributes
+ ┣ 📜.gitignore
+ ┣ 📜LICENSE
+ ┣ 📜poetry.lock
+ ┣ 📜pyproject.toml
+ ┗ 📜README.md
+</pre>
+
+Folder / File | Description
+:--- | :---
+📂docs | From where GitHub Pages site is built.
+📂hexo | Hexo manages the project website here and publishes website to 📂docs.
+📜.editorconfig | EditorConfig helps maintain consistent coding styles for multiple developers working on the same project across various editors and IDEs. The EditorConfig project consists of a file format for defining coding styles and a collection of text editor plugins that enable editors to read the file format and adhere to defined styles.
+📂preamble | Where preliminary or preparatory statements are placed.
+📜packages.tex | Where package-importing statements are placed.
+📜top_matter.tex | Where metadata about a LaTeX document is placed.
+📂simulation | Where simulation code is placed.
+📜pyproject.toml | pyproject.toml contains build system requirements and [core metadata](https://packaging.python.org/en/latest/specifications/core-metadata/) of Python projects. *python-poetry* is a reference implementation for using pyproject.toml.
+📜poetry.lock | This file prevents from automatically getting the latest versions of dependencies. Running `poetry install` when a poetry.lock file is present resolves and installs all dependencies that are listed in pyproject.toml, but Poetry uses the exact versions listed in poetry.lock to ensure that the package versions are consistent for everyone working on a project. To update to the latest versions, use the `poetry update` command. This will fetch the latest matching versions (as per pyproject.toml) and update the lock file with the new versions. (This is equivalent to deleting the poetry.lock file and running `poetry install` again.)
+
+
 ## Feedbacks
 
 ![feedback of bench inspection from supervisor](feedback/bench_inspection/supervisor.pdf.jpg)
 ![feedback of bench inspection from assessor](feedback/bench_inspection/assessor.pdf.jpg)
 ![feedback of bench inspection from supervisor](feedback/proj_report/supervisor.pdf.jpg)
+
 
 ## Activity Diary
 
@@ -358,52 +409,3 @@ gantt
     Check Academic Style : 2022-03-16, 2d
     Submission DDL: milestone, 2022-03-18, 0d
 ```
-
-## Structure of the Repository
-
-<pre>
-📦year2-project
- ┣ 📂.vscode
- ┣ 📂docs
- ┣ 📂feedback
- ┣ 📂hexo
- ┃ ┣ 📂themes/next
- ┃ ┃ ┗ 📜_config.yml
- ┃ ┗ 📜_config.yml
- ┣ 📂poster
- ┣ 📂proj_mgmt_forms
- ┣ 📂refs
- ┣ 📂report
- ┃ ┣ 📂preamble
- ┃ ┃ ┣ 📜packages.tex
- ┃ ┃ ┗ 📜top_matter.tex
- ┃ ┣ 📂front_matter
- ┃ ┣ 📂body
- ┃ ┣ 📂back_matter
- ┃ ┣ 📂figures
- ┃ ┣ 📜.latexmkrc
- ┃ ┣ 📜refs.bib
- ┃ ┣ 📜report.tex
- ┃ ┗ 📜snippets.tex
- ┣ 📂sde_report
- ┣ 📂simulation
- ┣ 📜.editorconfig
- ┣ 📜.gitattributes
- ┣ 📜.gitignore
- ┣ 📜LICENSE
- ┣ 📜poetry.lock
- ┣ 📜pyproject.toml
- ┗ 📜README.md
-</pre>
-
-Folder / File | Description
-:--- | :---
-📂docs | From where GitHub Pages site is built.
-📂hexo | Hexo manages the project website here and publishes website to 📂docs.
-📜.editorconfig | EditorConfig helps maintain consistent coding styles for multiple developers working on the same project across various editors and IDEs. The EditorConfig project consists of a file format for defining coding styles and a collection of text editor plugins that enable editors to read the file format and adhere to defined styles.
-📂preamble | Where preliminary or preparatory statements are placed.
-📜packages.tex | Where package-importing statements are placed.
-📜top_matter.tex | Where metadata about a LaTeX document is placed.
-📂simulation | Where simulation code is placed.
-📜pyproject.toml | pyproject.toml contains build system requirements and [core metadata](https://packaging.python.org/en/latest/specifications/core-metadata/) of Python projects. *python-poetry* is a reference implementation for using pyproject.toml.
-📜poetry.lock | This file prevents from automatically getting the latest versions of dependencies. Running `poetry install` when a poetry.lock file is present resolves and installs all dependencies that are listed in pyproject.toml, but Poetry uses the exact versions listed in poetry.lock to ensure that the package versions are consistent for everyone working on a project. To update to the latest versions, use the `poetry update` command. This will fetch the latest matching versions (as per pyproject.toml) and update the lock file with the new versions. (This is equivalent to deleting the poetry.lock file and running `poetry install` again.)
