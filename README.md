@@ -350,7 +350,7 @@ Folder / File | Description
 📜poetry.lock | This file prevents from automatically getting the latest versions of dependencies. Running `poetry install` when a poetry.lock file is present resolves and installs all dependencies that are listed in pyproject.toml, but Poetry uses the exact versions listed in poetry.lock to ensure that the package versions are consistent for everyone working on a project. To update to the latest versions, use the `poetry update` command. This will fetch the latest matching versions (as per pyproject.toml) and update the lock file with the new versions. (This is equivalent to deleting the poetry.lock file and running `poetry install` again.)
 
 
-## Feedbacks
+## Feedback
 
 ![feedback of bench inspection from supervisor](feedback/bench_inspection/supervisor.pdf.jpg)
 ![feedback of bench inspection from assessor](feedback/bench_inspection/assessor.pdf.jpg)
